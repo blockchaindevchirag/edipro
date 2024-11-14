@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Medical Clearance Request Form</title> 
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin:2px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+            .medcle{
+                font-size: 12px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="modal fade" >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"><span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;"><span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span><span  th:text="${patientPractice.contactPhone}">test</span><span  th:text="${patientPractice.alertPhone}">test</span>    
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div> 
+                    </div><br/>
+                    <h3 class="modal-title" id="myModalLabel" style="text-align: center;">
+                        MEDICAL RECORD AND MEDICATION REQUEST TO OBTAIN "CLEARANCE" FOR DENTAL/ ORAL SURGERY TREATMENT
+                        IMMEDIATE REPLY REQUESTED
+                    </h3>
+
+                    <div class="container">
+                        <div class="card-body">
+
+                            <div class="medcle">
+                                <div class="row">
+
+                                    <div class="col-12">
+                                        Date: <span style="font-weight:bold;min-width: 80px;font-style:normal;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.currentDate}">test</span>  
+                                        <p style="font-style:italic;text-align: justify;text-justify: inter-word;">Our mutual patient, <span style="font-weight:bold;min-width: 200px;font-style:normal;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.patientname}">test</span> <span style="font-style:normal;">DOB</span> <span style="font-weight:bold;min-width: 80px;font-style: normal;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.patientdob}">test</span> is planning on having oral surgery. Potential inta-operative medications include: Valium, Versed, Fentanyl, Phenergan, Dexamethasone. Potential postoperative medication include: Lortab, Penicillin, Phenergan, Peridex, Cleocin, Ibuprofen and Tylenol.</p>
+                                        <p style="font-style:italic; text-align: justify;text-justify: inter-word;">Please evaluate this patient's medical history and advise us of any special 
+                                            considerations that should be made. The reports of the current medical, history
+                                            and condition(s) needed prior treatment(s) or prescription(s) and use of 
+                                            medication(s), which may warrant special consideration(s) for Oral Surgery 
+                                            treatment(s). Planned dental care, treatment(s) or operation(s) and 
+                                            medications (including Local Anesthesia type: Lidocaine with Epinephrine,
+                                            Marcaine Hydrochloride with Epinephrine, Bupivacaine, Carbocaine, Septocaine, 
+                                            and Mepivacaine Hydrochloride). Fax to <span style="font-weight:bold;min-width: 120px;text-align:center;border-bottom: 1px solid #000000;" th:text="${medicalClearanceForm.faxnum}"></span> or email this form with any relevant supporting documentation to <span style="font-weight:bold;min-width: 100px;text-align:center;font-style: normal;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.patienttxt1}">test</span>. Your assistance is greatly appreciated.</p>
+                                        <h5>Patient is scheduled for Oral surgery treatment may include the following pro
+                                            cedure(s):</h5>
+                                    </div>
+
+                                    <table class="col" style="width: 100%">
+                                        <tr>
+                                            <td>
+                                                <!--                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox1} == medicalclearence1" checked="checked"/> 
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox1} == medicalclearence1"/>-->
+                                                <img th:if="${medicalClearanceForm.patientcheckbox1} == medicalclearence1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${medicalClearanceForm.patientcheckbox1} == medicalclearence1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>
+                                                Bone Graft/ Bone Regeneration
+                                            </td>
+                                            <td> 
+                                                <!--                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox4} == medicalclearence4" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox4} == medicalclearence4"/>-->
+                                                <img th:if="${medicalClearanceForm.patientcheckbox4} == medicalclearence4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${medicalClearanceForm.patientcheckbox4} == medicalclearence4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>
+                                                Dental Implant Surgery
+                                            </td>
+                                            <td>
+                                                <!--                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox7} == medicalclearence7" checked="checked"/> 
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox7} == medicalclearence7"/>-->
+                                                <img th:if="${medicalClearanceForm.patientcheckbox7} == medicalclearence7"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img th:unless="${medicalClearanceForm.patientcheckbox7} == medicalclearence7" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>
+                                                Sinus Lift/Augmentation
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 
+                                                <!--                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox2} == medicalclearence2" checked="checked"/> 
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox2} == medicalclearence2"/>-->
+                                                <img th:if="${medicalClearanceForm.patientcheckbox2} == medicalclearence2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img th:unless="${medicalClearanceForm.patientcheckbox2} == medicalclearence2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>
+                                                Surgical tooth extraction
+                                            </td>
+                                            <td> 
+                                                <!--                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox5} == medicalclearence5" checked="checked"/> 
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox5} == medicalclearence5"/>-->
+                                                <img th:if="${medicalClearanceForm.patientcheckbox5} == medicalclearence5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${medicalClearanceForm.patientcheckbox5} == medicalclearence5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>
+                                                Cyst excision
+                                            </td>
+                                            <td> 
+                                                <!--                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox8} == medicalclearence8" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox8} == medicalclearence8"/>-->
+                                                <img th:if="${medicalClearanceForm.patientcheckbox8} == medicalclearence8"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${medicalClearanceForm.patientcheckbox8} == medicalclearence8" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>
+                                                Oral bone/tissue abscess removal
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <!--                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox3} == medicalclearence3" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox3} == medicalclearence3"/>-->
+                                                <img th:if="${medicalClearanceForm.patientcheckbox3} == medicalclearence3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${medicalClearanceForm.patientcheckbox3} == medicalclearence3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>
+                                                Tissue Graft
+                                            </td>
+                                            <td>
+                                                <!--                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox6} == medicalclearence6" checked="checked"/> 
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox6} == medicalclearence6"/>-->
+                                                <img th:if="${medicalClearanceForm.patientcheckbox6} == medicalclearence6"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${medicalClearanceForm.patientcheckbox6} == medicalclearence6" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>                                                
+                                                Oral laser therapy
+                                            </td>
+                                            <td>
+                                                <!--                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox9} == medicalclearence9" checked="checked"/> 
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox9} == medicalclearence9"/>-->
+                                                <img th:if="${medicalClearanceForm.patientcheckbox9} == medicalclearence9"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${medicalClearanceForm.patientcheckbox9} == medicalclearence9" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>                                                
+                                                Other <span style="font-weight:bold;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.patienttxt2}">test</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <table class="col-auto" style="width: 100%">
+
+                                        <td><img th:src="@{data:image/png;base64,{image}(image=${medicalClearanceForm.dentistsignature})}" height="50px" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                        <td> <span style="font-weight:bold;min-width: 120px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.patientfullname}">test</span></td>
+                                        <td><span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.currentdate1}">test</span></td>
+                                        <tr>
+                                            <td>Dentist's Signature</td>
+                                            <td>Full Name</td>
+                                            <td>Date</td>
+                                        </tr>
+                                    </table>
+                                    <table class="col-auto" style="width: 100%">
+
+                                        <td><img th:src="@{data:image/png;base64,{image}(image=${medicalClearanceForm.patientsignature})}" height="50px" width="400" style="border-bottom:1px solid #000000;min-width: 150px;" /></td>
+                                        <td><span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.currentdate2}">test</span></td>
+                                        <tr>
+                                            <td>Patient's signature authorizing exchange of information between dentist and physician</td>
+                                            <td>Date</td>
+                                        </tr>
+                                    </table>
+                                    <div class="col-12">
+                                        <p>For the Physician to complete:</p>
+                                        <!--<div th:if="${mcrf10} == medicalclearence10">-->
+                                        <div class="custom-control custom-checkbox">
+                                            <!--                                            <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox10} == medicalclearence10" checked="checked"/> 
+                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox10} == medicalclearence10"/>-->
+                                            <img th:if="${medicalClearanceForm.patientcheckbox10} == medicalclearence10"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${medicalClearanceForm.patientcheckbox10} == medicalclearence10" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>  
+                                            Regarding information of above patient, please provide <i>medical conditions, medications, lab report or concerns in
+                                                relation</i> to the medical care you have provided for that I should consider when planning for his/her Oral Maxillofacial treatment? (Enter "none" if not applicable). <span style="font-weight:bold;min-width: 250px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;"  th:text="${medicalClearanceForm.patienttxt3}">test</span>
+
+                                        </div>
+                                        <!--<div th:if="${mcrf11} == medicalclearence11">-->
+                                        <div class="custom-control custom-checkbox">
+                                            <!--                                            <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox11} == medicalclearence11" checked="checked"/> 
+                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox11} == medicalclearence11"/>-->
+                                            <img th:if="${medicalClearanceForm.patientcheckbox11} == medicalclearence11"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${medicalClearanceForm.patientcheckbox11} == medicalclearence11" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>  
+                                            Please provide us a copy of medical record and any other related or relevant medical treatment(s), including medications.
+
+                                        </div>
+                                    </div>
+                                    <table class="col" style="width: 100%">
+                                        <tr>
+                                            <td colspan="2">
+                                                <label for="name" style="font-size:10px;font-weight: bold;">The patient has indicated the following medical condition:</label></td>
+                                            <td style="padding:4px !important">
+                                                <!--                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox12} == medicalclearence12" checked="checked"/> 
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox12} == medicalclearence12"/>-->
+                                                <img th:if="${medicalClearanceForm.patientcheckbox12} == medicalclearence12"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;margin-left: 1px;" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${medicalClearanceForm.patientcheckbox12} == medicalclearence12" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px;margin-left: 1px;" width="15" height="15" alt="" />  
+                                                </span>
+                                                <label for="name">Kidney</label>    
+                                            </td>
+                                            <td style="padding:4px !important">
+                                                <!--                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox13} == medicalclearence13" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox13} == medicalclearence13"/>-->
+                                                <img th:if="${medicalClearanceForm.patientcheckbox13} == medicalclearence13"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;margin-left: 2px;" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${medicalClearanceForm.patientcheckbox13} == medicalclearence13" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px;margin-left: 2px;" width="15" height="15" alt="" />  
+                                                </span>
+                                                <label for="name"> Weight Loss Meds</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> <div class="custom-control custom-checkbox">
+                                                    <!--                                                    <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox14} == medicalclearence14" checked="checked"/> 
+                                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox14} == medicalclearence14"/>-->
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox14} == medicalclearence14"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox14} == medicalclearence14" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Diabetes
+
+                                                </div></td>
+                                            <td> <div class="custom-control custom-checkbox">
+                                                    <!--                                                    <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox17} == medicalclearence17" checked="checked"/> 
+                                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox17} == medicalclearence17"/>-->
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox17} == medicalclearence17"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox17} == medicalclearence17" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Heart problem  </div></td>
+                                            <td> <div class="custom-control custom-checkbox">
+                                                    <!--                                                    <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox20} == medicalclearence20" checked="checked"/> 
+                                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox20} == medicalclearence20"/>-->
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox20} == medicalclearence20"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox20} == medicalclearence20" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Stroke
+
+                                                </div></td>
+                                            <td>     <div class="custom-control custom-checkbox">
+                                                    <!--                                                    <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox23} == medicalclearence23" checked="checked"/>
+                                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox23} == medicalclearence23"/>-->
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox23} == medicalclearence23"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox23} == medicalclearence23" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Cardiac failure
+                                                </div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td> <div class="custom-control custom-checkbox">
+                                                    <!--                                                    <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox15} == medicalclearence15" checked="checked"/> 
+                                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox15} == medicalclearence15"/>-->
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox15} == medicalclearence15"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox15} == medicalclearence15" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Hypertension
+
+                                                </div></td>
+                                            <td><div class="custom-control custom-checkbox">
+                                                    <!--                                                    <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox18} == medicalclearence18" checked="checked"/> 
+                                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox18} == medicalclearence18"/>-->
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox18} == medicalclearence18"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox18} == medicalclearence18" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Osteoporosis
+
+                                                </div> </td>
+                                            <td>       <div class="custom-control custom-checkbox">
+                                                    <!--                                                    <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox21} == medicalclearence21" checked="checked"/>
+                                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox21} == medicalclearence21"/>-->
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox21} == medicalclearence21"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox21} == medicalclearence21" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Blood thinner
+
+                                                </div></td>
+                                            <td><div class="custom-control custom-checkbox">
+                                                    <!--                                                    <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox24} == medicalclearence24" checked="checked"/>
+                                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox24} == medicalclearence24"/>-->
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox24} == medicalclearence24"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox24} == medicalclearence24" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Allergy, Type: <span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.patienttxt4}">test</span>
+
+                                                </div> </td>
+                                        </tr>
+                                        <tr>
+                                            <td> <div class="custom-control custom-checkbox">
+                                                    <!--                                                    <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox16} == medicalclearence16" checked="checked"/> 
+                                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox16} == medicalclearence16"/>-->
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox16} == medicalclearence16"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox16} == medicalclearence16" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Sinus problem
+                                                </div></td>
+                                            <td>  <div class="custom-control custom-checkbox">
+                                                    <!--                                                    <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox19} == medicalclearence19" checked="checked"/> 
+                                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox19} == medicalclearence19"/>-->
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox19} == medicalclearence19"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox19} == medicalclearence19" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Snore/Grinding
+
+                                                </div></td>
+                                            <td> <div class="custom-control custom-checkbox">
+                                                    <!--                                                    <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox22} == medicalclearence22" checked="checked"/>
+                                                                                                        <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox22} == medicalclearence22"/>-->
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox22} == medicalclearence22"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox22} == medicalclearence22" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Sleep disorder
+
+                                                </div> </td>
+                                            <td> <div class="custom-control custom-checkbox">
+                                                    <!--<input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox25} == medicalclearence25" checked="checked"/>-->
+                                                    <!--<input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox25} == medicalclearence25"/>-->
+
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox25} == medicalclearence25"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox25} == medicalclearence25" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span>
+                                                    Other <span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.patienttxt5}">test</span>
+
+                                                </div> </td>
+                                        </tr>
+
+                                    </table>                                   
+                                    <div class="col-12" style="margin-bottom:5px;margin-top: 0px">
+
+                                        <ul>
+
+                                            <li class="medclrf1">I have concerns about this patient's fitness for the planned dental treatment and request a consultation prior to oral surgery treatment: <br/>
+
+                                                <!--                                                <input type="checkbox" th:if="${medicalClearanceForm.patientcheckbox26}==Yes" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox26}==Yes" />Yes
+                                                
+                                                                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox26}==No" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox26}==No"/>NO -->
+                                                <span style="margin-right: -4px;"> 
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox26} == Yes"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox26} == Yes" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span> Yes</span>
+                                                <span style="margin-right: -8px;"> 
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox26} == No"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                                    <span><img th:unless="${medicalClearanceForm.patientcheckbox26} == No" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span> No</span>
+                                            </li>     
+                                        </ul>
+                                        <ul>
+
+                                            <li>Is <span  style="font-style: italic;">Antibiotic</span> allowed/recommended? 
+
+                                                <!--                                                <input type="checkbox" th:if="${medicalClearanceForm.patientcheckbox27}==Yes" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox27}==Yes" />Yes
+                                                
+                                                                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox27}==No" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox27}==No"/>NO-->
+                                                <span style="margin-right: -4px;"> 
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox27} == Yes"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox27} == Yes" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span> Yes</span>
+                                                <span style="margin-right: -8px;"> 
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox27} == No"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                                    <span><img th:unless="${medicalClearanceForm.patientcheckbox27} == No" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span> No</span>
+
+                                            </li>
+                                        </ul>
+
+                                        <ul>
+                                            <li>  <span style="font-style: italic;">Is local anesthetic, general anesthesia or I.V sedation restriction?</span>              
+
+                                                <!--                                                <input type="checkbox" th:if="${medicalClearanceForm.patientcheckbox28}==Yes" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox28}==Yes"/>Yes
+                                                                                                <input type="checkbox" th:if="${medicalClearanceForm.patientcheckbox28}==No" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox28}==No"/>No
+                                                
+                                                                                                <input type="checkbox" th:if="${medicalClearanceForm.patientcheckbox28}==Aip" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox28}==Aip"/>Avoid if possible-->
+                                                <span style="margin-right: -4px;"> 
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox28} == Yes"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox28} == Yes" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span> Yes</span>
+                                                <span style="margin-right: -4px;"> 
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox28} == No"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                                    <span><img th:unless="${medicalClearanceForm.patientcheckbox28} == No" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span> No</span>
+                                                <span style="margin-right: -8px;"> 
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox28} == Aip"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                                    <span><img th:unless="${medicalClearanceForm.patientcheckbox28} == Aip" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span> Avoid if possible</span>
+                                            </li>
+                                        </ul>
+
+                                        <ul>
+
+                                            <li><span style="font-style: italic;">Type of pain medication allowed/recommended:</span> 
+                                                <span style="font-weight:bold;min-width: 250px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.patienttxt6}">test</span>
+                                            </li>
+                                        </ul>
+
+                                        <ul>
+                                            <li> <span style="font-style: italic;">Is this patient cleared to have surgery?</span>
+
+                                                <!--                                                <input type="checkbox" th:if="${medicalClearanceForm.patientcheckbox29}==Yes" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox29}==Yes" />Yes
+                                                
+                                                                                                <input type="checkbox"  th:if="${medicalClearanceForm.patientcheckbox29}==No" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${medicalClearanceForm.patientcheckbox29}==No"/>NO-->
+                                                <span style="margin-right: -4px;"> 
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox29} == Yes"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${medicalClearanceForm.patientcheckbox29} == Yes" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span> Yes</span>
+                                                <span style="margin-right: -8px;"> 
+                                                    <img th:if="${medicalClearanceForm.patientcheckbox29} == No"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                                    <span><img th:unless="${medicalClearanceForm.patientcheckbox29} == No" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                    </span> No</span>
+
+
+                                            </li>
+                                        </ul>
+
+
+                                    </div>
+
+                                    <table class="col-auto" style="width: 100%">
+                                        <tr>           
+                                            <td><span style="font-weight:bold;min-width: 100px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.physicianname}">test</span></td>
+                                            <td><span style="font-weight:bold;min-width: 100px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.physicianphnnum}">test</span></td>
+                                            <td><span style="font-weight:bold;min-width: 100px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.physicianfaxnum}">test</span></td>
+                                            <td><span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalClearanceForm.currentdate3}">test</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><p>Physician's name</p></td>
+                                            <td><p>Physician's phone </p></td>
+                                            <td><p>Physician's fax</p></td>
+                                            <td><p>Today Date</p></td>
+                                        </tr>
+                                    </table>
+                                    <p style="color:lightgray; font-size: 10px;text-align: justify;text-justify: inter-word;">
+                                        The information contained in this transmission is doctor-privileged and confidential. It is intended only for the use of the individual or entity to which it is addressed. If the reader of this message is not the intended recipient, you are hereby notified that any dissemination, distribution, or copying of this communication is prohibited. If you have received this communication in error, please immediately notify us by telephone, and return the original message by U.S. Postal Service.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </body>
+</html>

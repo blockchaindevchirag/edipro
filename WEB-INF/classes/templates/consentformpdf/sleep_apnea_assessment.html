@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Sleep Apnea Assessment Form </title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 1px;
+                padding: 1px;
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .h4{
+                font-size: 16px !important;
+            }
+            .font_small
+            {
+                font-size: 12px;
+            }
+            table.table-bordered tr:nth-child(even) {
+                background-color: #deeaf6;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="modal fade" >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;color:#a2a5a8;"> <span th:text="${patientPractice.addressline1}">test</span><span th:text="${patientPractice.addressline2}">test</span><span th:text="${patientPractice.city}">test</span><span th:text="${patientPractice.state}">test</span><span th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span><span th:text="${patientPractice.contactPhone}">test</span><span th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div>  
+                    </div>
+
+                    <h4 class="modal-title"  style="text-align: center">
+                        SLEEP DISORDER ASSESSMENT    
+                    </h4>  
+
+                    <div class="container">
+                        <div class="font_small">
+                            <div class="card-body">
+                                <div class="row">
+                                    <p>
+                                        Full Name :  <span style="width:50px;font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.patientname}">test</span>
+                                        DOB: <span style="width:50px;font-weight:bold;min-width: 90px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.patientdob}">test</span> 
+                                        Date: <span style="width:50px;font-weight:bold;min-width: 90px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.currentDate}">test</span> 
+                                    </p>
+
+                                    <p>     Address:<span style="width:30px;font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.patientaddress}">test</span>
+                                        City:  <span style="width:40px;font-weight:bold;min-width: 125px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.patientcity}">test</span>
+                                        State:  <span style="width:15px;font-weight:bold;min-width: 35px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.patientstate}">test</span>
+                                        Zip :  <span style="width:20px;font-weight:bold;min-width: 75px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.patientzip}">test</span></p>
+
+                                    <p>  Email:  <span style="width:50px;font-weight:bold;min-width: 250px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.patientemail}">test</span>
+                                        MOBILE NUMBER: <span style="width:50px;font-weight:bold;min-width: 185px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.patientphone}">test</span></p>
+
+
+
+                                    <p>  Practice Name :<span style="width:50px;font-weight:bold;min-width: 270px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.practicename}">test</span>
+                                        Office Phone Number:  <span style="width:50px;font-weight:bold;min-width: 120px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.officephone}">test</span></p>
+
+                                    <div class='col-12'>
+                                        <p style="font-weight: bold;margin-top: 10px;">
+                                            Complete the following questionnaire to the best of your abilities by circling the answer to each question. Answers to these 
+                                            questions will help us determine how well you rest at night and the likelihood that you might be suffering from a life threatening condition.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class='row'>
+                                    <table class="table-bordered" style="width:100%;">
+                                        <tr>
+                                            <th style="text-align: center;font-size: 15px;color: orange;">SLEEP QUESTIONNAIRE </th>
+                                        </tr>
+                                        <tr>
+                                            <td>1.Has anyone told you that you stop breathing while asleep?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn1} == 4">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;"> N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn1} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left:3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn1} == 4 or ${sleepAssesmentForm.patientradiobtn1} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 4</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>2.Have you ever been involved in any type of accident because you nodded off or fell asleep? </td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn2} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;"> N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn2} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left:3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn2} == 3 or ${sleepAssesmentForm.patientradiobtn2} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 3</td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td>3.Have you ever nodded off or fallen asleep while driving? </td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn3} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn3} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn3} == 3 or ${sleepAssesmentForm.patientradiobtn3} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 3</td>
+                                        </tr>
+                                        <tr>
+
+
+                                            <td>4.Have you woken up suddenly gasping for air, heart racing or with shortness of breath?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn4} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn4} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn4} == 3 or ${sleepAssesmentForm.patientradiobtn4} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 3</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>5.Do you grind your teeth?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn5} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn5} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn5} == 3 or ${sleepAssesmentForm.patientradiobtn5} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 3</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>6. Do you snore or has someone ever told you that you snore?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn6} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn6} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn6} == 3 or ${sleepAssesmentForm.patientradiobtn6} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 3</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>7.Does anyone in your family have a history of snoring or sleep apnea? </td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn7} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn7} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn7} == 3 or ${sleepAssesmentForm.patientradiobtn7} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 3</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td> 8.Do you feel tired or sleepy throughout the day?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn8} == 2">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn8} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn8} == 2 or ${sleepAssesmentForm.patientradiobtn8} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 2</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>9.Does it take you less than 10 minutes to fall asleep?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn9} == 2">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn9} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left:3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn9} == 2 or ${sleepAssesmentForm.patientradiobtn9} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 2</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>10. Does it take you more than 20 minutes to fall asleep?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn10} == 2">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn10} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn10} == 2 or ${sleepAssesmentForm.patientradiobtn10} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 2</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>11. One you fall asleep, do you have trouble staying asleep?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn11} == 2">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn11} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn11} == 2 or ${sleepAssesmentForm.patientradiobtn11} == 0">Y<span style="margin-left:3px;">  N</span></div>
+                                            </td>
+                                            <td> 2</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>12. Do you find it difficult to manage your weight?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn12} == 1">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn12} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn12} == 1 or ${sleepAssesmentForm.patientradiobtn12} == 0">Y <span style="margin-left:3px;">  N</span></div>
+                                            </td>
+                                            <td> 1</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>13. Do you suffer from Headaches during the morning or during the night?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn13} == 1">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn13} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn13} == 1 or ${sleepAssesmentForm.patientradiobtn13} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 1</td>
+                                        </tr>
+                                        <tr>
+                                            <th  style="text-align: center;font-size: 15px;color: orange;">MEDICAL HISTORY </th>
+                                        </tr>
+                                        <tr>
+
+                                            <td>14.Have you been diagnosed with high blood pressure or take medication for it? </td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn14} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn14} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn14} == 3 or ${sleepAssesmentForm.patientradiobtn14} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 3</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>15.Do you suffer from acid reflux?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn15} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn15} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn15} == 3 or ${sleepAssesmentForm.patientradiobtn15} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 3</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>16.Do you suffer from heart disease or have you had a stroke?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn16} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn16} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn16} == 3 or ${sleepAssesmentForm.patientradiobtn16} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 3</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td> 17.Have you been diagnosed with a sleep disorder?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn17} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn17} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn17} == 3 or ${sleepAssesmentForm.patientradiobtn17} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 3</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>18.Have you stopped using your CPAP device?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn18} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn18} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left: 3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn18} == 3 or ${sleepAssesmentForm.patientradiobtn18} == 0">Y<span style="margin-left:3px;">  N</span></div>
+                                            </td>
+                                            <td> 3</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>19.Are you wearing your CPAP less than 5 times per week?</td>
+                                            <td>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn19} == 3">
+                                                    <b style="margin:0px;padding: 0px;"> Y</b><span style="margin-left:3px;">  N</span></div>
+                                                <div th:if="${sleepAssesmentForm.patientradiobtn19} == 0">
+                                                    Y<b style="margin:0px;padding: 0px;margin-left:3px;"> N</b> </div>
+                                                <div th:unless="${sleepAssesmentForm.patientradiobtn19} == 3 or ${sleepAssesmentForm.patientradiobtn19} == 0">Y<span style="margin-left:3px;">  N</span> </div>
+                                            </td>
+                                            <td> 3</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="text-align: center;font-size: 15px;color: black;font-weight:bold;">Please add all the questions you answered Y or N here ? </td>
+                                            <td> </td>
+                                            <td> </td></tr>
+                                    </table>
+                                    <table class="table-bordered" width="100%">
+                                        <tr style="background: black;color: white;font-size: 14px;text-align: center;">
+                                            <td style="width: 20%">RISK LEVEL </td>
+                                            <td style="width: 20%">LOW RISK</td>
+                                            <td style="width: 20%">MODERATE RISK</td>
+                                            <td style="width: 20%">HIGH RISK</td>
+                                            <td style="width: 20%">SEVERE RISK</td>
+                                        </tr>
+                                        <tr style="font-size: 14px;text-align: center;">
+                                            <td style="width: 20%">RANGE TOTAL </td>
+                                            <td style="width: 20%">
+                                                <p>  <span style="background-color:green" th:if="${sleepAssesmentForm.riskaverage=='0'} or ${sleepAssesmentForm.riskaverage=='1'} or ${sleepAssesmentForm.riskaverage=='2'}">
+                                                        0 TO 3</span>
+                                                    <span th:unless="${sleepAssesmentForm.riskaverage=='0'} or ${sleepAssesmentForm.riskaverage=='1'} or ${sleepAssesmentForm.riskaverage=='2'}">
+                                                        0 TO 3</span></p>
+                                            </td>
+                                            <td style="width: 20%"><p>
+                                                    <span style="background-color:yellow" th:if="${sleepAssesmentForm.riskaverage=='4'} or ${sleepAssesmentForm.riskaverage=='5'}">
+                                                        4 TO 5</span>
+                                                    <span th:unless="${sleepAssesmentForm.riskaverage=='4'} or ${sleepAssesmentForm.riskaverage=='5'}">
+                                                        4 TO 5</span></p>
+                                            </td>
+                                            <td style="width: 20%">
+                                                <p> <span style="background-color:orange" th:if="${sleepAssesmentForm.riskaverage=='6'} or ${sleepAssesmentForm.riskaverage=='7'}">6 TO 7</span>
+                                                    <span th:unless="${sleepAssesmentForm.riskaverage=='6'} or ${sleepAssesmentForm.riskaverage=='7'}">6 TO 7</span></p></td>
+                                            <td style="width: 20%">
+                                                <p>  <span style="background-color:red" th:if="${sleepAssesmentForm.riskaverage=='8'} or ${sleepAssesmentForm.riskaverage=='9'} or ${sleepAssesmentForm.riskaverage=='10'}">8+</span>
+                                                    <span th:unless="${sleepAssesmentForm.riskaverage=='8'} or ${sleepAssesmentForm.riskaverage=='9'} or ${sleepAssesmentForm.riskaverage=='10'}">8+</span></p></td>
+                                        </tr>
+                                    </table>
+                                    <table style="width:100%">
+                                        <td>   <img th:src="@{data:image/png;base64,{image}(image=${sleepAssesmentForm.patientsignature})}" height="50px" width="350" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                        <td>   <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${sleepAssesmentForm.signdate1}">test</span></td>
+                                        <tr>
+                                            <td>PATIENT SIGNATURE </td>
+                                            <td>TODAY'S DATE</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>  
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

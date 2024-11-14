@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head> 
+        <link rel="stylesheet" href="assets/css/style.css"/> 
+
+        <title>Denied Claims Report</title>
+        <style>
+            body{
+                font-size:10px;
+            }
+            table, th, td {
+                border-spacing: 0;
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            * {
+                /*margin: 2px;*/
+                /*padding: 2px;*/
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            h4, h6{
+                font-size: 16px !important;
+            }
+            .font_small
+            {
+                font-size: 12px;
+            }
+            .keep-together {
+                page-break-inside: avoid;
+            }
+
+            .break-before {
+                page-break-before: always;
+            }
+
+            .break-after {
+                page-break-after: always;
+            }
+            .container {
+                min-width: 100% !important;
+            }
+            .card-body {
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                padding: 1.25rem;
+            }
+            .row {
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+                margin-right: -15px;
+                margin-left: -15px;
+            }
+            .table-borderless th,
+            .table-borderless td,
+            .table-borderless thead th,
+            .table-borderless tbody + tbody {
+                border: 0;
+            }
+            .border {
+                border: 1px solid #000 !important;
+            }
+
+            .border-top {
+                border-top: 1px solid #000 !important;
+            }
+
+            .border-right {
+                border-right: 1px solid #000 !important;
+            }
+
+            .border-bottom {
+                border-bottom: 1px solid #000 !important;
+            }
+
+            .border-left {
+                border-left: 1px solid #000 !important;
+            }
+            .font-weight-bold {
+                font-weight: 700 !important;
+            }
+            .border-dark {
+                border-color: #000 !important;
+            }
+            .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
+            .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
+            .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
+            .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
+            .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
+            .col-xl-auto {
+                position: relative;
+                width: 100%;
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            .col-12 {
+                -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .col-5 {
+                -ms-flex: 0 0 41.666667%;
+                flex: 0 0 41.666667%;
+                max-width: 41.666667%;
+            }
+            .modal-header{
+                text-align: center;
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-align: start;
+                align-items: flex-start;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+                padding: 1rem 1rem;
+                border-bottom: 2px solid #17a2b8;
+                border-top-left-radius: 0.3rem;
+                border-top-right-radius: 0.3rem;
+            }
+            .text-justify{
+                text-align: justify;
+                text-justify: inter-word;
+            }
+            p.text-justify{
+                text-indent: 30px;
+            }
+
+            #invoice {
+                padding: 0px;
+            }
+
+            .invoice {
+                position: relative;
+                background-color: #FFF;
+            }
+
+
+            .invoice .invoice-details {
+                text-align: center;
+            }
+
+            .invoice .invoice-details .invoice-id {
+                margin-top: 0;
+                color: #17a2b8;
+            }
+
+            .invoice main {
+                padding-bottom: 50px;
+            }
+
+            .invoice main .thanks {
+                margin-top: -100px;
+                /*font-size: 2em;*/
+                margin-bottom: 50px
+            }
+
+            .invoice main .notices {
+                padding-left: 6px;
+                border-left: 6px solid #17a2b8;
+                background: #f3f8fa ;
+                /* padding: 10px;*/
+            }
+            .invoice main table tr.notices {
+                padding-left: 6px;
+                /* border-left: 6px solid #17a2b8;*/
+                background: #f3f8fa ;
+                /* padding: 10px;*/
+            }
+
+            .invoice main .notices .notice {
+                /* font-size: 1.5em*/
+            }
+
+            .invoice table {
+                width: 100%;
+                border-collapse: collapse;
+                border-spacing: 0;
+                margin-bottom: 20px
+            }
+
+            .invoice table td,
+            .invoice table th {
+                padding: 8px;
+                /* background: #eee; */
+                border-bottom: 1px solid #fff
+            }
+
+            .invoice table th {
+                white-space: nowrap;
+                font-weight: 400;
+                /* font-size: 16px*/
+            }
+
+            .invoice table td h3 {
+                margin: 0;
+                font-weight: 400;
+                /*color: #0d6efd;*/
+                /* font-size: 1.2em*/
+            }
+
+            .invoice table .qty,
+            .invoice table .total,
+            .invoice table .unit {
+                text-align: right;
+                /* font-size: 1.2em*/
+            }
+
+            .invoice table .no {
+                color: #fff;
+                font-size: 1.6em;
+                background: #17a2b8;
+            }
+
+            .invoice table .unit {
+                background: #ddd
+            }
+
+            .invoice table .total {
+                background: #0d6efd;
+                color: #fff
+            }
+
+            .invoice table tbody tr:last-child td {
+                border: none
+            }
+
+            .invoice table tfoot td {
+                background: 0 0;
+                border-bottom: none;
+                white-space: nowrap;
+                text-align: right;
+                padding: 10px 20px;
+                /* font-size: 1.5em; */
+                border-top: 1px solid #aaa
+            }
+
+            .invoice table tfoot tr:first-child td {
+                border-top: none
+            }
+            .card {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                min-width: 0;
+                word-wrap: break-word;
+                background-color: #fff;
+                background-clip: border-box;
+                border: 0px solid rgba(0, 0, 0, 0);
+                border-radius: .25rem;
+                margin-bottom: 1.5rem;
+                box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+            }
+
+            .invoice table tfoot tr:last-child td {
+                color: #0d6efd;
+                /*  font-size: 1.4em; */
+                border-top: 1px solid #0d6efd
+            }
+
+            .invoice table tfoot tr td:first-child {
+                border: none
+            }
+
+            .invoice footer {
+                width: 100%;
+                text-align: center;
+                color: #777;
+                border-top: 1px solid #aaa;
+                padding: 8px 0
+            }
+
+
+            .text-secondary-d1 {
+                color: #728299!important;
+            }
+            .page-header {
+                margin: 0 0 1rem;
+                padding-bottom: 1rem;
+                padding-top: .5rem;
+                border-bottom: 1px dotted #e2e2e2;
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+                -ms-flex-align: center;
+                align-items: center;
+            }
+            .page-title {
+                padding: 0;
+                margin: 0;
+                font-size: 1.75rem;
+                font-weight: 300;
+            }
+            .brc-default-l1 {
+                border-color: #dce9f0!important;
+            }
+
+            .ml-n1, .mx-n1 {
+                margin-left: -.25rem!important;
+            }
+            .mr-n1, .mx-n1 {
+                margin-right: -.25rem!important;
+            }
+            .mb-4, .my-4 {
+                margin-bottom: 1.5rem!important;
+            }
+
+            hr {
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                border: 0;
+                border-top: 1px solid rgba(0,0,0,.1);
+            }
+
+            .text-grey-m2 {
+                color: #888a8d!important;
+            }
+
+            .text-success-m2 {
+                color: #86bd68!important;
+            }
+
+            .font-bolder, .text-600 {
+                font-weight: 600!important;
+            }
+
+            .text-110 {
+                font-size: 110%!important;
+            }
+            .text-blue {
+                color: #478fcc!important;
+            }
+            .pb-25, .py-25 {
+                padding-bottom: .75rem!important;
+            }
+
+            .pt-25, .py-25 {
+                padding-top: .75rem!important;
+            }
+
+            .bgc-default-l4, .bgc-h-default-l4:hover {
+                background-color: #f3f8fa!important;
+            }
+            .page-header .page-tools {
+                -ms-flex-item-align: end;
+                align-self: flex-end;
+            }
+
+            .btn-light {
+                color: #757984;
+                background-color: #f5f6f9;
+                border-color: #dddfe4;
+            }
+            .w-2 {
+                width: 1rem;
+            }
+
+            .text-120 {
+                font-size: 120%!important;
+            }
+            .text-primary-m1 {
+                color: #4087d4!important;
+            }
+
+            .text-danger-m1 {
+                color: #dd4949!important;
+            }
+            .text-blue-m2 {
+                color: #68a3d5!important;
+            }
+            .text-150 {
+                font-size: 150%!important;
+            }
+            .text-60 {
+                font-size: 60%!important;
+            }
+            .text-grey-m1 {
+                color: #7b7d81!important;
+            }
+            .align-bottom {
+                vertical-align: bottom!important;
+            }
+
+
+            .table-striped tbody tr {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            .table-striped tbody tr:nth-of-type(odd) {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+            .text-white {
+                color: #fff !important;
+            }
+            .bgc-default-tp1 {
+                background-color: #17a2b8!important;
+            }
+            .table-bordered thead th,
+            .table-bordered tbody td {
+                border: 1px solid #dee2e6 !important;
+            }
+            .bd-highlight {
+                background-color: rgba(86,61,124,0.15);
+                border: 1px solid rgba(86,61,124,0.15);
+            }
+
+            .page-brk
+            {
+                page-break-after: always;
+            }
+            #proceduresection *{
+                font-size: 13px;
+            }
+            #proceduresection label{
+                width:90%;
+            }
+            .headerLeft{
+                display: block;
+                position: running(headerLeft);
+                font-size:8pt;
+                width: 100%;
+                margin-bottom: 0.5cm;
+            }
+            .footerLeft{
+                display: block;
+                position: running(footerLeft);
+                font-size:10pt;
+                width: 100%;
+                margin-top: 0.2cm;
+                margin-bottom: 0cm;
+            }
+
+            #pagenumber:before {
+                content: counter(page);
+            }
+
+            #pagecount:before {
+                content: counter(pages);
+            }
+            #proceduresection *{
+                font-size: 13px;
+            }
+            #proceduresection label{
+                width:90%;
+            }
+
+            @page{
+                @bottom-left {
+                    content: element(footerLeft);
+                    vertical-align: top;
+                    /*padding-top: 10px;*/
+                }
+            }
+            @page{
+                @top-left {
+                    content: element(headerLeft);
+                    vertical-align: bottom;
+                }
+            }
+            @page{
+                size: A4 landscape;
+                margin:1cm;
+            }
+            table.stripedtable tr:nth-child(even) {
+                background-color: #F3F3F0!important;
+            }
+            .p-l-5{
+                padding-left:5px!important;
+            }
+               .rowcount
+            {
+                margin-top: 15px;
+                font-weight: bold;
+            }
+        </style>
+    </head>  
+    <body>
+        <!--         <div class="footerLeft" >
+                    <p style="width:30%;float:right;margin-top:10px;
+                       text-align: right;">Page <span id="pagenumber"></span> of <span id="pagecount"></span></p> 
+                </div>-->
+        <div class="container">
+            <div class="card">
+                <div class="card-body" style="">
+
+                    <div class="" style="text-align:center;
+                         border-bottom: 2px solid #79838B;">
+                        <h2>Denied Claims Report</h2>
+                    </div>
+
+                    <main>
+
+                        <div class="" style="margin-top:15px;">
+                            <div class="container">
+                                <table class="table-bordered stripedtable" style="width:100%;margin:0;padding:0px;">  
+                                    <thead>
+                                        <tr style="background-color:#79838B!important;color:#fff!important; font-weight:bold;">
+                                            <th class="p-l-5" scope="col" style="width:4%; padding:3px;">S.No </th>
+                                            <th class="p-l-5" style=" padding:5px; width:8%"  scope="col">File # </th>
+                                            <th class="p-l-5" style="width:8%; "  scope="col">CLAIM # </th>
+                                            <th class="p-l-5" style="width:12%; "  scope="col">Payor ICN  </th>
+                                            <th class="p-l-5" style="width:6%; "  scope="col">Status </th>
+                                            <th class="p-l-5" style="width:15%; "  scope="col">Payor </th>
+                                            <th class="p-l-5" style="width:15%; "  scope="col">Payee </th>
+                                            <th class="p-l-5" style="width:5%; "  scope="col">Charge </th>
+                                            <th class="p-l-5" style="width:5%; "  scope="col">PR </th>
+                                            <th class="p-l-5" style="width:6%; "  scope="col">CR-Date </th>
+                                            <th class="p-l-5" style="width:12%; "  scope="col">Patient </th>
+                                            <th class="p-l-5" style="width:5%; "  scope="col">D-Status </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- updated by sruthy -->
+                                        <tr  th:each="exportDenialPdfData,iterStat3 : ${exportDenialPdfList}" class="keep-together">
+                                            <td class="p-l-5" style="padding:3px;"><span  th:text="${iterStat3.count}">test</span> </td>
+                                            <td class="p-l-5" style="padding:5px;"><span th:text="${exportDenialPdfData.fn}" >test</span> </td>
+                                            <td  class="p-l-5"><span  th:text="${exportDenialPdfData.claimno}" >test</span> </td>
+                                            <td  class="p-l-5"><span  th:text="${exportDenialPdfData.payericn}" >test</span> </td>
+                                            <td  class="p-l-5"><span  th:text="${exportDenialPdfData.status}" >test</span> </td>
+                                            <td  class="p-l-5"><span  th:text="${exportDenialPdfData.payer}" >test</span> </td>
+                                            <td  class="p-l-5"><span  th:text="${exportDenialPdfData.payee}" >test</span> </td>
+                                            <td  class="p-l-5"><span  th:text="${exportDenialPdfData.chargeamt}" >test</span> </td>
+                                            <td  class="p-l-5"><span  th:text="${exportDenialPdfData.patientres}" >test</span> </td>
+                                            <td  class="p-l-5"><span  th:text="${exportDenialPdfData.rrecdate}" >test</span> </td>
+                                            <td  class="p-l-5"><span  th:text="${exportDenialPdfData.lname}" >test</span> </td>
+                                            <td  class="p-l-5"><span  th:text="${exportDenialPdfData.denialstatus}" >test</span> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div>
+                                   <div class="rowcount" style="">Total Row Count: <span th:text="${#arrays.length(exportDenialPdfList)}"></span></div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </main>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </body>
+</html>
+

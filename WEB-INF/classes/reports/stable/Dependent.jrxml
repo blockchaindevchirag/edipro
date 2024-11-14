@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Dependent" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="86ebf1b4-9a6f-43f7-af72-fc40b210fd3d">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="EDIProcessor"/>
+	<parameter name="requestid" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[call ediengine.dependentdetails($P{requestid})]]>
+	</queryString>
+	<field name="requestid" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="requestid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="dob" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dob"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="gender"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="addr1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="addr1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="addr2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="addr2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="city" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="city"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="state" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="state"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="zip" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="zip"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refhead1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refhead1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refval1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refval1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refhead2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refhead2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refval2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refval2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refhead3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refhead3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refval3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refval3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refhead4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refhead4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refval4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refval4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refhead5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refhead5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refval5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refval5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refhead6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refhead6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="refval6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="refval6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="insured" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="insured"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="insrelationship" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="insrelationship"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<field name="inschange" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="inschange"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_depd"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="310" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="16" width="100" height="20" isRemoveLineWhenBlank="true" uuid="d78fd29e-c971-49d6-bb97-6cf553787b94"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="0.5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="36" width="100" height="20" isRemoveLineWhenBlank="true" uuid="c0cf2b91-9128-44c0-b140-e711788d9c36"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="56" width="100" height="19" isRemoveLineWhenBlank="true" uuid="936cccba-6fb3-465f-afba-381030cc2a1f"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="78" y="76" width="180" height="40" isRemoveLineWhenBlank="true" uuid="34e28088-dc3b-4e9a-9942-2b341e99e556"/>
+				<textElement markup="styled">
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{addr1}== null?"": $F{addr1}) + "<br/>" + ($F{addr2}== null?"":$F{addr2}) + "<br/>" + ($F{city} == null? "": $F{city}) + " " + ($F{state} == null? "": $F{state}) + " " + ($F{zip} == null?"": $F{zip})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="0" y="116" width="120" height="20" isRemoveLineWhenBlank="true" uuid="3501b942-a62e-437a-9c78-a869face04bc"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{refhead1} ==null?"":$F{refhead1})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="-2" y="-14" width="180" height="21" isRemoveLineWhenBlank="true" forecolor="#17977E" uuid="3a36b6b7-0cc6-403f-b118-a286f076b9de"/>
+				<box leftPadding="4"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dependent Details]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="116" width="100" height="22" isRemoveLineWhenBlank="true" uuid="3eb14a07-341d-43cc-9d8f-25ef2c41fc28"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{refval1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="0" y="136" width="120" height="17" isRemoveLineWhenBlank="true" uuid="416658c5-4439-4620-99c4-c385d97ea716"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{refhead2} ==null?"":$F{refhead2})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="133" width="100" height="20" isRemoveLineWhenBlank="true" uuid="74eae4ad-d8c2-412d-a244-ecc25c1b404b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{refval2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="0" y="153" width="120" height="20" isRemoveLineWhenBlank="true" uuid="8777aedd-0894-4c42-9c0c-0b8d51697230">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{refhead3} ==null?"":$F{refhead3})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="153" width="100" height="21" isRemoveLineWhenBlank="true" uuid="cea8cfe0-eea5-42fe-9f76-da0e0a264046"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{refval3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="0" y="176" width="120" height="17" isRemoveLineWhenBlank="true" uuid="aa0ea35f-9193-4f73-b12c-08996ef3ab31"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{refhead4} ==null?"":$F{refhead4})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="174" width="100" height="20" isRemoveLineWhenBlank="true" uuid="476ea9bf-a225-4759-bf99-87e8a6d4fa5d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{refval4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="0" y="193" width="120" height="22" isRemoveLineWhenBlank="true" uuid="d9ac539a-e02d-4b2a-879d-c2a18d199996"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{refhead5} ==null?"":$F{refhead5})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="195" width="100" height="20" isRemoveLineWhenBlank="true" uuid="e0d175e1-2211-4c2b-9dab-62f91a977df4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{refval5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="0" y="215" width="120" height="20" isRemoveLineWhenBlank="true" uuid="bd35f51b-91e4-4c1d-8466-40532aa464ce">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{refhead6} == null?" ":$F{refhead6})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="216" width="100" height="19" isRemoveLineWhenBlank="true" uuid="00472c54-f38f-4cb6-a722-54899685de44"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{refval6}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="236" width="100" height="20" isRemoveLineWhenBlank="true" uuid="cb444595-9918-497a-b798-ced21bd2e321"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{insured}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="256" width="100" height="20" isRemoveLineWhenBlank="true" uuid="f1b32870-26c5-4803-935a-61c2a26234a9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{insrelationship}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="78" y="276" width="180" height="30" isRemoveLineWhenBlank="true" uuid="2fd3ce2b-3507-48f9-8870-d6f0d64a4675"/>
+				<textElement>
+					<font size="8" pdfEncoding=""/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inschange}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="1" y="18" width="80" height="20" isRemoveLineWhenBlank="true" uuid="750114c2-9baf-4017-890e-ef7ab6ff84af">
+					<printWhenExpression><![CDATA[$F{name} == null?false:true]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="1" y="38" width="80" height="20" isRemoveLineWhenBlank="true" uuid="24c0d2a6-cbf6-4003-afee-da3251ba4dc5">
+					<printWhenExpression><![CDATA[$F{dob} == null?false:true]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[DOB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="1" y="58" width="80" height="20" isRemoveLineWhenBlank="true" uuid="b921f852-f3d6-475e-bf37-9bddfeaeb20a">
+					<printWhenExpression><![CDATA[$F{gender} == null?false:true]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[Gender]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="1" y="79" width="80" height="29" isRemoveLineWhenBlank="true" uuid="b7ca9686-7810-4a4b-965f-6f04a0f95398">
+					<printWhenExpression><![CDATA[($F{addr1} == null? null:$F{addr1})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="0" y="236" width="80" height="20" isRemoveLineWhenBlank="true" uuid="7d2ffcee-5d61-4da2-a1fa-3a29a3725771">
+					<printWhenExpression><![CDATA[$F{dob} == null?false:true]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[Insured]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="1" y="256" width="80" height="20" isRemoveLineWhenBlank="true" uuid="80dea734-7eec-45e4-92af-684a26a46ce3">
+					<printWhenExpression><![CDATA[$F{dob} == null?false:true]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[Relationship]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="0" y="276" width="80" height="20" isRemoveLineWhenBlank="true" uuid="1143c6b7-d061-4b5c-98fe-187ca09e0eea">
+					<printWhenExpression><![CDATA[$F{dob} == null?false:true]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[Change]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+</jasperReport>

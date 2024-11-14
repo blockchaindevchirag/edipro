@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Risk Management CBCT Scan Form</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 1px;
+                padding: 1px;
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .small_font{
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="modal fade">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-header" style="text-align: center">
+                    <div>
+                        <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                        <h5 style="margin: 1px;color:#a2a5a8;"> <span th:text="${patientPractice.addressline1}">test</span><span th:text="${patientPractice.addressline2}">test</span><span th:text="${patientPractice.city}">test</span><span th:text="${patientPractice.state}">test</span><span th:text="${patientPractice.zip}">test</span></h5>
+                        <h5 style="color:#a2a5a8;">
+                            <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span><span th:text="${patientPractice.contactPhone}">test</span><span th:text="${patientPractice.alertPhone}">test</span>	
+                            <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                        </h5> 
+                    </div> 
+                </div> 
+
+                <h4 class="modal-title" id="myModalLabel" style="margin-top:40px;text-align: center">
+                    SAMPLE CBCT SCAN DOCUMENTS   
+                </h4> 
+
+                <div class="container">
+                    <div class="small_font">
+                        <div class="card-body">
+                            <table style="width:100%">
+                                <tr>
+                                    <td> Patient Name:  <span style="font-weight:bold;min-width: 220px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patientname}">test</span> </td>
+                                    <td> Date:<span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.currentdate}">test</span></td>
+                                    <td>  Sex: 
+                                        <!--                                        <input type="checkbox"  checked="checked" th:if="${riskForm.patientgender} == 1"/>
+                                                                                <input type="checkbox"  th:unless="${riskForm.patientgender} == 1"/> Male
+                                                                                <input type="checkbox" checked="checked" th:if="${riskForm.patientgender} == 2"/>
+                                                                                <input type="checkbox"  th:unless="${riskForm.patientgender} == 2"/> Female  -->
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${riskForm.patientgender} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${riskForm.patientgender} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt="" />  
+                                            </span> Male </span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${riskForm.patientgender} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${riskForm.patientgender} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt="" />  
+                                            </span> Female </span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${riskForm.patientgender} == 3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${riskForm.patientgender} == 3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt="" />  
+                                            </span> Other </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                       
+                                </tr> 
+                            </table>
+                            <p style="margin-top: 60px;">Purpose of Forms</p>
+                            <div>
+                                <ol>
+                                    <li style="margin-top:15px;">
+                                        The CBCT Scan Informed Consent: advises patients of the risks, benefits, and alternatives to the
+                                        proposed procedure.
+                                    </li>
+                                    <li style="margin-top:15px;">
+                                        The CBCT Scan Referral form: provides the dentist taking the CBCT Scan with information necessary
+                                        to process the request.
+                                    </li>
+                                    <li style="margin-top:15px;">
+                                        The Notification of Non-Read: advises the patient that the secondary provider and his/her staff will
+                                        NOT be responsible for interpreting the scan.
+                                    </li>
+                                </ol>
+                            </div>
+                            <p style="margin-top: 90px;">Instructions for Use</p>
+                            <ul style="list-style-type: upper-alpha">
+                                <li style="margin-top:15px;">
+                                    The CBCT Scan Informed Consent: The form is part of the informed consent discussion for dentists
+                                    requesting their patient undergo a CBCT Scan. Regardless of whether your office provides the CBCT
+                                    Scan for the patient or you refer the patient to another provider's office to receive the CBCT Scan,
+                                    you should obtain informed consent from the patient for the procedure.
+                                </li>
+                                <li style="margin-top:15px;">
+                                    The CBCT Scan Referral form: Complete and provide this form to the dentist taking the CBCT scan.
+                                </li>
+                                <li style="margin-top:15px;">
+                                    The Notification of Non-Read: If the CBCT Scan is taken at an office that is not a care provider for the
+                                    patient, the patient should sign the notice of non-read and a copy of that notice should be sent to the
+                                    referring dentist. 
+                                </li>
+                            </ul>
+                            <div style="margin-top: 330px;">
+                                <h4>Discussion and Informed Consent for Cone Beam Computerized Tomography</h4>
+                            </div>
+                            <p style="margin-top: 15px;">Patient Name:
+                                <span style="font-weight:bold;min-width: 400px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patientname}">test</span>
+                                Date
+                                <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.currentdate}">test</span>
+                            </p>
+
+                            <p>Diagnosis :
+                                <span style="font-weight:bold;min-width: 550px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patientdiagnosis}">test</span> </p>
+
+                            <p>Treatment :
+                                <span style="font-weight:bold;min-width: 550px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttreatment}">test</span>
+                            </p>
+
+                            <h4 style="margin-top: 10px;">Facts for Consideration</h4>
+                            <p style="font-style: italic;margin-top: 10px;">Patient's initials required</p>
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature1})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                A Cone Beam Computerized Tomography (CBCT) scan, is an X-ray technique that can produce three-
+                                dimensional (3-D) images of your head and allows visualization of internal bony structures in cross
+                                section rather than as overlapping images typically produced by conventional two-dimensional (2-D) X-
+                                ray exams. Dentists use CBCT scans to visualize many areas, including bony structures, such as your teeth
+                                and jaws, but not necessarily soft tissue, such as your tongue or gums.</p>
+
+
+
+                            <h4 style="margin-top: 10px;">Benefits of CBCT Scan, Not Limited to the Following:</h4>
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature2})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+                                A conventional X-ray of your mouth limits your dentist to a 2-D (flat) visualization. Some diagnosis and
+                                treatment planning can be aided with a more complete visualization by way of 3-D anatomy. CBCT
+                                scans can provide dentists with 3-D information when planning some treatment such as dental implants,
+                                surgical extractions, maxillofacial surgery and advanced dental restorative procedures.</p>
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature3})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                Greater opportunity to diagnose conditions such as vertical root fractures that can be missed on
+                                conventional X-ray films.</p>
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature4})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                Greater chance of providing images and information that may allow better evaluation of the necessity of
+                                a particular dental treatment.</p>
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature5})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+                                Potential for improved diagnosis of third molar (wisdom teeth) and other teeth positioning in proximity to
+                                vital structures, such as nerves and blood vessels and sinuses prior to removal.</p>
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature6})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+                                Potential for increased accuracy when planning implant placement surgery.</p>
+
+
+                            <h4 style="margin-top: 10px;">Risks of CBCT Scan, Not Limited to the Following:</h4>
+                            <p style="margin-top: 10px;"> 
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature7})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+                                CBCT scans, like conventional X-rays, expose you to radiation. The dose of radiation used for the CBCT
+                                scan is controlled to allow the smallest dose used that will still give sufficient data to achieve a useful
+                                result. The dosage per scan is equivalent to two (2) regular dental X-rays. Scientists have linked radiation
+                                exposure with a slightly higher risk of developing cancer; however, the advantages of the CBCT scan
+                                generally outweigh the risks.</p>
+                            <div style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature8})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+                                X-ray imaging of the mouth is generally not contraindicated in pregnancy and should be utilized as
+                                required to complete a full examination, diagnosis and treatment plan. Please advise your dentist if you
+                                are pregnant or planning to become pregnant so that your dentist can make the best determination of the
+                                types of radiographs needed to ensure you receive the lowest amount of reasonably achievable radiation<div style="margin-top: 50px;"> for your dental treatment needs and can discuss whether the benefits of the scan outweigh the risks.
+                                    Discuss concerns specific to X-rays during pregnancy with your physician.</div></div>
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature9})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+                                The CBCT scan may or may not reveal coincidental medical findings unrelated to your dental condition,
+                                dental care and dental treatment. A CBCT scan is a diagnostic procedure intended solely to facilitate
+                                diagnosis of your dental condition and your dental care and to help plan your dental treatment. The
+                                CBCT scan will be evaluated solely for the purposes associated with the dental procedures discussed in
+                                your treatment plan. The data obtained during this study may result in incidental findings unrelated to
+                                your dental condition, dental care and dental treatment and are beyond the scope and purpose of your
+                                dental condition. Your dentist is not a physician or a specialist qualified to make the assessment
+                                concerning anatomy and pathology beyond your mouth and jaw. As a result, you may elect to have the
+                                CBCT scan data evaluated by a physician or dental and or medical radiologist.</p>
+
+
+                            <h4 style="margin-top: 10px;">Alternatives to CBCT Scan, Not Limited to the Following:</h4>
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature10})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+                                An alternative to CBCT scans are conventional X-rays; however, they have limitations. Conventional X-
+                                rays of your mouth and jaws limit your dentist to evaluating anatomical structures in a two-dimensional
+                                view. A more complete understanding of complex 3-D anatomy can enhance your diagnosis and
+                                treatment planning. The relationship of anatomical structures in three dimensions is important in assessing
+                                your condition as well as treatment planning for dental implants, surgical extractions, endodontic
+                                treatment, oral surgery or advanced dental restorative procedures. CBCT scans may be useful in
+                                evaluating and potentially diagnosing conditions that cannot be fully appreciated with conventional X-
+                                rays. The use of CBCT should be a decision between you and your dentist.</p>
+
+                            <h4 style="margin-top: 10px;">Check the boxes below that apply to you:</h4>
+                            <h4 style="margin-top: 10px;">Consent</h4>
+                            <p style="margin-top: 10px;">
+                                <!--                                <input type="checkbox" th:if="${riskForm.patientcheckbox1} == riskmgmt0" checked="checked"/>
+                                                                <input type="checkbox" th:unless="${riskForm.patientcheckbox1} == riskmgmt0" />-->
+                                <img th:if="${riskForm.patientcheckbox1} == riskmgmt0"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                <span><img  th:unless="${riskForm.patientcheckbox1} == riskmgmt0" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                </span>
+                                I have been informed both verbally and by the information provided on this form of the risks and benefits of the
+                                proposed CBCT scan as described above.
+                            </p>
+                            <p style="margin-top: 10px;">
+                                <!--                                <input type="checkbox" th:if="${riskForm.patientcheckbox2} == riskmgmt1" checked="checked"/>
+                                                                <input type="checkbox" th:unless="${riskForm.patientcheckbox2} == riskmgmt1" />-->
+                                <img th:if="${riskForm.patientcheckbox2} == riskmgmt1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                <span><img  th:unless="${riskForm.patientcheckbox2} == riskmgmt1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                </span>
+                                I have been informed both verbally and by the information provided on this form of the material risks and
+                                benefits of alternative X-rays and of electing not to have the scan performed.
+                            </p>
+                            <p style="margin-top: 10px;" >
+                                <!--                                <input type="checkbox" th:if="${riskForm.patientcheckbox3} == riskmgmt2" checked="checked"/>
+                                                                <input type="checkbox" th:unless="${riskForm.patientcheckbox3} == riskmgmt2" />-->
+                                <img th:if="${riskForm.patientcheckbox3} == riskmgmt2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                <span><img  th:unless="${riskForm.patientcheckbox3} == riskmgmt2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                </span>
+                                I certify that I have read and understand the above information and that the explanations referred to are
+                                understood by me, that my questions have been answered and that the blanks requiring insertions or completion
+                                have been filled in. I authorize and direct Dr.  <span style="font-weight:bold;min-width: 350px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt1}">test</span>  to do whatever he/she deems
+                                necessary and advisable under the circumstances.
+                            </p>
+                            <p style="margin-top: 10px;">
+                                <!--                                <input type="checkbox" th:if="${riskForm.patientcheckbox4} == riskmgmt3" checked="checked"/>
+                                                                <input type="checkbox" th:unless="${riskForm.patientcheckbox4} == riskmgmt3" />-->
+                                <img th:if="${riskForm.patientcheckbox4} == riskmgmt3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                <span><img  th:unless="${riskForm.patientcheckbox4} == riskmgmt3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                </span>
+                                I consent to have the above-mentioned CBCT scan.
+                            </p>
+                            <p style="margin-top: 10px;">
+                                <!--                                <input type="checkbox" th:if="${riskForm.patientcheckbox5} == riskmgmt4" checked="checked"/>
+                                                                <input type="checkbox" th:unless="${riskForm.patientcheckbox5} == riskmgmt4" />-->
+                                <img th:if="${riskForm.patientcheckbox5} == riskmgmt4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                <span><img  th:unless="${riskForm.patientcheckbox5} == riskmgmt4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                </span>
+                                While the scan may be covered by my medical and/or dental insurance, I accept any financial responsibility
+                                for this scan and authorize the scan.
+                            </p>
+                            <h4 style="margin-top: 10px;">or</h4>
+                            <div style="margin-top: 170px;">
+                                <h4 style="margin-top: 10px;">Refusal</h4>
+                                <p style="margin-top: 10px;">
+                                    <!--                                    <input type="checkbox" th:if="${riskForm.patientcheckbox6} == riskmgmt5" checked="checked"/>
+                                                                        <input type="checkbox" th:unless="${riskForm.patientcheckbox6} == riskmgmt5" />-->
+                                    <img th:if="${riskForm.patientcheckbox6} == riskmgmt5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                    <span><img  th:unless="${riskForm.patientcheckbox6} == riskmgmt5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                    </span>
+                                    I refuse to give my consent for the proposed CBCT scan described above and understand the potential
+                                    consequences associated with this refusal. <b>Note:</b> Failure to have a CBCT scan may result in failure to detect or
+                                    diagnose significant disease and associated potential harm.
+                                </p>
+                            </div>
+                            <table style="width: 100%">
+                                <td> <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                </td>
+
+                                <td> <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.signdate1}">test</span></td>
+                                <tr>
+                                    <td>   Patient or Patient's Representative </td>
+                                    <td>  Date</td>
+                                </tr>
+                                <td> <img th:src="@{data:image/png;base64,{image}(image=${riskForm.witnesssignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                </td>
+
+                                <td> <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.signdate2}">test</span> </td>
+                                <tr><td>Witness Signature</td>
+                                    <td> Date</td></tr>
+
+                            </table>
+
+                            <p style="margin-top: 10px;">I attest that I have discussed the risks, benefits, consequences and alternatives of the above 
+                                treatment with
+                                <span style="font-weight:bold;min-width: 350px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt2}">test</span>(Patient or Patient's Representative) and they have had
+                                the opportunity to ask questions. I believe they understand what has been explained and consents or refuses
+                                treatment CBCT.</p>
+                            <table style="width: 100%"><tr><td>
+                                        <img th:src="@{data:image/png;base64,{image}(image=${riskForm.dentistsignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        <p>Dentist Signature </p></td>
+
+                                    <td> <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.signdate3}">test</span> 
+                                        <p> Date</p></td></tr>
+                            </table>
+                            <div style="margin-top: 450px;">
+                                <h4 style="margin-top: 90px;">CBCT Scan Referral Form</h4></div>
+                            <p style="margin-top: 50px;">Referring Doctor:  <span style="font-weight:bold;min-width: 450px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.referdoctor1}">test</span> </p>
+                            <h4 style="margin-top: 10px;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;"> Patient Information</h4>
+
+                            <table style="width:100%">
+                                <tr>
+                                    <td>First Name:   <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.firstname}">test</span></td>
+
+                                    <td> Last Name:  <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.lastname}">test</span></td></tr>
+
+                                <tr>  <td>Date of Birth:<span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patientdob}">test</span></td>
+
+                                    <td>  Office Chart#<br/>(optional): <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.officechart}">test</span></td></tr>
+                            </table>   
+                            <h4 style="margin-top: 20px;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;">Contact Information</h4>
+                            <table style="width:100%"><tr>
+                                    <td> Home Phone:</td>
+                                    <td><span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienthomephone}">test</span>   </td>
+                                </tr><tr>
+                                    <td> Work Phone :</td>
+                                    <td><span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patientworkphone}">test</span></td>
+                                </tr><tr>
+                                    <td> Mobile :</td><td><span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patientmobile}">test</span></td>
+                                </tr><tr>
+                                    <td>Special Instructions: </td>
+                                    <td><span style="font-weight:bold;min-width: 350px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt3}">test</span></td>
+                                </tr><tr><td> </td>
+                                    <td>  <span style="font-weight:bold;min-width: 350px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt4}">test</span> </td>
+                                </tr><tr><td> </td>
+                                    <td> <span style="font-weight:bold;min-width: 350px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt5}">test</span></td>
+                                </tr></table>
+                            <div>
+                                <table style="width:100%">
+                                    <tr>
+                                        <td > Send by:</td>
+                                        <td>  
+                                            <!--                                            <input type="checkbox"  th:if="${riskForm.patientradiobtn1} == CD" checked="checked"/> 
+                                                                                        <input type="checkbox"  th:unless="${riskForm.patientradiobtn1} == CD" />-->
+                                            <img th:if="${riskForm.patientradiobtn1} == CD"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${riskForm.patientradiobtn1} == CD" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>
+                                            CD</td>
+
+                                        <td>   
+                                            <!--                                            <input type="checkbox"  th:if="${riskForm.patientradiobtn1} == Printed" checked="checked"/> 
+                                                                                        <input type="checkbox"  th:unless="${riskForm.patientradiobtn1} == Printed" />-->
+                                            <img th:if="${riskForm.patientradiobtn1} == Printed"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${riskForm.patientradiobtn1} == Printed" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>
+                                            Printed</td>
+
+                                        <td> 
+                                            <!--                                            <input type="checkbox"  th:if="${riskForm.patientradiobtn1} == Office" checked="checked"/> 
+                                                                                        <input type="checkbox"  th:unless="${riskForm.patientradiobtn1} == Office"/> -->
+                                            <img th:if="${riskForm.patientradiobtn1} == Office"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${riskForm.patientradiobtn1} == Office" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>
+                                            Office email on file</td>
+
+                                        <td> 
+                                            <!--                                            <input type="checkbox"  th:if="${riskForm.patientradiobtn1} == Other" checked="checked"/> 
+                                                                                        <input type="checkbox"  th:unless="${riskForm.patientradiobtn1} == Other" />-->
+                                            <img th:if="${riskForm.patientradiobtn1} == Other"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${riskForm.patientradiobtn1} == Other" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>
+                                            Other:<span style="font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt6}">test</span>
+                                        </td>
+                                    </tr> </table> </div> 
+
+                            <h4 style="margin-top: 10px;">Signature and Acknowledgement</h4>
+
+                            <p style="margin-top: 60px;">I understand that   <span style="font-weight:bold;min-width: 290px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt7}">test</span> involvement in connection with this referral is
+                                limited to taking the scan.   <span style="font-weight:bold;min-width: 290px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt8}">test</span>  and employees of the practice will not participate
+                                in any interpretation of the images; the preparation and issuance of the report; communicating the results of the
+                                study to the patient; or counseling the patient on appropriate follow-up as may be required in the exercise of my
+                                clinical and professional judgment. By executing this referral form, I understand, acknowledge, and accept the
+                                responsibility that, as the referring dentist it is my sole responsibility to communicate the results of the study to the
+                                patient, and to provide appropriate consultation and follow-up with the patient. I further agree to protect, defend,
+                                indemnify and hold   <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt9}">test</span>  completely harmless in discharging those
+                                responsibilities to the patient. I understand that no doctor-patient relationship between my patient and
+                                <span style="font-weight:bold;min-width: 290px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt10}">test</span>  exists because of his or her office taking this image.</p>
+                            <table style="width: 100%">
+                                <td>
+                                    <img th:src="@{data:image/png;base64,{image}(image=${riskForm.dentistsignature1})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                </td>
+
+                                <td> <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.signdate4}">test</span>
+                                </td>
+                                <tr> <td> Referring Dentist Signature/Print Name </td>
+                                    <td> Date</td> 
+                                </tr></table>
+                            <div style="margin-top: 240px;">
+                                <h4>Notice of Non-Read Cone Beam Computerized Tomography (CBCT) Scan</h4></div>
+                            <p style="margin-top: 10px;">Referring Doctor:  <span style="font-weight:bold;min-width: 450px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.referdoctor2}">test</span> </p>
+                            <h4 style="margin-top: 10px;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;">Patient Information</h4>
+
+                            <p style="margin-top: 10px;">First Name: 
+                                <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.firstname}">test</span>
+
+                                Last Name: 
+                                <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.lastname}">test</span></p>
+
+                            <p style="margin-top: 10px;">  Date of Birth: 
+                                <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patientdob}">test</span></p>
+
+
+                            <h4 style="margin-top: 10px;">Signature and Acknowledgement</h4>
+                            <p style="margin-top: 10px;font-style: italic;">Patient's initials required</p>
+
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature11})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                I understand that   <span style="font-weight:bold;min-width: 250px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt11}">test</span> involvement in connection with this referral is limited to taking the scan.</p>
+
+
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature12})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                <span style="font-weight:bold;min-width: 250px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt12}">test</span> and employees of the practice will not
+                                participate in any interpretation of the images; the preparation and issuance of the report;
+                                communicating the results of the study; or counseling the patient on appropriate follow-up as may
+                                be required in the exercise of clinical and professional judgment.
+                            </p>
+
+                            <p style="margin-top: 10px;"> 
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature13})}" height="40x" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                By signing this form, I understand, acknowledge and accept that my referring dentist has the sole
+                                responsibility to communicate the results of the study to me and to provide appropriate
+                                consultation and follow-up</p>
+
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature14})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                I understand that   <span style="font-weight:bold;min-width: 250px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${riskForm.patienttxt13}">test</span> will be responsible for reviewing, evaluating,
+                                and diagnosing the imaging data.</p>
+
+                            <p style="margin-top: 10px;">
+                                <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature15})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                Furthermore, I understand that no doctor-patient relationship between   <span style="font-weight:bold;min-width: 250px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.patienttxt14}">test</span>  and me is formed because of his or her office taking this image.</p>
+
+                            <table style="width:100%">
+                                <td>  <img th:src="@{data:image/png;base64,{image}(image=${riskForm.patientsignature16})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+
+                                </td>
+
+                                <td> <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.signdate5}">test</span>  
+                                </td>
+                                <tr>
+                                    <td> Patient or Patient's Representative Signature</td>
+                                    <td> Date </td>
+                                </tr>
+
+                                <td>  <img th:src="@{data:image/png;base64,{image}(image=${riskForm.witnesssignature1})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+
+                                </td>
+
+                                <td>  <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${riskForm.signdate6}">test</span>
+                                </td>
+                                <tr>
+                                    <td> Witness Signature</td>
+                                    <td> Date</td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>  
+
+            </div>
+
+        </div>
+
+
+    </body>
+</html>

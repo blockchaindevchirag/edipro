@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> ABN Advance Beneficiary Non Coverage Form></title>
+
+        <style>
+            .table{
+                border-spacing: 0;
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            * {
+                margin: 0px;
+                padding: 1px;
+                box-sizing: border-box;
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .font_small
+            {
+                font-size: 13px;
+            }
+            .end_content
+            {
+                font-size: 10px;
+                margin-bottom: 12px;
+            }
+            .horizonal
+            {
+                border-bottom: 3px solid black;
+                width:100%;
+            }
+        </style>
+    </head>
+    <body> 
+
+
+        <div class="modal-header" style="text-align: center">
+            <div>
+                <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                <h5 style="margin: 1px;color:#a2a5a8;"> <span th:text="${patientPractice.addressline1}">test</span><span th:text="${patientPractice.addressline2}">test</span><span th:text="${patientPractice.city}">test</span><span th:text="${patientPractice.state}">test</span><span th:text="${patientPractice.zip}">test</span></h5>
+                <h5 style="color:#a2a5a8;">
+                    <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span><span th:text="${patientPractice.contactPhone}">test</span><span th:text="${patientPractice.alertPhone}">test</span>	
+                    <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                </h5> 
+            </div>
+        </div>
+        <div class="font_small">
+            <div>
+                <table class="col" style="width: 100%;">
+                    <tr >
+                        <td style="padding-top: 0px;width:45%;"><h3>A.Notifier:<span style="font-weight:bold;min-width: 200px;display: inline-block;text-align: center;" th:text="${abnForm.patientNotifier}">test</span> </h3></td>
+                        <td style="padding-top: 0px;width:65%;"><h3>Date:<span style="font-weight:bold;min-width: 80px;display: inline-block;text-align: center;" th:text="${abnForm.currentDate}">test</span> </h3></td>                   
+                    </tr>
+                    <tr>
+                        <td style="padding-top: 0px;"><h3> B.Patient Name: <span style="font-weight:bold;min-width: 100px;display: inline-block;text-align: center;" th:text="${abnForm.patientName}">test</span></h3></td>
+                        <td style="padding-top: 0px;"><h3> C.Identification Number: <span style="font-weight:bold;min-width: 100px;display: inline-block;text-align: center;" th:text="${abnForm.identificationNumber}">test</span></h3></td>
+                    </tr>
+                </table> 
+            </div>
+            <div class="horizonal">&nbsp;</div>
+            <h2 style="text-align: center">ADVANCE BENEFICIARY NOTICE OF NONCOVERAGE (ABN)</h2>
+
+            <div class="col-12">
+                <h4 style="display: inline;min-width: 10px;border-bottom: 1px solid #000000;">NOTE: &nbsp;</h4> <p style="display: inline">If Medicare doesn't pay for <span style="font-weight:bold">D. <span style="font-weight:bold;min-width: 220px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${abnForm.patientTxt1}">test</span></span>  below, you may have to pay. Medicare does not pay for everything, even some care that you or your health care provider have good reason to think you need. We expect Medicare may not pay for the <span style="font-weight:bold"> D. <span style="font-weight:bold;min-width: 220px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${abnForm.patientTxt2}">test</span></span> below.</p>
+                <table class="table table-bordered table-responsive" style="border-right: 1px solid black; width: 100%;  margin-top:0px;">
+                    <tr style="border:1px solid black;background-color: #dddddd ; padding-top: 1px">
+                        <th style=" border-right: 1px solid black;border-bottom: 1px solid black;"><h4>D.</h4></th>
+                        <th style=" border-right: 1px solid black;border-bottom: 1px solid black;"><h4>E. Reason Medicare May Not Pay:</h4></th>
+                        <th style=" border-right: 1px solid black;border-bottom: 1px solid black;"><h4>F. Estimated Cost</h4></th>
+                    </tr>
+                    <tr>
+                        <td style="font-size:11px;border-right: 1px solid black;"><span style="margin-left: 30px;">1.Bone graft maxilla</span></td>
+                        <td style=" border-right: 1px solid black;"> </td>      
+                        <td style=" border-right: 1px solid black;"><span style="margin-left: 30px;">$2,500</span> </td></tr>
+                    <tr>
+                        <td style="font-size:11px;border-right: 1px solid black;"> <span style="margin-left: 30px;">2.Bone graft mandible </span></td>
+                        <td style=" border-right: 1px solid black;"> </td>
+                        <td style=" border-right: 1px solid black;"> <span style="margin-left: 30px;">$5,700</span>  </td></tr>
+                    <tr>
+                        <td style="font-size:11px;border-right: 1px solid black;"><span style="margin-left: 30px;">3.Sinus lift by lateral approach</span> </td>
+                        <td style=" border-right: 1px solid black;"> </td>
+                        <td style=" border-right: 1px solid black;"><span style="margin-left: 30px;">$830 </span></td></tr>
+                    <tr>
+                        <td style="font-size:11px;border-right: 1px solid black;"><span style="margin-left: 30px;">4.Sinus lift by vertical</span> </td>
+                        <td style=" border-right: 1px solid black;"> </td>
+                        <td style=" border-right: 1px solid black;"><span style="margin-left: 30px;">$620</span></td></tr>
+                    <tr>
+                        <td style="font-size:11px;border-right: 1px solid black;"><span style="margin-left: 30px;">5.Osteoplasty</span> </td>
+                        <td style=" border-right: 1px solid black;"> </td> 
+                        <td style=" border-right: 1px solid black;"><span style="margin-left: 30px;">$2,250</span></td>  </tr>
+                    <tr>
+                        <td style="font-size:11px;border-right: 1px solid black;"><span style="margin-left: 30px;">6.Osteotomy Maxillary/Mandibular</span></td>
+                        <td style=" border-right: 1px solid black;"> </td>
+                        <td style=" border-right: 1px solid black;"><span style="margin-left: 30px;">$1,250 </span></td></tr>
+                    <tr>
+                        <td style="font-size:11px;border-right: 1px solid black;"><span style="margin-left: 30px;">7.Incision &amp; Drainage abscess</span> </td>
+                        <td style=" border-right: 1px solid black;"> </td>
+                        <td style=" border-right: 1px solid black;"><span style="margin-left: 30px;">$200 </span></td> </tr>
+                    <tr>
+                        <td style="font-size:11px;border-right: 1px solid black;"><span style="margin-left: 30px;">8.Bone abscess removal Maxilla/Mandible</span> </td>
+                        <td style=" border-right: 1px solid black;"> </td>
+                        <td style=" border-right: 1px solid black;"><span style="margin-left: 30px;">$800 </span></td></tr>
+                    <tr>
+                        <td style="font-size:11px;border-right: 1px solid black;"><span style="margin-left: 30px;">9.Cyst/Lesion Excision </span></td>
+                        <td style=" border-right: 1px solid black;"> </td>
+                        <td style=" border-right: 1px solid black;"><span style="margin-left: 30px;">$600</span> </td></tr>
+                    <tr>
+                        <td style="font-size:11px;border-right: 1px solid black;"><span style="margin-left: 30px;">10.Other<span style="font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${abnForm.patientTxt3}">test</span></span></td> 
+                        <td style=" border-right: 1px solid black;"> </td>
+                        <td style=" border-right: 1px solid black;"><span style="margin-left: 30px;">$<span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: left;"  th:text="${abnForm.patientTxt4}">test</span></span> </td>
+                    </tr>     
+
+                </table>
+                <h4>WHAT YOU NEED TO DO NOW:</h4>
+                <ul>
+                    <li style="margin-left: 30px;">Read this notice, so you can make an informed decision about your care.</li>
+                    <li style="margin-left: 30px;">Ask us any questions that you may have after you finish reading.</li>
+                    <li style="margin-left: 30px;">Choose an option below about whether to receive the D. <span style="font-weight:bold;min-width: 220px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${abnForm.patientTxt5}">test</span>  listed above.</li>
+                </ul>
+                <div style="width:100%;clear: both;">
+                    <div style="float:left;width:12%;">
+                        <h4 style="display: inline;">Note: &nbsp;</h4>
+                    </div>
+                    <div style="float:left;width:80%;">
+                        <p  style="display: inline">If you choose Option 1 or 2, we may help you to use any other insurance that you might have, but Medicare cannot require us to do this.</p>
+                    </div>
+                </div>
+                <table style="border: 1px solid black ; width: 100%;clear:both;">
+                    <tr style="background-color: #dddddd ;border: 1px solid black;padding-top: 1px;">
+                        <th style="width:50px;border-bottom: 1px solid black;">  G. OPTIONS : Check only one box. We cannot choose a box for you. </th>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <div style="margin:0px;padding: 0px;">
+                                <p> 
+                                    <!--                                    <input type="checkbox"   checked="checked" th:if="${abnForm.patientradiobtn1} == OPTION1"/> 
+                                                                        <input type="checkbox"  th:unless="${abnForm.patientradiobtn1} == OPTION1"/> -->
+                                    <img th:if="${abnForm.patientRadioBtn1} == OPTION1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                    <span><img th:unless="${abnForm.patientRadioBtn1} == OPTION1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                    </span> <b> OPTION 1.</b> I want the <span style="font-weight: bold" > D. <span style="font-weight:bold;min-width: 220px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${abnForm.patientTxt6}">test</span>  </span> listed above. You may ask to be paid now, but I also want Medicare billed for an official decision on payment, which is sent to me on a Medicare Summary Notice (MSN). I understand that if Medicare doesn't  pay, I am responsible for payment, but <b>I can appeal to Medicare</b> by following the directions on the MSN. If Medicare does pay, you will refund any payments I made to you,less co-pays or deductibles.
+                                </p>
+                                <p>
+                                    <!--                                    <input type="checkbox"  checked="checked" th:if="${abnForm.patientradiobtn1} == OPTION2"/> 
+                                                                        <input type="checkbox" th:unless="${abnForm.patientradiobtn1} == OPTION2"/>-->
+                                    <img th:if="${abnForm.patientRadioBtn1} == OPTION2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                    <span><img th:unless="${abnForm.patientRadioBtn1} == OPTION2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                    </span><b> OPTION 2.</b>I want the <span style="font-weight: bold">D. <span style="font-weight:bold;min-width: 220px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${abnForm.patientTxt7}">test</span> </span> listed above, but do not bill Medicare. You may ask to be paid now as I am responsible for payment. <span style="font-weight: bold" > I cannot appeal if Medicare is not billed. </span>
+                                </p> 
+                                <p>
+                                    <!--                                    <input type="checkbox" checked="checked" th:if="${abnForm.patientradiobtn1} == OPTION3"/> 
+                                                                        <input type="checkbox"  th:unless="${abnForm.patientradiobtn1} == OPTION3"/>-->
+                                    <img th:if="${abnForm.patientRadioBtn1} == OPTION3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                    <span><img th:unless="${abnForm.patientRadioBtn1} == OPTION3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                    </span> <b> OPTION 3.</b> I don't want the <span style="font-weight: bold">D. <span style="font-weight:bold;min-width: 220px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${abnForm.patientTxt8}">test</span> </span>  listed above. I understand with this choice I am not responsible for payment, and  <span style="font-weight: bold" >I cannot appeal to see if Medicare would pay. </span>
+                                </p></div> 
+                        </td></tr>
+
+                </table>
+                <div class="col-12 row">
+                    <h4  style="margin-top: 10px">H. Additional Information:</h4>
+                    <p><b>This notice gives our opinion, not an official Medicare decision.</b> If you have other questions on this notice or Medicare billing, call <b>1-800-MEDICARE</b> (1-800-633-4227/<b>TTY</b>: 1-877-486-2048). Signing below means that you have received and understand this notice. You also receive a copy.</p></div>   
+
+                <table  style="width:100%;border-spacing:0px;" >
+                    <tr>
+                        <td style="border:1px solid black; border-collapse: collapse;padding: 0px;"><span style="font-weight:bold;vertical-align:top;">I. Signature:</span>
+                            <img th:src="@{data:image/png;base64,{image}(image=${abnForm.patientSignature})}" height="50" width="400" style="margin-bottom:-5px;"/> 
+                        </td> 
+
+                        <td style="border:1px solid black;border-left: 0; border-collapse: collapse;width: 150px;padding: 0px;">
+                            <span style="font-weight:bold;vertical-align:top;line-height: 2px;">J.Date:</span>
+                            <p th:text="${abnForm.signDate1}">test </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <div>
+                     <span style="font-weight: bold;">
+                                            You have the right to get Medicare information in an accessible format, like large print, Braille, or audio. You also have
+the right to file a complaint if you feel you've been discriminated against. Visit Medicare.gov/about- us/accessibility-
+nondiscrimination-notice.
+                                        </span>
+ 
+
+                </div>
+                <span class="end_content"  style="text-align: justify; text-justify: inter-word;margin-top:10px;">
+                    According to the Paperwork Reduction Act of 1995, no persons are required to respond to a collection of 
+                    information unless it displays a valid OMB control number. The valid OMB control number for this information
+                    collection is 0938-0566. The time required to complete this information collection is estimated to average 
+                    7 minutes per response, including the time to review instructions, search existing data resources, gather 
+                    the data needed, and complete and review the information collection. If you have comments concerning the 
+                    accuracy of the time estimate or suggestions for improving this form, please write to: CMS, 7500 Security
+                    Boulevard, Attn: PRA Reports Clearance Officer, Baltimore, Maryland 21244-1850.
+                </span>
+                <div class="horizonal" style="margin-bottom:20px" ></div>
+                <p><span style="float:left;">Form CMS-R-131 (Exp.01/31/2026)</span><span style="float:right;">Form Approved OMB No. 0938-0566</span></p>
+            </div>
+
+        </div>         
+    </body>
+</html>

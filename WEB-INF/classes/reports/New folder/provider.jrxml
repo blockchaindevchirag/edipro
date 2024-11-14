@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="payor" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2537f94b-2e49-4d7a-b953-4bd7f3bc017b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="EDI Server"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="p_requestid" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[call providerdetails($P!{p_requestid})]]>
+	</queryString>
+	<field name="requestid" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="requestid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pro"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pro"/>
+	</field>
+	<field name="npi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="npi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pro"/>
+	</field>
+	<columnHeader>
+		<band height="68" splitType="Stretch">
+			<frame>
+				<reportElement x="2" y="0" width="548" height="68" uuid="2468388e-b783-4c49-877b-a6db45a08725"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textField isBlankWhenNull="true">
+					<reportElement x="80" y="25" width="300" height="20" isRemoveLineWhenBlank="true" uuid="95be5276-8bc2-47cb-9017-70491cf70438">
+						<printWhenExpression><![CDATA[$F{name}== null?false:true]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="25" width="80" height="20" isRemoveLineWhenBlank="true" uuid="9f2a2804-5af1-4d0b-847f-1bb3c8d64931">
+						<printWhenExpression><![CDATA[$F{name}== null?false:true]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Name]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="80" y="45" width="300" height="20" isRemoveLineWhenBlank="true" uuid="5bb76022-97d6-4b78-a996-d720d9e51a05">
+						<printWhenExpression><![CDATA[$F{npi}== null?false:true]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{npi}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="45" width="80" height="20" isRemoveLineWhenBlank="true" uuid="6bb52f0d-f2c9-4c6a-9f46-548e099f656c">
+						<printWhenExpression><![CDATA[$F{npi}== null?false:true]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[NPI]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="-1" y="3" width="380" height="20" isRemoveLineWhenBlank="true" uuid="3df93b95-1df8-4edb-95de-42b15edffbc1">
+						<printWhenExpression><![CDATA[$F{name}== null && $F{npi} == null?false:true]]></printWhenExpression>
+					</reportElement>
+					<box leftPadding="5"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Provider Info]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+</jasperReport>

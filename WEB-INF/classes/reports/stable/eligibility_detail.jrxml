@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="eligibility" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="67cbd7ce-d48d-491a-802a-3be6b4ebfb21">
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="EDIProcessor"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Background" mode="Opaque" backcolor="#D1D1D1"/>
+	<style name="Style1" mode="Opaque" backcolor="#7781F7" radius="6" scaleImage="FillFrame">
+		<pen lineWidth="0.0" lineStyle="Solid"/>
+		<box>
+			<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="request_id" class="java.lang.String"/>
+	<parameter name="activesubreport" class="java.lang.String"/>
+	<parameter name="limitation" class="java.lang.String"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="error" class="java.lang.String"/>
+	<parameter name="payordetail" class="java.lang.String"/>
+	<parameter name="pcp" class="java.lang.String"/>
+	<parameter name="uncoveredservice" class="java.lang.String"/>
+	<parameter name="otherpayor" class="java.lang.String"/>
+	<parameter name="otherbenefits" class="java.lang.String"/>
+	<parameter name="subscriber" class="java.lang.String"/>
+	<parameter name="dependent" class="java.lang.String"/>
+	<parameter name="provider" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT memberid_nm109, benefit_type,  date_format(convert(date_of_request, date), "%m/%d/%Y" )  date_of_request, element,  
+concat(Patient_Last_Name, ', ', patient_first_name) as patient FROM eligibility_requests
+inner join (SELECT element, request_id reqid from 271_data_v2 where  parent_1 = 1 and segment = 'NM1' and element_id = 3) payor
+on reqid =  $P{request_id}
+ where request_id =  $P{request_id}]]>
+	</queryString>
+	<field name="memberid_nm109" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="memberid_nm109"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="eligibility_requests"/>
+	</field>
+	<field name="benefit_type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="benefit_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="eligibility_requests"/>
+	</field>
+	<field name="date_of_request" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="date_of_request"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="eligibility_requests"/>
+	</field>
+	<field name="element" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="element"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="271_data_v2"/>
+	</field>
+	<field name="patient" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="patient"/>
+	</field>
+	<variable name="sysdate" class="java.sql.Date">
+		<variableExpression><![CDATA[new java.util.Date()]]></variableExpression>
+	</variable>
+	<title>
+		<band height="65" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="ElementGroupHeight" mode="Opaque" x="-7" y="55" width="573" height="2" forecolor="#D0B48E" backcolor="#969595" uuid="f4705a33-713a-4891-9c67-d7f20634578a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="2">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement stretchType="ElementGroupHeight" mode="Opaque" x="564" y="-10" width="2" height="65" backcolor="#969595" uuid="a3a477b1-6202-4730-a74e-bda9d7a894bf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<frame>
+				<reportElement stretchType="ElementGroupHeight" mode="Opaque" x="-12" y="-15" width="576" height="70" backcolor="#BDE3FF" uuid="9b15ae45-a78b-49e7-80ca-bb80b751e1ff"/>
+				<image>
+					<reportElement mode="Transparent" x="6" y="6" width="55" height="50" uuid="681310e2-c992-488d-839c-c8bf9b4b8117"/>
+					<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement mode="Transparent" x="61" y="5" width="408" height="19" forecolor="#030303" backcolor="#BDE3FF" uuid="df8e9bda-8280-485e-8182-d859649d77a3">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="6">
+						<pen lineColor="#545454"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="15" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Patient Eligibility Report]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="70" y="36" width="200" height="10" uuid="063f9fe1-4147-41ff-8965-42c621034648"/>
+					<textElement>
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Display Group: All]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="120" y="26" width="454" height="10" uuid="f0f2c039-585a-473e-aef8-af877a7c2bf0"/>
+					<textElement textAlignment="Right">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{patient} + " | " +$F{element}+" | " + $F{memberid_nm109} + " | " + $F{date_of_request}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="ElementGroupHeight" x="70" y="46" width="506" height="24" uuid="216cbad0-3f06-4835-8bbd-6509fdde6280"/>
+					<textElement>
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Service Code : "+$F{benefit_type}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement mode="Opaque" x="-20" y="60" width="595" height="1" uuid="5a90f4f6-505d-40a2-bb3f-9c5cc4d19769"/>
+				<graphicElement>
+					<pen lineColor="#545454"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="68" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.layout"/>
+			<subreport>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="275" y="0" width="300" height="60" isRemoveLineWhenBlank="true" uuid="d6a1c423-1970-4bc8-ba7e-0dc140a7a923"/>
+				<subreportParameter name="requestid">
+					<subreportParameterExpression><![CDATA[$P{request_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{payordetail}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="-20" y="0" width="298" height="60" isRemoveLineWhenBlank="true" uuid="ba1b1e2a-c875-4cae-b437-926e28208277">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<subreportParameter name="requestid">
+					<subreportParameterExpression><![CDATA[$P{request_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{subscriber}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="65">
+			<subreport>
+				<reportElement positionType="Float" x="-20" y="0" width="298" height="60" isRemoveLineWhenBlank="true" uuid="0ff2dbb8-3fd5-4d42-a61d-08fe90077995">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<subreportParameter name="requestid">
+					<subreportParameterExpression><![CDATA[$P{request_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{dependent}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="275" y="0" width="300" height="60" isRemoveLineWhenBlank="true" uuid="de70d9c8-6376-48e7-9348-4e8c7b76115e"/>
+				<subreportParameter name="requestid">
+					<subreportParameterExpression><![CDATA[$P{request_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{pcp}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="60">
+			<subreport>
+				<reportElement positionType="Float" x="-20" y="0" width="298" height="60" isRemoveLineWhenBlank="true" uuid="bab719a2-ebb7-4d7d-94bd-19a17ada1284">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<subreportParameter name="requestid">
+					<subreportParameterExpression><![CDATA[$P{request_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{provider}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="61">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="60" isRemoveLineWhenBlank="true" uuid="ace6c78a-8888-4178-b812-97a3a8cb9791"/>
+				<subreportParameter name="requestid">
+					<subreportParameterExpression><![CDATA[$P{request_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{activesubreport}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="60">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="60" isRemoveLineWhenBlank="true" uuid="842ba939-336a-4e71-b18c-80da8bab4a79"/>
+				<subreportParameter name="requestid">
+					<subreportParameterExpression><![CDATA[$P{request_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{limitation}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="65">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<subreport>
+				<reportElement x="-21" y="0" width="595" height="60" isRemoveLineWhenBlank="true" uuid="4b8616ad-1e28-4353-a584-250096aed6c7"/>
+				<subreportParameter name="requestid">
+					<subreportParameterExpression><![CDATA[$P{request_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{otherpayor}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="69">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="60" isRemoveLineWhenBlank="true" uuid="c037cba8-3d4a-4b4e-a40f-4de7cc30bb1a"/>
+				<subreportParameter name="requestid">
+					<subreportParameterExpression><![CDATA[$P{request_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{error}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="68">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="60" isRemoveLineWhenBlank="true" uuid="27822d63-1912-4c93-8fdc-d242ff45e049"/>
+				<subreportParameter name="requestid">
+					<subreportParameterExpression><![CDATA[$P{request_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{otherbenefits}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="66">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="60" isRemoveLineWhenBlank="true" uuid="6fb51ae0-fb73-42b4-b55e-a08b7021eedb"/>
+				<subreportParameter name="requestid">
+					<subreportParameterExpression><![CDATA[$P{request_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{uncoveredservice}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="64">
+			<staticText>
+				<reportElement mode="Opaque" x="-11" y="3" width="576" height="20" forecolor="#000000" backcolor="#FFA875" uuid="0091aa3b-eaa8-4da8-8178-d1dd720b37a6"/>
+				<box topPadding="0" leftPadding="6" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#3B3939"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Disclaimer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="-11" y="23" width="576" height="27" forecolor="#3B3939" backcolor="#E6F5FF" uuid="97e3290a-cd72-4947-8c43-b23b4f03ea5e"/>
+				<box leftPadding="6">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[The eligibility and benefits details are provided for a close estimation only, due to any pending adjudications and plan changes. Actual numbers of deductibles and the dollars owed to the current service will be provided in the EOB (explanation of benefits) post adjudication of the claims.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupHeight" mode="Opaque" x="565" y="8" width="2" height="42" backcolor="#969595" uuid="929e0219-551b-4f28-be0e-9cdcaf700f0c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="-6" y="50" width="573" height="2" forecolor="#D0B48E" backcolor="#969595" uuid="c807bcd0-7617-49a3-9563-532a4e67c642">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="2">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="16">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="2" width="595" height="13" forecolor="#006699" backcolor="#006699" uuid="512778fa-479c-4035-aa0d-ce74545945a2"/>
+				<textField evaluationTime="Report">
+					<reportElement x="513" y="0" width="40" height="13" forecolor="#FFFFFF" uuid="361edf10-ba21-481f-aed1-cba76e29ccb7"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="433" y="0" width="80" height="13" forecolor="#FFFFFF" uuid="42660e8f-329c-44cf-9222-482011697e28"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="2" y="0" width="288" height="13" forecolor="#FFFFFF" uuid="fa0fda8e-3565-4762-ac58-2064cf85af97"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{request_id}+" | "+ $F{date_of_request}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+</jasperReport>

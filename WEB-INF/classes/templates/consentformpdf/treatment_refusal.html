@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Treatment Refusal</title>
+        <style>
+            table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 0px;
+                padding: 1px;
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .smfont{
+                font-size:15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="modal fade">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"><span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;"><span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span><span  th:text="${patientPractice.contactPhone}">test</span><span  th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div> 
+                    </div>
+
+                    <h4 style="font-weight:bold;text-align: center ">
+                        TREATMENT REFUSAL FORM 
+                    </h4> 
+                    <div class="container">
+
+                        <div class="smfont">
+                            <div class="card-body">
+                                <!--===========================================================================================-->
+
+                                <div>
+                                    Patient Name  : <p style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${treatmentRefusal.patientname}">test</p> 
+
+                                    <span>Date: </span><p style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${treatmentRefusal.patientcurrentdate}">test</p>
+                                </div>
+                                <div>
+
+                                    Date of birth : <p style="font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${treatmentRefusal.patientdob}">test</p>
+                                    Sex: 
+                                    <!--                                    <input type="checkbox"  checked="checked" th:if="${treatmentRefusal.patientgender} == 1" disabled="disabled"/>
+                                                                        <input type="checkbox"  th:unless="${treatmentRefusal.patientgender} == 1" disabled="disabled"/> Male
+                                                                        <input type="checkbox" checked="checked" th:if="${treatmentRefusal.patientgender} == 2" disabled="disabled"/>
+                                                                        <input type="checkbox"  th:unless="${treatmentRefusal.patientgender} == 2" disabled="disabled"/> Female -->
+
+                                    <span style="margin-right: -3px;"> 
+                                        <img th:if="${treatmentRefusal.patientgender} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${treatmentRefusal.patientgender} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                        </span> Male</span>
+                                    <span style="margin-right: -8px;"> 
+                                        <img th:if="${treatmentRefusal.patientgender} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                                        <span><img th:unless="${treatmentRefusal.patientgender} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                        </span> Female</span>
+                                </div>
+
+                                <div class="col-12" style="margin-top:25px">
+                                    <div>
+                                        <h4 style="margin-bottom:15px">Check the boxes below that apply to you:</h4>
+                                        <h4 style="margin-bottom:15px">Consent</h4>
+                                        <div style="margin-top:10px">
+                                            <!--                                            <p th:if="${treatmentRefusal.patientcheckbox1}== treat_ref1">
+                                                                                            <input type="checkbox" checked="checked"/> I have been informed both verbally and by the information provided on this form of the risks 
+                                                                                            and benefits of the proposed treatment.</p>
+                                                                                        <p th:if="${treatmentRefusal.patientcheckbox1}!= treat_ref1">
+                                                                                            <input type="checkbox"/> I have been informed both verbally and by the information provided on this form of the risks 
+                                                                                            and benefits of the proposed treatment.</p>-->
+                                            <img th:if="${treatmentRefusal.patientcheckbox1} == treat_ref1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${treatmentRefusal.patientcheckbox1} == treat_ref1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I have been informed both verbally and by the information provided on this form of the risks 
+                                            and benefits of the proposed treatment
+                                        </div>
+
+                                        <div style="margin-top:10px">
+
+                                            <!--                                            <p  th:if="${treatmentRefusal.patientcheckbox2} == treat_ref2">
+                                                                                            <input type="checkbox" checked="checked"/> I have been informed both verbally and by the information provided on this form of the 
+                                                                                            material risks and benefits of alternative treatment and of electing not to treat my condition.</p>
+                                                                                        <p  th:if="${treatmentRefusal.patientcheckbox2}!= treat_ref2">
+                                                                                            <input type="checkbox"/> I have been informed both verbally and by the information provided on this form of the 
+                                                                                            material risks and benefits of alternative treatment and of electing not to treat my condition.</p>-->
+                                            <img th:if="${treatmentRefusal.patientcheckbox2} == treat_ref2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${treatmentRefusal.patientcheckbox2} == treat_ref2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I have been informed both verbally and by the information provided on this form of the 
+                                            material risks and benefits of alternative treatment and of electing not to treat my condition.
+
+                                        </div>
+                                        <div style="margin-top:10px">
+                                            <!--                                            <p th:if="${treatmentRefusal.patientcheckbox3} == treat_ref3">
+                                                                                            <input type="checkbox" checked="checked"/> I certify that I have read and understand the above information and that the explanations 
+                                                                                            referred to are understood by me, that my questions have been answered and that the blanks 
+                                                                                            requiring insertions or completion have been filled in. I authorize and direct
+                                                                                            Dr.<span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${treatmentRefusal.patienttext1}">test</span> to do whatever he/she deems necessary and advisable under the 
+                                                                                            circumstances. </p>
+                                                                                        <p th:if="${treatmentRefusal.patientcheckbox3}!= treat_ref3">
+                                                                                            <input type="checkbox"/> I certify that I have read and understand the above information and that the explanations 
+                                                                                            referred to are understood by me, that my questions have been answered and that the blanks 
+                                                                                            requiring insertions or completion have been filled in. I authorize and direct
+                                                                                            Dr.<span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${treatmentRefusal.patienttext1}">test</span> to do whatever he/she deems necessary and advisable under the 
+                                                                                            circumstances. </p>-->
+                                            <img th:if="${treatmentRefusal.patientcheckbox3} == treat_ref3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${treatmentRefusal.patientcheckbox3} == treat_ref3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I certify that I have read and understand the above information and that the explanations 
+                                            referred to are understood by me, that my questions have been answered and that the blanks 
+                                            requiring insertions or completion have been filled in. I authorize and direct
+                                            Dr.<span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${treatmentRefusal.patienttext1}">test</span> to do whatever he/she deems necessary and advisable under the 
+                                            circumstances.
+
+                                        </div>
+                                        <div style="margin-top:10px">
+                                            <!--                                            <p th:if="${treatmentRefusal.patientcheckbox4}== treat_ref4">
+                                                                                            <input type="checkbox" checked="checked"/> I consent to have the above-mentioned treatment.</p>
+                                                                                        <p th:if="${treatmentRefusal.patientcheckbox4}!= treat_ref4">
+                                                                                            <input type="checkbox"/> I consent to have the above-mentioned treatment.</p>-->
+                                            <img th:if="${treatmentRefusal.patientcheckbox4} == treat_ref4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${treatmentRefusal.patientcheckbox4} == treat_ref4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I consent to have the above-mentioned treatment.
+
+                                        </div>
+                                        <div style="margin-top:10px">
+                                            <!--                                            <p th:if="${treatmentRefusal.patientcheckbox5} == treat_ref5_"> 
+                                                                                            <input type="checkbox" checked="checked"/> While the treatment may be covered by my medical and/or dental insurance, I accept any 
+                                                                                            financial responsibility for this treatment and authorize treatment.</p>
+                                                                                        <p th:if="${treatmentRefusal.patientcheckbox5} != treat_ref5_"> 
+                                                                                            <input type="checkbox"/> While the treatment may be covered by my medical and/or dental insurance, I accept any 
+                                                                                            financial responsibility for this treatment and authorize treatment.</p>-->
+                                            <img th:if="${treatmentRefusal.patientcheckbox5} == treat_ref5_"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${treatmentRefusal.patientcheckbox5} == treat_ref5_" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> While the treatment may be covered by my medical and/or dental insurance, I accept any 
+                                            financial responsibility for this treatment and authorize treatment.
+                                        </div>
+                                        <br/>
+                                        <h4>or</h4><br/>
+                                        <h4>Refusal</h4>
+                                        <div style="margin-top:10px">
+                                            <!--                                            <p th:if="${treatmentRefusal.patientcheckbox6} == treat_ref6">
+                                                                                            <input type="checkbox" checked="checked"/> I refuse to give my consent for the proposed treatment(s) described 
+                                                                                            <span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;"  th:text="${treatmentRefusal.patienttxt2}">test</span> and understand the potential consequences associated with this refusal. </p>
+                                                                                        <p th:if="${treatmentRefusal.patientcheckbox6} != treat_ref6">
+                                                                                            <input type="checkbox"/> I refuse to give my consent for the proposed treatment(s) described 
+                                                                                            <span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;"  th:text="${treatmentRefusal.patienttxt2}">test</span> and understand the potential consequences associated with this refusal. </p>-->
+                                            <img th:if="${treatmentRefusal.patientcheckbox6} == treat_ref6"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${treatmentRefusal.patientcheckbox6} == treat_ref6" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I refuse to give my consent for the proposed treatment(s) described 
+                                            <span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;"  th:text="${treatmentRefusal.patienttxt2}">test</span> and understand the potential consequences associated with this refusal.
+                                        </div>
+                                    </div>
+
+
+                                    <!--======================= Witness Signature======================-->
+
+                                    <div>
+                                        <p> Patient Signature:<img th:src="@{data:image/png;base64,{image}(image=${treatmentRefusal.patientsignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/> 
+
+                                            Date:<span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${treatmentRefusal.signdate1}">test</span></p>
+                                    </div>  
+                                    <div>
+                                        <p>Provider Signature:<img th:src="@{data:image/png;base64,{image}(image=${treatmentRefusal.providersignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/> 
+
+                                            Date:<span  style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${treatmentRefusal.signdate2}">test</span></p>  
+
+                                    </div> 
+                                    <div>
+                                        <p>Witness Signature:<img th:src="@{data:image/png;base64,{image}(image=${treatmentRefusal.witnesssignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            Date:<span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${treatmentRefusal.signdate3}">test</span></p>  
+                                    </div><br/>
+                                    <p>I attest that I have discussed the risks, benefits, consequences and alternatives of the above 
+                                        treatment with <span style="font-weight:bold;min-width: 100px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${treatmentRefusal.patienttxt3}">test</span> (Patient or 
+                                        Patient's Representative) and they have had the opportunity to ask questions. I believe they 
+                                        understand what has been explained and consents or refuses treatment noted above</p>  
+                                </div>  
+                            </div>
+                        </div>
+
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> BONE GRAFTING OR REGENERATION CONSENT FORM</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 1px;
+                padding: 0px;
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .smfn7{
+                font-size:14px;
+            }
+        </style>
+    </head>   
+    <body>
+
+        <div class="modal fade" id="Bone_Grafting_or_RegenerationConsent" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;"> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span> <span  th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div>
+                    </div> 
+                    <h4 class="modal-title" id="myModalLabel" style="text-align:center;margin: 10px 0px;">
+                        DISCUSSION AND INFORMED CONSENT FOR BONE GRAFTING AND/OR REGENERATION            
+                    </h4>
+                   
+
+                    <div class="container">
+                        <div class="smfn7">
+                            <div class="card-body">  
+
+                                <table class="col" style="width: 100%">
+                                    <tr>
+                                        <td>
+                                            <p>Patient Name:<span style="font-weight:bold;min-width: 380px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${boneGraft.patientname}">test</span></p>
+                                        </td>
+                                        <td>Date: <span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${boneGraft.patientcurrentdate}">test</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="2"><p>Diagnosis:<span style="font-weight:bold;min-width: 590px;text-align:center;border-bottom: 1px solid #000000;display: inline-block;" th:text="${boneGraft.patientdiagnosis}">test</span></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><p>Treatment &amp; Location: <span style="font-weight:bold;min-width: 520px;text-align:center;border-bottom: 1px solid #000000;display: inline-block;" th:text="${boneGraft.patienttreatment}">test</span></p></td>
+                                    </tr>
+
+
+                                </table>
+                                <h4 style="margin-top:15px">Facts for Consideration</h4>
+                                <small><span style="font-style:italic"> Patient's initials required where applicable</span></small>
+                                <div class="row">
+                                    <div class="col-11">
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature1})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        I have been informed of the need for bone grafting/site preservation. Bone grafting to replace bone defect, 
+                                        bone infected, bone lesion, acute osteomyelitis, exotosis bone, tuberculous of bone, and severe bone loss, 
+                                        fracture of aveolar bone and combine with PRP growth factor to help prevent bone loss during the healing
+                                        period (a significant amount of bone resorption occurs immediately after the extracted bone lesion, 
+                                        bone abscess and tissue infected). The primary purpose of a socket graft is to allow the titanium 
+                                        screw to stabilize in placet either at the same time as the surgery. Osteotomy &amp; osteoplasty can be at the same time 
+                                        of bone graft surgery or three to six months later. Another purpose of this surgery may be to assist with rebuilding 
+                                        a absorbed ridge for better aesthetics and function where a replacement tooth will be located as part of placing a dental bridge. 
+                                    </div>
+                                    <div class="col-11">
+
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature2})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        I have been informed that I may need a ridge augmentation procedure. A ridge augmentation procedure is often needed prior to 
+                                        implant placement because there is not adequate ridge width for an implant to be placed. Often times the existing ridge width 
+                                        atrophies (narrows) if a significant period of time has passed after extraction. In order to regain ridge width to have adequate
+                                        bone such that an implant can be surrounded on all sides by bone, a ridge augmentation procedure is required. Another purpose
+                                        of this surgery may be to assist with rebuilding a resorbed (shrunken) ridge for better aesthetics and function where a replacement
+                                        tooth will be located as part of placing a dental bridge. 
+                                    </div>
+
+                                    <div class="col-11">
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature3})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        I have been informed that I have periodontal (gum and bone) problems and/or disease that should be surgically treated, including 
+                                        the use of bone grafting and techniques for bone regeneration.
+                                        I understand that the purpose of this procedure is to allow access for the removal of bacteria by cleaning the roots of 
+                                        teeth and the lining of the gums. Bone grafting may treat irregularities of the jawbone so that when the gum is replaced about 
+                                        the teeth, reduction of gum pockets, infection, inflammation and improved bone healing may occur. The decrease in gum pocket 
+                                        depths is important because it will improve the ease and effectiveness of my personal oral hygiene and the ability of a dental
+                                        professional to better clean my teeth. The decrease in infection and inflammation may minimize further loss of bone and gum 
+                                        tissue supporting my teeth, which may aid in longer retention of my teeth in the treated area(s).
+                                    </div>
+
+                                    <div class="col-11">
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature4})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        I have been advised that bone grafting may be performed in areas of my mouth associated with gum pocketing and/or recession. It has also been explained to me
+                                        that this is a procedure that may involve surgical grafting of bone by removing a piece(s) of bone from another area of my body,
+                                        requiring another surgical site, or using commercially made bone graft from another human or animal bone source. 
+                                        The graft material may be used in a block form over a large area or in particulate form for smaller areas. 
+                                    </div>
+
+                                    <div class="col-11">
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature5})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        I acknowledge that I have had an opportunity to discuss these options and my choices with my dentist before consenting to this treatment,
+                                        procedure or surgery. 
+                                    </div>
+                                    <div class="col-12">
+                                        You must acknowledge and initial one but not both of the next two paragraphs:
+                                    </div>
+
+                                    <div class="col-11">
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature6})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        By initialing this paragraph, I acknowledge and state that I do not have any objection to the source or origin 
+                                        of the bone graft material whether it be human or animal. 
+                                    </div>
+                                    <div class="col-12" style="margin-top:7px">
+                                        <h5>Or</h5>
+                                    </div>
+
+                                    <div class="col-11">
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature7})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        By initialing this paragraph and its parts, I am stating my objection to the origin of the bone graft material that may be 
+                                        used: No human ( ) No animal ( ) 
+                                    </div>
+
+                                    <div class="col-12" style="margin-top: 15px">
+                                        <h4>Bone Grafting and/or Regenerative Surgery,Not Limited to the Following:</h4>
+                                    </div> 
+                                    <div class="col-11">
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature8})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        The goal of bone grafting and or regenerative surgery is to assist or help ?grow? bone back 
+                                        (?repair? bone that has been lost due to bone defect &amp; bone atrophy disease or to possibly allow for dental implant placement 
+                                        either at the same time as this surgery or a later date. Additionally, the purpose of this surgery may be to help build a restorable
+                                        jaw ridge (bone) for better aesthetics and function where a replacement (artificial) tooth will go as part of a dental bridge.
+                                    </div> 
+
+                                    <div class="col-12" style="margin-top:10px;" >
+                                        <h4>Risks of Bone Grafting and/or Regenerative Surgery, Not Limited to the Following:</h4>
+                                    </div> 
+                                    <div class="col-11">
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature9})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        I understand that with surgery there may be postoperative bleeding, swelling, pain, infection, facial discoloration/bruising,
+                                        possible migration or loss of bone graft material from the surgery site, injury to neighboring or adjacent teeth and/or temporary or,
+                                        on occasion, permanent tooth sensitivity to hot, cold, sweet or acidic foods. A temporary or permanent numbing of the surgical areas, 
+                                        oral cavity or face may occur affecting my lips, chin and tongue, possibly affecting my sense of taste. I understand that
+                                        I may see changes in the appearance of my gums. They may be in a different position on the roots or there may be spaces between 
+                                        the teeth that are larger. I understand that my teeth may appear ?longer? and my roots may be exposed. I also understand that there
+                                        may be a need for a second procedure if the initial surgery is not entirely successful.
+                                    </div> 
+
+
+                                    <div class="col-11">
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature10})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        I understand that I will receive a local anesthetic by injection and/or other medication(s). In rare instances, 
+                                        patients can have a strong and unpredictable reaction to the anesthetic, which may require emergency medical attention. 
+                                        The medication may affect my ability to control swallowing. This increases the chance of swallowing foreign objects during
+                                        treatment. Depending on the anesthesia and medications administered, I may need a designated driver to take me home. Rarely, 
+                                        temporary or permanent nerve injury to the oral cavity or face, resulting in loss of feeling of the chin, lips, gums and
+                                        tongue and partial loss of taste can result from an injection.
+                                    </div> 
+
+                                    <div class="col-11">
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature11})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        I understand that holding my mouth open during treatment may temporarily leave my jaw feeling stiff and sore and may make it 
+                                        difficult for me to open wide for several days; this is sometimes referred to as trismus. However, this can occasionally be an 
+                                        indication of a more significant condition or problem. In the event this occurs, I must notify this office if I experience persistent 
+                                        trismus or if other similar concerns arise.
+                                    </div> 
+
+                                    <div class="col-11">
+                                        <img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature12})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                        I understand that all medications have the potential for accompanying risks, side
+                                        effects and drug interactions. Therefore, it is critical that inform my dentist of all medications and supplements that I am currently 
+                                        taking, which are:<br/>
+                                        <p style="font-weight:bold;min-width: 640px;margin-left: 10px;text-align:center;border-bottom: 1px solid #000000;display: inline-block;" th:text="${boneGraft.patienttxt1}">test</p>
+                                        <p style="font-weight:bold;min-width: 640px;margin-left: 10px;text-align:center;border-bottom: 1px solid #000000;display: inline-block;" th:text="${boneGraft.patienttxt2}">test</p>
+                                    </div> 
+
+
+                                    <div class="col-11">
+                                        <p><img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature13})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            I am <span style="font-weight:bold;min-width: 120px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${boneGraft.patienttxt3}">test</span>  I am not
+                                            <span style="font-weight:bold;min-width: 120px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${boneGraft.patienttxt4}">test</span> currently or in the past taken bisphosphonates 
+                                            (bone supplementing medication) for the purpose of treating osteoporosis.</p>
+                                    </div> 
+
+
+                                    <div class="col-11">
+                                        <p><img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature14})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            I understand that smoking and/or chewing tobacco and/or alcohol intake may affect my ability to have normal gum and/or bone 
+                                            healing and may limit the potential for a successful outcome of my surgery. Smoking may adversely affect the extraction site healing
+                                            and may cause ?dry socket? (an infection of the bone of the socket walls). Smokers are at higher risk for ?dry socket? (site infection)
+                                            and have more dry sockets than nonsmokers. I agree to follow my dentist's instructions related to daily care of my mouth, teeth and gums.</p>
+                                    </div> 
+
+                                    <div class="col-12" style="margin-top:25px">
+
+                                        <h4> Alternatives to Suggested Treatment:</h4>
+                                        <p style="margin-top: 10px;">I understand that alternatives to bone graft and/or regenerative surgery include no treatment, 
+                                            nonsurgical scraping of the teeth roots and lining of the gum (scaling and root planing), with or without medication, in an attempt 
+                                            to further reduce bacteria and tarter under the gum line (gingival margin), dental bridgework, removable partial dentures and no teeth
+                                            replacement. </p>
+                                        <p style="margin-top: 10px;"> Alternatives discussed:<span style="font-weight:bold;min-width: 510px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${boneGraft.patienttxt5}">test</span> </p>
+                                        <p style="margin-top: 10px;">No guarantee or assurance has been given to me by anyone that the proposed treatment or surgery will cure or improve the condition(s) 
+                                            listed above. I understand that it is my responsibility to seek attention should any undue circumstance occur postoperatively and 
+                                            I agree to follow any preoperative and postoperative instructions.  </p>
+
+                                        <div style="margin-top:15px">
+                                            <h4 style="font-weight:bold;min-width: 230px;text-align:center;border-bottom: 1px solid #000000;display: inline-block;">Check the boxes below that apply to you:</h4>
+                                            <div style="margin-top:15px"> <h4>Consent</h4></div>
+                                            <p style="margin-top:10px">
+<!--                                                <input type="checkbox" th:if="${boneGraft.patientcheckbox1} == bonegraft_0" checked="checked"/> 
+                                                <input type="checkbox" th:unless="${boneGraft.patientcheckbox1} == bonegraft_0"/> -->
+                                                <img th:if="${boneGraft.patientcheckbox1} == bonegraft_0"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${boneGraft.patientcheckbox1} == bonegraft_0" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>
+                                                I have been informed both verbally and by the information provided on this form of the risks and benefits of the proposed 
+                                                treatment.
+
+                                            </p>
+                                            <p style="margin-top:10px">
+<!--                                                <input type="checkbox" th:if="${boneGraft.patientcheckbox2} == bonegraft_1" checked="checked"/>
+                                                <input type="checkbox" th:unless="${boneGraft.patientcheckbox2} == bonegraft_1"/>-->
+                                                <img th:if="${boneGraft.patientcheckbox2} == bonegraft_1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${boneGraft.patientcheckbox2} == bonegraft_1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>  
+                                                I have been informed both verbally and by the information provided on this form of the material risks and benefits of 
+                                                alternative treatment and of electing <span style="border-bottom: 1px solid #000000;display: inline-block;">not to treat</span> my condition.
+
+                                            </p>
+                                            <p style="margin-top:10px">
+<!--                                                <input type="checkbox" th:if="${boneGraft.patientcheckbox3} == bonegraft_2" checked="checked"/>
+                                                <input type="checkbox" th:unless="${boneGraft.patientcheckbox3} == bonegraft_2"/>-->
+                                                <img th:if="${boneGraft.patientcheckbox3} == bonegraft_2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${boneGraft.patientcheckbox3} == bonegraft_2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>  
+                                                I certify that I have read and understand the above information 
+                                                and that the explanations referred to are understood by me, that my questions have been answered and that the blanks requiring insertions
+                                                or completion have been filled in. I authorize and direct Dr.- <span style="font-weight:bold;min-width: 120px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${boneGraft.patienttxt6}">test</span> to do whatever he/she deems necessary and advisable under 
+                                                the circumstances. 
+
+                                            </p>
+                                            <p style="margin-top:10px">
+<!--                                                <input type="checkbox" th:if="${boneGraft.patientcheckbox4} == bonegraft_3" checked="checked"/>
+                                                <input type="checkbox" th:unless="${boneGraft.patientcheckbox4} == bonegraft_3"/>-->
+                                                <img th:if="${boneGraft.patientcheckbox4} == bonegraft_3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${boneGraft.patientcheckbox4} == bonegraft_3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>  
+                                                I consent to have the above-mentioned treatment. 
+
+                                            </p>
+                                            <p style="margin-top:10px">
+<!--                                                <input type="checkbox" th:if="${boneGraft.patientcheckbox5} == bonegraft_4" checked="checked"/>
+                                                <input type="checkbox" th:unless="${boneGraft.patientcheckbox5} == bonegraft_4"/>-->
+                                                <img th:if="${boneGraft.patientcheckbox5} == bonegraft_4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${boneGraft.patientcheckbox5} == bonegraft_4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>  
+                                                While the treatment may be covered by my medical and/or dental
+                                                insurance, I accept any financial responsibility for this treatment and authorize treatment. 
+
+                                            </p><br/>
+
+                                            <h4 style="margin-bottom:20px">or</h4>
+                                            <h4 style="margin-bottom:20px">Refusal</h4>
+                                            <p style="margin-top:10px">
+<!--                                                <input type="checkbox" th:if="${boneGraft.patientcheckbox6} == bonegraft_5" checked="checked"/>
+                                                <input type="checkbox" th:unless="${boneGraft.patientcheckbox6} == bonegraft_5"/>-->
+                                                <img th:if="${boneGraft.patientcheckbox6} == bonegraft_5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${boneGraft.patientcheckbox6} == bonegraft_5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                                </span>  
+                                                I refuse to give my consent 
+                                                for the proposed treatment(s) described above and understand the potential consequences associated with 
+                                                this refusal.
+                                            </p> 
+                                        </div>
+
+                                        <table class="col-auto" style="width: 100%">
+                                            <td><img th:src="@{data:image/png;base64,{image}(image=${boneGraft.patientsignature15})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                            <td><span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;"  th:text="${boneGraft.signdate1}">test</span></td> 
+                                            <tr>
+                                                <td>Patient or Patient's Representative Signature</td>
+                                                <td>Date</td>
+                                            </tr>
+                                        </table>
+                                        <table class="col-auto" style="width: 100%">
+                                            <td><img th:src="@{data:image/png;base64,{image}(image=${boneGraft.witnesssignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                            <td><span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${boneGraft.signdate2}">test</span></td> 
+                                            <tr>
+                                                <td>Witness Signature</td> 
+                                                <td>Date</td>
+                                            </tr>
+                                        </table>
+
+
+                                        <div class="col-12" style="margin-top: 30px">
+                                            <p>I attest that I have discussed the risks, benefits, consequences and alternatives of the above treatment with
+                                                <span style="font-weight:bold;min-width: 300px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${boneGraft.patienttxt7}">test</span> (Patient or Patient's Representative) and they have had the opportunity to ask 
+                                                questions. I believe they understand what has been explained and consents or refuses treatment noted above.</p>   
+                                        </div>
+
+
+                                        <table class="col-auto" style="width: 100%">
+                                            <td><img th:src="@{data:image/png;base64,{image}(image=${boneGraft.dentistsignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                            <td><span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${boneGraft.signdate3}">test</span> </td>
+                                            <tr>
+                                                <td>Dentist Signature</td>
+                                                <td>Date</td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

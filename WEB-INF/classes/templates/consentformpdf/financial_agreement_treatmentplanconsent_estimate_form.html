@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+
+        <title> Financial Agreement Treatment Plan Consent Estimate Form</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 1px;
+                padding: 1px;
+                box-sizing: border-box;
+            }
+            .font-small{
+                font-size: 13px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="modal fade" >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;color:#a2a5a8;"> <span th:text="${patientPractice.addressline1}">test</span><span th:text="${patientPractice.addressline2}">test</span> <span th:text="${patientPractice.city}">test</span><span th:text="${patientPractice.state}">test</span><span th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span th:text="${patientPractice.contactPhone}">test</span><span th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div> 
+                    </div>
+                    <div class="modal-header" style="background: orange">
+                        <h2 class="modal-title center" style="width:100% ; text-align: center">
+                            INSURANCE PRE-ESTIMATE SUMMARY                
+                        </h2>   
+                    </div>
+                    <div class="container">
+
+                        <div class="small_font font-small">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div style="margin-top:20px;">Patient:  <span style="font-weight:bold;min-width: 430px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patientname}">test</span>
+                                                 Date: <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.currentDate}">test</span>
+                                        </div>
+                                        <!--                                            <div>   Practice Name: <p style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financial53}">test</p></div>-->
+                                        <div style="margin-top:5px;">Treatment: <p style="font-weight:bold;min-width: 535px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patienttreatment}">test</p></div>
+                                        <p style="margin-top:10px;">Enclosed is a copy of the insurance pre-estimate that was recently received by our office. Your insurance company has provided the following estimate of benefits (not a guarantee):</p>
+
+                                        <table style="width:60% ;margin-left: 80px;margin-top: 10px;">
+                                            <tr>
+                                                <td>Total estimated cost of treatment</td>
+                                                <td>$ <p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.estimatedcost}">test</p></td>
+                                            </tr>  
+                                            <tr>
+                                                <td>Total estimated insurance benefit</td>                                
+                                                <td>$ <p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.insurancebenefit}">test</p></td>
+                                            </tr>      
+                                            <tr>
+                                                <td>Total estimated patient portion</td>
+                                                <td>$ <p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patientportion}">test</p> </td>
+                                            </tr>
+                                        </table>
+                                        <h4 style="margin-top: 10px;">Multiple Dental &amp; Medical Plans:</h4>
+                                        <p style="margin-top: 10px;">Secondary Dental &amp; Health plans typically pre-estimate treatment as if they are primary. Because of this, secondary pre-estimates may be unreliable. A secondary dental plan may reduce the amount it pays based on its coordination of benefits clause. If your secondary plan uses limited, non-duplication, maintenance, or integration of benefits, its pre-estimate may not accurately represent what will be paid on your claim. If you have multiple dental plan please contact your secondary insurance carrier to ask how it coordinates benefits.</p>
+                                        <div style="margin-top:15px;"> 
+                                            <table style="width:100%;">
+                                                <tr>
+                                                    <th>Treatment Procedure:</th>
+                                                    <th ><span style="min-width:40px;border-bottom: 1px solid #000000;">Insurance Estimate</span></th>
+                                                    <th><span  style="min-width:30px;border-bottom: 1px solid #000000;">Fee</span></th>
+                                                    <th><span  style="min-width:100px;border-bottom: 1px solid #000000;">Patient Responsible<br/> Estimate</span></th>
+                                                    <th><span  style="min-width:30px;border-bottom: 1px solid #000000;">Fee</span></th>
+                                                </tr>
+                                                <tr>
+                                                    <td><p style="font-weight:bold;min-width: 170px;display: inline-block;text-align: center;" th:text="${financialAgreementForm.treatmentprocedure1}">test</p></td>
+                                                    <td>1.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.insuranceestimate1}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee1}">test</p></td>
+                                                    <td>1.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patientresponsibleestimate1}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee2}">test</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p style="font-weight:bold;min-width: 170px;display: inline-block;text-align: center;" th:text="${financialAgreementForm.treatmentprocedure2}">test</p></td>
+                                                    <td>2.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.insuranceestimate2}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width:80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee3}">test</p></td>
+                                                    <td>2.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patientresponsibleestimate2}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee4}">test</p></td></tr>
+                                                <tr>
+                                                    <td><p style="font-weight:bold;min-width: 170px;display: inline-block;text-align: center;" th:text="${financialAgreementForm.treatmentprocedure3}">test</p></td>
+                                                    <td>3.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.insuranceestimate3}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee5}">test</p></td>
+                                                    <td>3.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patientresponsibleestimate3}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee6}">test</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p style="font-weight:bold;min-width: 170px;display: inline-block;text-align: center;" th:text="${financialAgreementForm.treatmentprocedure4}">test</p></td>
+                                                    <td>4.<p style="font-weight:bold;min-width:80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.insuranceestimate4}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width:80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee7}">test</p></td>
+                                                    <td>4.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patientresponsibleestimate4}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee8}">test</p></td>
+                                                </tr>
+                                                <tr> 
+                                                    <td><p style="font-weight:bold;min-width: 170px;display: inline-block;text-align: center;" th:text="${financialAgreementForm.treatmentprocedure5}">test</p></td>
+                                                    <td>5.<p style="font-weight:bold;min-width:80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.insuranceestimate5}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee9}">test</p></td>
+                                                    <td>5.<p style="font-weight:bold;min-width:80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patientresponsibleestimate5}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee10}">test</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p style="font-weight:bold;min-width: 170px;display: inline-block;text-align: center;" th:text="${financialAgreementForm.treatmentprocedure6}">test</p></td>
+                                                    <td>6.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.insuranceestimate6}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee11}">test</p></td>
+                                                    <td>6.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patientresponsibleestimate6}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee12}">test</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p style="font-weight:bold;min-width: 170px;display: inline-block;text-align: center;" th:text="${financialAgreementForm.treatmentprocedure7}">test</p></td>
+                                                    <td>7.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.insuranceestimate7}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee13}">test</p></td>
+                                                    <td>7.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patientresponsibleestimate7}">test</p></td>                                                
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee14}">test</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p style="font-weight:bold;min-width: 170px;display: inline-block;text-align: center;" th:text="${financialAgreementForm.treatmentprocedure8}">test</p></td>
+                                                    <td>8.<p style="font-weight:bold;min-width:80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.insuranceestimate8}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee15}">test</p></td>
+                                                    <td>8.<p style="font-weight:bold;min-width:80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patientresponsibleestimate8}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width:80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee16}">test</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p style="font-weight:bold;min-width: 170px;display: inline-block;text-align: center;" th:text="${financialAgreementForm.treatmentprocedure9}">test</p></td>
+                                                    <td>9.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.insuranceestimate9}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee17}">test</p></td>
+                                                    <td>9.<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.patientresponsibleestimate9}">test</p></td>
+                                                    <td>$<p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.fee18}">test</p></td>
+                                                </tr>
+                                            </table>           </div>
+                                        <p style="margin-top: 30px;">Your estimated portion is due at the time of treatment. A pre-estimate is no guarantee of payment. Actual benefits paid will be subject to any applicable limitations or benefit maximums available at the time the claim is processed. Please note that dental treatment provided by another office during the current plan year can affect your available maximum of benefits. Please contact any member of our business team to assist you with any questions you may have regarding treatment, payment options, and/or to schedule an appointment.</p>
+                                        <p style="margin-top: 40px;">We look forward to seeing you soon!</p>                       
+                                    </div> 
+                                    <p>  Staff Signature: <img th:src="@{data:image/png;base64,{image}(image=${financialAgreementForm.staffsignature})}" height="50" width="380" style="min-width: 100px;border-bottom: 1px solid #000000;"/>
+                                        Date:<span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.signdate1}">test</span></p>
+                                    <p>  Patient Signature : <img th:src="@{data:image/png;base64,{image}(image=${financialAgreementForm.patientsignature})}" height="50" width="360" style="min-width: 100px;border-bottom: 1px solid #000000;"/>
+                                        Date: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${financialAgreementForm.signdate2}">test</span></p>
+
+                                </div>  
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

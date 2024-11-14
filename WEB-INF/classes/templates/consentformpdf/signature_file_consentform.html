@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head> 
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Signature File Consent Form</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 2px;
+                padding: 2px;
+                box-sizing: border-box;
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+                font-weight:bold;
+            }
+            .font_small{
+                font-size: 13px;
+                line-height: 13px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="modal fade" >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;color:#a2a5a8;"> <span th:text="${patientPractice.addressline1}">test</span><span th:text="${patientPractice.addressline2}">test</span><span th:text="${patientPractice.city}">test</span><span th:text="${patientPractice.state}">test</span><span th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span><span th:text="${patientPractice.contactPhone}">test</span><span th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div> 
+                    </div>
+                    <div class="container">
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="font_small">
+                                    
+                                    <h2 style="text-align: center">PATIENT SIGNATURE ON FILE </h2>
+                                    <div>
+                                    <table style="width:100%"><tr><td>   
+                                    
+                                        
+                                        Patient Name  :  <span style="font-weight:bold;min-width: 190px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${signatureFileForm.patientname}">test</span></td>
+                                        <td>Date: <span style="font-weight:bold;min-width: 60px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${signatureFileForm.currentdate}">test</span></td>
+                                        <td>Sex: 
+                                        <!--                                        <input type="checkbox"  checked="checked" th:if="${signatureFileForm.patientgender} == 1" disabled="disabled"/>
+                                                                                <input type="checkbox"  th:unless="${signatureFileForm.patientgender} == 1" disabled="disabled"/> Male
+                                                                                <input type="checkbox" checked="checked" th:if="${signatureFileForm.patientgender} == 2" disabled="disabled"/>
+                                                                                <input type="checkbox"  th:unless="${signatureFileForm.patientgender} == 2" disabled="disabled"/> Female -->
+
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${signatureFileForm.patientgender} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -11px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${signatureFileForm.patientgender} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>Male</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${signatureFileForm.patientgender} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -11px;"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${signatureFileForm.patientgender} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>Female</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${signatureFileForm.patientgender} == 3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -11px;"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${signatureFileForm.patientgender} == 3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>Other</span></td>
+                                        </tr>
+                                        <tr> 
+                                            
+                                            <td>Address: <span style="width:35px;font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${signatureFileForm.patientaddress}">test</span></td></tr>
+                                    </table>
+                                    </div>
+                                    <p style="margin-top: 10px;"> 
+                                        City : <span style="width:35px;font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${signatureFileForm.patientcity}">test</span>
+                                        Zip : <span style="width:25px;font-weight:bold;min-width: 90px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${signatureFileForm.patientzip}">test</span>
+                                        State :  <span style="width:15px;font-weight:bold;min-width: 40px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${signatureFileForm.patientstate}">test</span></p>
+
+                                    <p style="margin-top: 10px;"> DOB :<span style="font-weight:bold;min-width: 90px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${signatureFileForm.patientdob}">test</span>
+                                        SSN :<span style="font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${signatureFileForm.patientssn}">test</span>
+                                        <span style="margin-left:25px"> Subscriber ID#:</span><span style="font-weight:bold;min-width: 160px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${signatureFileForm.subscriberid}">test</span></p>
+
+                                    <div class="col-12">
+                                        <p style="line-height: 15px;">ALL PATIENTS MUST ACKNOWLEDGE ITEM NUMBERS 1, 4, 9 and 10 BY CHECKING THE BOX NEXT TO THE ITEM AND SIGNING BELOW. ANY OTHER ITEMS REQUIRING AGREEMENT WILL BE INDICATED FOR YOU BY THE PRACTICE STAFF.</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <div style="margin-top: 15px;font-size: 14px;">
+
+                                            <span style="font-weight:bold;"> 1.
+                                                <!--                                                <input type="checkbox" th:if="${signatureFileForm.patientcheckbox1} == GENERALRELEASEOFINFORMATION"  checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${signatureFileForm.patientcheckbox1} == GENERALRELEASEOFINFORMATION"/>
+                                                                                                GENERAL RELEASE OF INFORMATION-->
+                                                <img th:if="${signatureFileForm.patientcheckbox1} == GENERALRELEASEOFINFORMATION"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${signatureFileForm.patientcheckbox1} == GENERALRELEASEOFINFORMATION" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span>GENERAL RELEASE OF INFORMATION</span>
+                                            <p style="line-height: 15px;">I give my permission to <b>OUR PRACTICE</b>, and any associated PROVIDERS and any agency contracted by these parties disclose any or all parts of the clinical record to my insurance company(s) for purposes of satisfying charges billed by <b>OUR PRACTICE</b> and any PROVIDERS. I further understand that it may be necessary to contact my past or present employer(s) in regards to this claim. This authorization does not cover my 3rd party liability claims. GUARANTEE OF ACCOUNT -<b>OUR PRACTICE</b> and any associated PROVIDERS, and any agency/vendor contracted by these parties for consideration of services by <b>OUR PRACTICE</b> and any associated PROVIDERS, and any agency contracted by these parties to the above named patient, the undersigned (jointly and severally if more than one) guarantees payment of all charges incurred for said patient in accordance with the policy of payment of such bills.</p>
+                                        </div>
+
+
+                                        <div style="margin-top: 15px;font-size: 14px;">
+                                            <span style="font-weight:bold;">   2.
+                                                <!--                                                <input type="checkbox" th:if="${signatureFileForm.patientcheckbox2} == MEDICARE" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${signatureFileForm.patientcheckbox2} == MEDICARE" />-->
+                                                <img th:if="${signatureFileForm.patientcheckbox2} == MEDICARE"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${signatureFileForm.patientcheckbox2} == MEDICARE" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span>MEDICARE
+                                            </span>
+                                            <p style="line-height: 15px;">I certify that the information given by me in applying for payment under Title XVIII of the Social Security Act is correct. I request that payment of authorized <u>Medicare benefits</u> be made either to me or on my behalf to <b>OUR PRACTICE</b> and any associated PROVIDERS and any agency contracted by these parties for any services furnished to me by that physician or supplier. I authorize any holder of medical information about me to release to the Health Care Financing Administration and its agents any information needed to determine these benefits or the benefits payable for related services.</p>
+                                        </div>
+
+
+                                        <div style="margin-top: 15px;font-size: 14px;">
+                                            <span style="font-weight:bold;">  3.
+                                                <!--                                                <input type="checkbox" th:if="${signatureFileForm.patientcheckbox3} == MEDIGAPSUPPLEMENT" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${signatureFileForm.patientcheckbox3} == MEDIGAPSUPPLEMENT" />-->
+                                                <img th:if="${signatureFileForm.patientcheckbox3} == MEDIGAPSUPPLEMENT"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${signatureFileForm.patientcheckbox3} == MEDIGAPSUPPLEMENT" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span>MEDIGAP (SUPPLEMENT)</span>
+                                            <p style="line-height: 15px;">I request the payment of authorized Medigap benefits be made either to me or on my behalf to <b>OUR PRACTICE</b> and any associated PROVIDERS, and any agency contracted by these parties for any services furnished to me by that physician or supplier. I authorize any holder of medical information about me to release to my insurance company any information needed to determine these benefits payable for related services.</p>
+                                        </div>
+
+
+                                        <div style="margin-top: 15px;font-size: 14px;">
+                                            <span style="font-weight:bold;">   4.
+                                                <!--                                                <input type="checkbox"  th:if="${signatureFileForm.patientcheckbox4} == SIGNATURE" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${signatureFileForm.patientcheckbox4} == SIGNATURE" />-->
+                                                <img th:if="${signatureFileForm.patientcheckbox4} == SIGNATURE"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${signatureFileForm.patientcheckbox4} == SIGNATURE" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span> SIGNATURE</span>
+                                            <p style="line-height: 15px;">My signature certifies that I received a service or supply. I understand that payment for these services or supplies will be from Federal and State funds, and that any false claims, statements, or documents or concealment of material may be prosecuted under applicable Federal and State Laws.</p>
+                                        </div>
+
+                                        <div style="margin-top: 15px;font-size: 14px;">
+                                            <span style="font-weight:bold;">  5.
+                                                <!--                                                <input type="checkbox" th:if="${signatureFileForm.patientcheckbox5} == COMMERCIALASSIGNMENTOFINSURANCEBENEFITSPPO" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${signatureFileForm.patientcheckbox5} == COMMERCIALASSIGNMENTOFINSURANCEBENEFITSPPO"/>-->
+                                                <img th:if="${signatureFileForm.patientcheckbox5} == COMMERCIALASSIGNMENTOFINSURANCEBENEFITSPPO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img th:unless="${signatureFileForm.patientcheckbox5} == COMMERCIALASSIGNMENTOFINSURANCEBENEFITSPPO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span>  COMMERCIAL ASSIGNMENT OF INSURANCE BENEFITS (PPO)</span>
+                                            <p style="line-height: 15px;">I hereby authorize payment directly to <b>OUR PRACTICE</b> and any associated PROVIDERS and any agency contracted by these parties for medical insurance benefits including any Major Medical Benefits otherwise</p><p> payable to me under the terms of my policy but not to exceed the balance due to the physicians or organizations furnishing the services performed during this period of health care. In making this assignment, I understand and agree that I am financially responsible to the above party and/or parties for charges not paid under this insurance  policy. I permit a copy of this authorization to be used in place of the original.</p>
+                                        </div>
+
+                                        <div style="margin-top: 15px;font-size: 14px;">
+                                            <span style="font-weight:bold;">  6. 
+                                                <!--                                                <input type="checkbox"  th:if="${signatureFileForm.patientcheckbox6} == MEDICARESECONDARYPAYORMSPADVANTAGE" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${signatureFileForm.patientcheckbox6} == MEDICARESECONDARYPAYORMSPADVANTAGE" />-->
+                                                <img th:if="${signatureFileForm.patientcheckbox6} == MEDICARESECONDARYPAYORMSPADVANTAGE"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img th:unless="${signatureFileForm.patientcheckbox6} == MEDICARESECONDARYPAYORMSPADVANTAGE" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span> 
+                                                MEDICARE SECONDARY PAYOR (MSP) (ADVANTAGE)</span>
+                                            <p style="line-height: 15px;">I certify that the information given is true and correct and accurate.</p>
+                                        </div>
+
+                                        <div style="margin-top: 15px;font-size: 14px;">
+                                            <span style="font-weight:bold;">  7.
+                                                <!--                                                <input type="checkbox" th:if="${signatureFileForm.patientcheckbox7} == UNCOMPENSATEDCARE"  checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${signatureFileForm.patientcheckbox7} == UNCOMPENSATEDCARE" />-->
+                                                <img th:if="${signatureFileForm.patientcheckbox7} == UNCOMPENSATEDCARE"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img th:unless="${signatureFileForm.patientcheckbox7} == UNCOMPENSATEDCARE" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span> UNCOMPENSATED CARE</span>
+                                            <p style="line-height: 15px;">I have made application to the uncompensated care program under <b>OUR PRACTICE</b></p>
+                                        </div>
+
+                                        <div style="margin-top: 15px;font-size: 14px;">
+                                            <span style="font-weight:bold;">  8. 
+                                                <!--                                                <input type="checkbox" th:if="${signatureFileForm.patientcheckbox8} == ADVANCEDIRECTIVE" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${signatureFileForm.patientcheckbox8} == ADVANCEDIRECTIVE" />-->
+                                                <img th:if="${signatureFileForm.patientcheckbox8} == ADVANCEDIRECTIVE"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img th:unless="${signatureFileForm.patientcheckbox8} == ADVANCEDIRECTIVE" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span> ADVANCE DIRECTIVE</span>
+                                            <p style="line-height: 15px;">I acknowledge that I have received information regarding Act 24 "Advance Directive for Health Care Act" established in April 1992.</p>
+                                        </div>
+
+                                        <div style="margin-top: 15px;font-size: 14px;">
+                                            <span style="font-weight:bold;"> 9.
+                                                <!--                                                <input type="checkbox" th:if="${signatureFileForm.patientcheckbox9} == ADVANCEBENEFICIARYNOTICEOFNONCOVERAGESERVICESABN" checked="checked"/>
+                                                                                                <input type="checkbox"  th:unless="${signatureFileForm.patientcheckbox9} == ADVANCEBENEFICIARYNOTICEOFNONCOVERAGESERVICESABN"/>-->
+                                                <img th:if="${signatureFileForm.patientcheckbox9} == ADVANCEBENEFICIARYNOTICEOFNONCOVERAGESERVICESABN"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img th:unless="${signatureFileForm.patientcheckbox9} == ADVANCEBENEFICIARYNOTICEOFNONCOVERAGESERVICESABN" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span>ADVANCE BENEFICIARY NOTICE OF NON-COVERAGE SERVICES (ABN)</span>
+                                            <p style="line-height: 15px;">I acknowledge that my insurance company covers not all health care services provided to me. As a result, I acknowledge my responsibility for payment of these non-covered services.</p>
+                                        </div>
+
+                                        <div style="margin-top: 15px;font-size: 14px;">
+                                            <span style="font-weight:bold;">  10. 
+                                                <!--                                                <input type="checkbox" th:if="${signatureFileForm.patientcheckbox10} == AUTHORIZERELEASEOFALLMEDICALDENTALBILLINGNECCESSARY" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${signatureFileForm.patientcheckbox10} == AUTHORIZERELEASEOFALLMEDICALDENTALBILLINGNECCESSARY" />-->
+                                                <img th:if="${signatureFileForm.patientcheckbox10} == AUTHORIZERELEASEOFALLMEDICALDENTALBILLINGNECCESSARY"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img th:unless="${signatureFileForm.patientcheckbox10} == AUTHORIZERELEASEOFALLMEDICALDENTALBILLINGNECCESSARY" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span> AUTHORIZE RELEASE OF ALL MEDICAL &amp; DENTAL BILLING NECCESSARY</span>
+                                            <p style="line-height: 15px;">I hereby authorize the release of all medical information necessary to process my claims and I authorize release of this same information, when necessary, to other providers rendering medical/dental care, as well as to labs that need my information to make a diagnosis or fabricate an appliance necessary for my treatment. I assign all medical and surgical benefits, including major medical benefits to which I am entitled, <b>OUR PRACTICE</b> This assignment will remain in effect until revoked by me in writing. A photocopy of this assignment is to be considered as valid as the original.</p>
+                                        </div>
+
+                                    </div>
+                                    <ul style="font-size: 14px;">
+                                        <li style="margin-left:50px;">PROCESS ALL INSURANCE CLAIMS</li>
+                                        <li style="margin-left:50px;">ENSURE PAYMENT FOR SERVICES PROVIDED</li>
+                                        <li style="margin-left:50px;line-height: 15px;">RELEASE MEDICAL INFORMATION TO INSURANCE COMPANIES NEEDED FOR THE PROCESSING OF YOUR CLAIMS</li>
+                                    </ul>
+                                </div> 
+                                <div>
+                                    <table style="width:100%;font-size: 14px;">
+                                        <tr>
+                                            <td><img th:src="@{data:image/png;base64,{image}(image=${signatureFileForm.patientsignature})}" height="50" width="400" style="font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"/></td>
+                                            <td style="vertical-align: bottom" valign='bottom'>
+                                                <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${signatureFileForm.signdate1}">test</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> Patient/Spouse or Insured's Signature</td>
+                                            <td>Date </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+    </body>
+</html>

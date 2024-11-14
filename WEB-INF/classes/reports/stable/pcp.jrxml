@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pcp" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4f411fb8-fa86-4ada-b011-d0c6ff054b8c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="EDIProcessor"/>
+	<parameter name="requestid" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[call ediengine.pcpdetails($P{requestid})]]>
+	</queryString>
+	<field name="requestid" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="requestid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<field name="npiheader" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="npiheader"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<field name="npi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="npi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<field name="contact1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="contact1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<field name="contact2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="contact2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<field name="contact3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="contact3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<field name="paddr1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="paddr1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<field name="paddr2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="paddr2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<field name="pcity" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pcity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<field name="pstate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pstate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<field name="pzip" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pzip"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_pcp"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="141" splitType="Stretch">
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="-1" y="-15" width="180" height="15" isRemoveLineWhenBlank="true" forecolor="#17977E" uuid="64e25552-a69a-4116-969b-b2d705b70f76"/>
+				<box leftPadding="4"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Primary Care Provider Info]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="79" y="4" width="164" height="20" isRemoveLineWhenBlank="true" uuid="e3d9c015-cdee-4bed-8890-f504fa2ee260">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="3" y="26" width="100" height="20" isRemoveLineWhenBlank="true" uuid="8553cc09-cc3b-46e3-b103-423a2f1b1532"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{npiheader}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="3" y="4" width="100" height="20" isRemoveLineWhenBlank="true" uuid="916974b0-57f9-4e47-837c-db62b5ba371e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[($F{paddr1} == null? null: $F{paddr1})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="79" y="24" width="100" height="20" isRemoveLineWhenBlank="true" uuid="b4724f13-ef42-466e-898c-b55f9943a7ad">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{npi}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="79" y="46" width="164" height="44" isRemoveLineWhenBlank="true" uuid="d2382839-ef71-4387-8f6b-4be6c3d9d677">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement markup="styled">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{contact1}== null?"":$F{contact1}) + "<br/>" + ($F{contact2} == null?"":$F{contact2}) + "<br/>"+ ($F{contact3}==null?"":$F{contact3})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="3" y="46" width="100" height="20" isRemoveLineWhenBlank="true" uuid="98f898d8-5d20-4a93-b065-5ff17fcbe634">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Contact]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="3" y="90" width="100" height="20" isRemoveLineWhenBlank="true" uuid="fdd82916-e942-4b99-9626-d83c4f8813a8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="79" y="90" width="164" height="50" isRemoveLineWhenBlank="true" uuid="895ce403-c43b-4556-af63-12886d60b452">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement markup="styled">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{paddr1}==null?"":$F{paddr1}) + "<br/>" + ($F{paddr2}==null?"":$F{paddr2}) + ($F{pcity}==null?"":$F{pcity}) + " " + ($F{pstate}==null?"":$F{pstate}) + " " + ($F{pzip}==null?"":$F{pzip})]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>

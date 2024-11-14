@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> HIPPAA CONSENT FORM</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 2px;
+                padding: 2px;
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .h4{
+                font-size: 16px !important;
+            }
+            .font_small
+            {
+                font-size: 12px;
+            }
+
+        </style>
+    </head>  
+    <body>
+        <div  id="mymodal">
+            <div class="modal-header" style="text-align: center">
+                <div class="col">
+                    <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}" >test</span></h2>
+                    <h5 style="margin: 1px;"> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                    <h5 style="color:#a2a5a8;">
+                        <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span> <span  th:text="${patientPractice.alertPhone}">test</span>	
+                        <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                    </h5> 
+                </div>
+            </div>
+            <h4 style="text-align: center;">HIPAA COMPLIANCE PATIENT CONSENT FORM</h4>
+            <div class="font_small">
+                <div>
+                    <div>
+                        <table style="width:100%"><tr><td>
+                        Patient Name : <p style="font-weight:bold;min-width: 190px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${hippaForm.patientname}">test</p> </td>
+                        <td>DOB : <p style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${hippaForm.patientdob}">test</p></td>
+                        <td>Sex: 
+                        <!--                        <input type="checkbox"  checked="checked" th:if="${hippaForm.patientgender} == 1" disabled="disabled"/>
+                                                <input type="checkbox"  th:unless="${hippaForm.patientgender} == 1" disabled="disabled"/> Male
+                                                <input type="checkbox" checked="checked" th:if="${hippaForm.patientgender} == 2" disabled="disabled"/>
+                                                <input type="checkbox"  th:unless="${hippaForm.patientgender} == 2" disabled="disabled"/> Female -->
+
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${hippaForm.patientgender} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -11px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${hippaForm.patientgender} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span>Male</span>
+                        
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${hippaForm.patientgender} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -11px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${hippaForm.patientgender} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span>Female</span>
+                        
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${hippaForm.patientgender} == 3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -11px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${hippaForm.patientgender} == 3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span>Other</span></td>
+                            </tr>
+                        <tr>
+                        
+                       <td> Date:<p style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${hippaForm.currentdate}">test</p></td></tr>
+                        </table>
+                    </div>
+
+
+
+                    <p>Our Notice of Privacy Practices provides information about how we may use or disclose protected health information.</p>
+
+                    <p>The notice contains a patient's rights section describing your rights under the law. You ascertain that by your signature that you have reviewed our notice before signing this consent.</p>
+
+                    <p>The terms of the notice may change, if so, you will be notified at your next visit to update your signature/date.</p>
+
+                    <p>You have the right to restrict how your protected health information is used and disclosed for treatment, payment or healthcare operations. We are not required to agree with this restriction, but if we do, we shall honor this agreement. The HIPAA (Health
+                        Insurance Portability and Accountability Act of 1996) law allows for the use of the information for treatment, payment, or
+                        healthcare operations.</p>
+                    <p>By signing this form, you consent to our use and disclosure of your protected healthcare information and potentially anonymous
+                        usage in a publication. You have the right to revoke this consent in writing, signed by you. However, such a revocation will not
+                        be retroactive.</p>
+                </div>
+                <div class="col-12">
+                    <p>By signing this form, I understand that:</p>
+                    <ul>
+                        <li style="margin-left: 30px;">Protected health information may be disclosed or used for treatment, payment, or healthcare operations.</li>
+                        <li style="margin-left: 30px;">The practice reserves the right to change the privacy policy as allowed by law.</li>
+                        <li style="margin-left: 30px;">The practice has the right to restrict the use of the information but the practice does not have to agree to those restrictions.</li>
+                        <li style="margin-left: 30px;">The patient has the right to revoke this consent in writing at any time and all full disclosures will then cease.</li>
+                        <li style="margin-left: 30px;">The practice may condition receipt of treatment upon execution of this consent.</li>
+                    </ul> 
+                    <table class="table table-borderless table-responsive" style="width: 100%;">
+                        <tr>
+                            <td>May we phone, email, or send a text to you to confirm appointments?
+                            </td>
+                            <td><div th:if="${hippaForm.patientradiobtn1} == YES">
+                                    <span><b style="margin:0px;padding: 0px;">YES</b></span><span> NO</span></div>
+                                <div th:if="${hippaForm.patientradiobtn1} == NO">
+                                    <span> YES</span><span><b style="margin:0px;padding: 0px;"> NO</b></span> </div>
+                                <div th:unless="${hippaForm.patientradiobtn1} == YES or ${hippaForm.patientradiobtn1} == NO">YES NO </div></td>
+                        </tr>
+                        <tr>
+                            <td>May we leave a message on your answering machine at home or on your cell phone?</td>
+                            <td><div th:if="${hippaForm.patientradiobtn2} == YES">
+                                    <span><b style="margin:0px;padding: 0px;">YES</b></span><span> NO</span></div>
+                                <div th:if="${hippaForm.patientradiobtn2} == NO">
+                                    <span> YES</span><span><b style="margin:0px;padding: 0px;"> NO</b></span> </div>
+                                <div th:unless="${hippaForm.patientradiobtn2} == YES or ${hippaForm.patientradiobtn2} == NO">YES NO </div></td>
+                        </tr>
+                        <tr>
+                            <td>May we discuss your medical condition with any member of your family?</td>
+
+                            <td><div th:if="${hippaForm.patientradiobtn3} == YES">
+                                    <span><b style="margin:0px;padding: 0px;">YES</b></span><span> NO</span></div>
+                                <div th:if="${hippaForm.patientradiobtn3} == NO">
+                                    <span> YES</span><span><b style="margin:0px;padding: 0px;"> NO</b></span> </div>
+                                <div th:unless="${hippaForm.patientradiobtn3} == YES or ${hippaForm.patientradiobtn3} == NO">YES NO </div></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-12">
+                    <p>If YES, please name the members allowed:</p>
+
+                    <p><span style="font-weight:bold;min-width: 600px;border-bottom: 1px solid #000000;display: inline-block;text-align: center; border-width: thin;" th:text="${hippaForm.patienttxt1}">test</span></p>
+                    <p><span style="font-weight:bold;min-width: 600px;border-bottom: 1px solid #000000;display: inline-block;text-align: center; border-width: thin;" th:text="${hippaForm.patienttxt2}">test</span></p>
+                </div>
+                <div class="row container" style="margin-top: 20px;">
+
+                    <div class="col-3">
+
+                        This consent was signed by: <p style="font-weight:bold;min-width: 400px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${hippaForm.patientname1}">test</p>
+                        <p style="min-width: 70px;text-align:center;padding-left: 50px;">(PRINT NAME PLEASE)</p>
+
+                        <p> Signature: <img th:src="@{data:image/png;base64,{image}(image=${hippaForm.signonpatient})}" height="50" width="400"  style="border-bottom:1px solid #000000;margin-bottom: -5px; border-width: thin;min-width: 150px;margin-right: 4px;"/>
+
+                            Date:<span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block; border-width: thin;text-align: center;" th:text="${hippaForm.signdate1}">test</span></p>
+
+                        <p> Witness: <img th:src="@{data:image/png;base64,{image}(image=${hippaForm.witnesssignature})}" height="50" width="400"  style="border-bottom:1px solid #000000;margin-bottom: -5px; border-width: thin;min-width: 150px;margin-right: 4px;"/>
+                            Date: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block; border-width: thin;text-align: center;" th:text="${hippaForm.signdate2}">test</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+

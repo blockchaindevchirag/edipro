@@ -1,0 +1,931 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head> 
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Proof Of Delivery</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .h4{
+                font-size: 16px !important;
+            }
+            .font_small{
+                font-size: 13px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="modal fade" >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;color:#a2a5a8;"> <span th:text="${patientPractice.addressline1}">test</span> <span th:text="${patientPractice.addressline2}">test</span> <span th:text="${patientPractice.city}">test</span> <span th:text="${patientPractice.state}">test</span> <span th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span th:text="${patientPractice.contactPhone}">test</span><span  th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div>  
+                    </div>
+                    <div><h3 style="text-align:center;margin-top: 5px;"> PROOF OF DELIVERY</h3></div>
+                    <div class="container">
+                        <div class="card-body">
+
+                            <div class="font_small">
+                                <div class="row">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td>Patient: <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.patientname}">test</span> </td>
+                                            <td>DOB: <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.patientdob}">test</span> </td>
+                                            <td>Date: <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.currentdate}">test</span> </td>
+                                        </tr>
+                                    </table>
+                                    <p style="text-align: justify;text-justify: inter-word; margin-top:5px;">I certify that I have received the item(s) marked below in good condition.<span style="font-style: italic;">This equipment and/or appliance device is medically
+                                                necessary and not substandard. This device was sized and fitted, and the device fits well. I have received verbal and written
+                                                instructions for use of the equipment, the warranty, complaint resolution information and the Durable Medical Equipment Supplier
+                                                Guidelines (except for dressings). I acknowledge that all warranties expressed and implied under applicable State law are honored.</span></p>
+                                    <table class="col" style="width: 100%; padding:0; margin:0;" border="0">
+                                        <tr>
+                                            <td style="margin-right:20px;" colspan="3">  
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox} == ProofOfDelivery"> <input type="checkbox"  checked="checked"/> OTC Orthotics</p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox} == ProofOfDelivery"> <input type="checkbox"  /> OTC Orthotics</p>-->
+                                            <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox} == ProofOfDelivery"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox} == ProofOfDelivery" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> OTC Orthotics</span>
+                                            </td>
+                                            <td style="">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox28} == ProofOfDelivery28">
+                                                    <input type="checkbox"  checked="checked"/> Ortho appliance Wire Splint<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit7}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox28} == ProofOfDelivery28" >
+                                                    <input type="checkbox" /> Ortho appliance Wire Splint<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit7}">test</span>
+                                                </p>-->
+                                                <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox28} == ProofOfDelivery28"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox28} == ProofOfDelivery28" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Ortho appliance Wire Splint<br/>
+                                                 Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit7}">test</span>
+                                          </span>  </td>
+                                            <td style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox29} == R">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> R </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox29} == R">  <input type="checkbox"  />
+                                                    <b> R </b>
+                                                </p>-->
+                                                  <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox29} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox29} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                       
+                                            </td>
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox30} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox30} == L">    <input type="checkbox" />
+                                                    <b> L </b>
+                                                </p>-->
+                                               <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox30} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox30} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                      
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="margin-right: 20px;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox1} == ProofOfDelivery1">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Custom Molded Orthotics<br/>
+                                                    Brand: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.brand1}">test</span>     Model: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.modal1}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox1} == ProofOfDelivery1">
+                                                    <input type="checkbox"  />
+                                                    Custom Molded Orthotics<br/>
+                                                    Brand: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.brand1}">test</span>     Model: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.modal1}">test</span>
+                                                </p>-->
+                                                <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox1} == ProofOfDelivery1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox1} == ProofOfDelivery1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Custom Molded Orthotics<br/>
+                                                    Brand: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.brand1}">test</span>     Model: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.modal1}">test</span>
+                                          </span>
+                                        </td>
+                                            <td style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox2} == R">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b>   R </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox2} == R"> <input type="checkbox"  />
+                                                    <b>   R </b>
+                                                </p>-->
+                                                 <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox2} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox2} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                        
+                                            </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox3} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b>   L </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox3} == L"> <input type="checkbox"  />
+                                                    <b>   L </b>
+                                                </p>-->
+                                                 <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox3} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox3} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                        
+                                            </td>
+                                            <td style="margin-left: 20px;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox31} == ProofOfDelivery31" >
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Ortho Max Jaw Expansion Appliance <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit8}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox31} == ProofOfDelivery31">
+                                                    <input type="checkbox"  />
+                                                    Ortho Max Jaw Expansion Appliance <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit8}">test</span>
+                                                </p>-->
+                                                 <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox31} == ProofOfDelivery31"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox31} == ProofOfDelivery31" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Ortho Max Jaw Expansion Appliance <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit8}">test</span>
+                                         </span>
+                                         </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox32} == R">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> R </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox32} == R">
+                                                    <input type="checkbox"  />
+                                                    <b> R </b>
+                                                </p> -->
+                                                      <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox32} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox32} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                        
+                                            </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox33} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox33} == L" >
+                                                    <input type="checkbox"  />
+                                                    <b> L </b>
+                                                </p> -->
+                                                
+                                               <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox33} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox33} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                        
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox4} == ProofOfDelivery4" > 
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Prefab AFO Night Splint<br/>
+                                                    Brand: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.brand2}">test</span>      Model: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.modal2}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox4} == ProofOfDelivery4" >  <input type="checkbox"  />
+                                                    Prefab AFO Night Splint<br/>
+                                                    Brand: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.brand2}">test</span>      Model: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.modal2}">test</span>
+                                                </p> -->
+                                                <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox4} == ProofOfDelivery4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox4} == ProofOfDelivery4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Prefab AFO Night Splint<br/>
+                                                    Brand: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.brand2}">test</span>      Model: <span style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.modal2}">test</span>
+                                          </span>
+                                          </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox5} == R" >
+                                                    <input type="checkbox"  checked="checked"/>
+
+                                                    <b>R</b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox5} == R">
+                                                    <input type="checkbox"  />
+                                                    <b>R</b>
+                                                </p>-->
+                                                 <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox5} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox5} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                        
+                                            </td>
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox6} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L</b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox6} == L">
+                                                    <input type="checkbox"  />
+                                                    <b> L</b>
+                                                </p>-->
+                                               <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox6} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox6} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                        
+                                            </td>
+                                            <td>
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox34} == ProofOfDelivery34">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Ortho Max Palatal Lift Appliance<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit9}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox34} == ProofOfDelivery34">    
+                                                    <input type="checkbox"  />
+                                                    Ortho Max Palatal Lift Appliance<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit9}">test</span>
+                                                </p>  -->
+                                               <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox34} == ProofOfDelivery34"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox34} == ProofOfDelivery34" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>  Ortho Max Palatal Lift Appliance<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit9}">test</span>
+                                         </span>
+                                          </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox35} == R">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b>R</b>  </p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox35} == R">
+                                                    <input type="checkbox"  />
+                                                    <b>R</b>  
+                                                </p>-->
+                                               <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox35} ==  R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox35} ==  R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+
+                                            </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox36} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L</b> </p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox36} == L">
+                                                    <input type="checkbox"  />
+                                                    <b> L</b> 
+                                                </p>-->
+                                               <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox36} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox36} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                        
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox7} == ProofOfDelivery7">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Orthosis with Amputation Filler<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit1}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox7} == ProofOfDelivery7">   
+                                                    <input type="checkbox" />
+                                                    Orthosis with Amputation Filler<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit1}">test</span>
+                                                </p> -->
+                                                <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox7} == ProofOfDelivery7"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox7} == ProofOfDelivery7" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Orthosis with Amputation Filler<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit1}">test</span>
+                                          </span>
+                                           </td>
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox8} == R">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> R</b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox8} == R">    
+                                                    <input type="checkbox" />
+                                                    <b> R</b>
+                                                </p> -->
+                                              <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox8} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox8} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                        
+                                            </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox9} == L"> 
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b>L</b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox9} == L">
+                                                    <input type="checkbox"  />
+                                                    <b>L</b>
+                                                </p>-->
+                                              <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox9} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox9} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                        
+                                            </td>
+                                            <td> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox37} == ProofOfDelivery37">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Oral Speed Aid Appliance <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit10}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox37} == ProofOfDelivery37"> 
+                                                    <input type="checkbox"  />
+                                                    Oral Speed Aid Appliance<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit10}">test</span> 
+                                                </p>-->
+                                            <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox37} == ProofOfDelivery37"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox37} == ProofOfDelivery37" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Oral Speed Aid Appliance<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit10}">test</span> 
+                                        </span>
+                                           </td>
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox38} == R" >
+                                                    <input type="checkbox" checked="checked"/>
+                                                    <b> R </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox38} == R" >
+                                                    <input type="checkbox"  />
+                                                    <b> R </b>
+                                                </p>-->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox38} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox38} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                        </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox39} == L" >
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L</b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox39} == L">  <input type="checkbox"  />
+                                                    <b> L</b>
+                                                </p>-->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox39} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox39} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox10} == ProofOfDelivery10">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Hydrogel Pads 2x2</p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox10} == ProofOfDelivery10"> 
+                                                    <input type="checkbox"  />
+                                                    Hydrogel Pads 2x2
+                                                </p> -->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox10} == ProofOfDelivery10"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox10} == ProofOfDelivery10" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Hydrogel Pads 2x2</span>
+                                          </td>
+                                            <td>  
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox40} == ProofOfDelivery40" >
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Intermediate Prosthetic Interim<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit11}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox40} == ProofOfDelivery40">
+                                                    <input type="checkbox"  />
+                                                    Intermediate Prosthetic Interim<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit11}">test</span> </p>-->
+                                            <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox40} == ProofOfDelivery40"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox40} == ProofOfDelivery40" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Intermediate Prosthetic Interim<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit11}">test</span>
+                                       </span>
+                                           </td>
+
+                                            <td  style="text-align:center;">  
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox41} == R" >
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> R </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox41} == R">
+                                                    <input type="checkbox"  />
+                                                    <b> R </b>
+                                                </p>-->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox41} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox41} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                       </td>
+
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox42} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L</b>
+                                                </p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox42} == L">
+                                                    <input type="checkbox"  />
+                                                    <b> L</b>
+                                                </p>-->
+                                          <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox42} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox42} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                        </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">    
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox11} == ProofOfDelivery11" >
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Collagen Dressing 2x2</p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox11} == ProofOfDelivery11">
+                                                    <input type="checkbox"  />
+                                                    Collagen Dressing 2x2
+                                                </p>-->
+                                              <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox11} == ProofOfDelivery11"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox11} == ProofOfDelivery11" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Collagen Dressing 2x2</span>
+                                         
+                                            </td>
+                                            <td> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox43} == ProofOfDelivery43">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Permanent Removable Prosthetic involved Abscess <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit12}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox43} == ProofOfDelivery43"> <input type="checkbox"  />
+                                                    Permanent Removable Prosthetic involved Abscess <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit12}">test</span></p>-->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox43} == ProofOfDelivery43"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox43} == ProofOfDelivery43" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Permanent Removable Prosthetic involved Abscess <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit12}">test</span></span>
+                                       
+                                            </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox44} == R" >
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> R </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox44} == R"><input type="checkbox"  />
+                                                    <b> R </b>
+                                                </p>-->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox44} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox44} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                        </td>
+                                            <td  style="text-align:center;">  
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox45} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox45} == L">   <input type="checkbox"  />
+                                                    <b> L </b>
+                                                </p>-->
+                                          <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox45} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox45} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                       </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox12} == ProofOfDelivery12">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Gauze</p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox12} == ProofOfDelivery12">
+                                                    <input type="checkbox"  />
+                                                    Gauze
+                                                </p>-->
+                                         <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox12} == ProofOfDelivery12"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox12} == ProofOfDelivery12" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Gauze</span>
+                                         </td>
+                                            <td>
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox46} == ProofOfDelivery46">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Permanent Removable Prosthetic<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit13}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox46} == ProofOfDelivery46" >
+                                                    <input type="checkbox"  />
+                                                    Permanent Removable Prosthetic<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit13}">test</span> </p>-->
+                                          <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox46} == ProofOfDelivery46"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox46} == ProofOfDelivery46" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Permanent Removable Prosthetic<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit13}">test</span>  </span>
+                                         </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox47} == R">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> R </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox47} == R"><input type="checkbox"  />
+                                                    <b> R </b>
+                                                </p>-->
+                                          <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox47} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox47} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                        </td> 
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox48} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox48} == L"><input type="checkbox" />
+                                                    <b> L </b>
+                                                </p> -->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox48} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox48} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                        </td>
+                                        </tr>
+                                        <tr><td>
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox13} == ProofOfDelivery13">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Oral Sleep Apnea Appliance <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit2}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox13} == ProofOfDelivery13">  <input type="checkbox"  />
+                                                    Oral Sleep Apnea Appliance <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit2}">test</span>
+                                                </p> -->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox13} == ProofOfDelivery13"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox13} == ProofOfDelivery13" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Oral Sleep Apnea Appliance <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit2}">test</span></span></td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox14} == R">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> R </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox14} == R">  <input type="checkbox"  />
+                                                    <b> R </b>
+                                                </p>-->
+                                          <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox14} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox14} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                        </td>
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox15} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox15} == L"> <input type="checkbox"  />
+                                                    <b> L </b>
+                                                </p>-->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox15} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox15} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                        </td>
+                                            <td colspan="3"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox49} == ProofOfDelivery49">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    CPAP @ <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit14}">test</span>                               
+                                                    12 <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit15}">test</span>   cm H2O </p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox49} ==ProofOfDelivery49 ">  <input type="checkbox"  />
+                                                    CPAP @ <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit14}">test</span>                               
+                                                    12 <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit15}">test</span>   cm H2O 
+                                                </p> -->
+ <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox49} == ProofOfDelivery49"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox49} == ProofOfDelivery49" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> CPAP @ <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit14}">test</span>                                      </span>
+                                                       </td>
+
+                                        </tr>
+                                        <tr><td>
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox16} == ProofOfDelivery16">  
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    TMD/TMJ Splint appliance<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit3}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox16} == ProofOfDelivery16">
+                                                    <input type="checkbox"  />
+                                                    TMD/TMJ Splint appliance<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit3}">test</span></p>-->
+                                            <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox16} == ProofOfDelivery16"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox16} == ProofOfDelivery16" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> TMD/TMJ Splint appliance<br/>
+                                             Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit3}">test</span></span>
+                                         </td>
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox17} == R">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> R </b> </p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox17} == R"> <input type="checkbox" />
+                                                    <b> R </b> 
+                                                </p>-->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox17} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox17} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                        </td>
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox18} == L" >
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L </b>     </p>             
+                                                <p th:unless="${proofOfDelivery.patientcheckbox18} == L">  <input type="checkbox"  />
+                                                    <b> L </b>                  
+                                                </p> -->
+                                          <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox18} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox18} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                       </td>
+                                            <td colspan="3"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox50} == ProofOfDelivery50">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Heated Humidifier</p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox50} == ProofOfDelivery50" >
+                                                    <input type="checkbox" />
+                                                    Heated Humidifier
+                                                </p> -->
+                                               <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox50} == ProofOfDelivery50"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox50} == ProofOfDelivery50" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Heated Humidifier</span>
+                                       
+                                            </td>
+                                        </tr>
+                                        <tr><td>
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox19} == ProofOfDelivery19" >
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Bruxism Oral Appliance<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit4}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox19} == ProofOfDelivery19" >
+                                                    <input type="checkbox" />
+                                                    Bruxism Oral Appliance <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit4}">test</span></p>-->
+                                                <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox19} == ProofOfDelivery19"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox19} == ProofOfDelivery19" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Bruxism Oral Appliance <br/> Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit4}">test</span></span>
+                                            </td>
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.\patientcheckbox20} == R">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> R </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox20} == R">  <input type="checkbox"  />
+                                                    <b> R </b>
+                                                </p> -->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox20} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox20} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                      </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox21} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L </b>   </p>                             
+                                                <p th:unless="${proofOfDelivery.patientcheckbox21} == L">  <input type="checkbox"  />
+                                                    <b> L </b>                                
+                                                </p> -->
+                                          <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox21} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox21} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>  L</span>
+                                        </td>
+                                            <td colspan="3">  
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox51} == ProofOfDelivery051" >
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Oral Cushion/Nasal Pillow &amp;  Heated Humidifier </p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox51} == ProofOfDelivery051">
+                                                    <input type="checkbox"  />
+                                                    Oral Cushion/Nasal Pillow &amp;  Heated Humidifier </p>-->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox51} == ProofOfDelivery051"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox51} == ProofOfDelivery051" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Oral Cushion/Nasal Pillow &amp;  Heated Humidifier</span>  </td>
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox22} == ProofOfDelivery22">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Maxillofacial Prosthetic Guard <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit5}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox22} == ProofOfDelivery22">
+                                                    <input type="checkbox"  />
+                                                    Maxillofacial Prosthetic Guard <br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit5}">test</span></p> -->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox22} == ProofOfDelivery22"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox22} == ProofOfDelivery22" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Maxillofacial Prosthetic Guard <br/> Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit5}">test</span></span>
+                                            </td>
+                                            <td  style="text-align:center;"> 
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox23} == R">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> R </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox23} == R"> 
+                                                    <input type="checkbox"  />
+                                                    <b> R </b>
+                                                </p>-->
+                                          <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox23} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox23} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span></td>
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox24} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox24} == L"> <input type="checkbox"  />
+                                                    <b> L </b>
+                                                </p>-->
+                                          <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox24} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox24} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span> </td>
+                                            <td colspan="3"> 
+<!--                                                <p  th:if="${proofOfDelivery.patientcheckbox52} == ProofOfDelivery52">
+                                                    <input type="checkbox" checked="checked"/>
+                                                    Nasal Mask (1/3 months) &amp; Heated Humidifier</p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox52} == ProofOfDelivery52">
+                                                    <input type="checkbox"  />
+                                                    Nasal Mask (1/3 months) &amp; Heated Humidifier
+                                                </p>-->
+                                              <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox52} == ProofOfDelivery52"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox52} == ProofOfDelivery52" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Nasal Mask (1/3 months) &amp; Heated Humidifier</span>                                                
+                                            </td>
+                                        </tr>
+                                        <tr><td>
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox25} == ProofOfDelivery25">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Ortho appliance Wire Splint<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit6}">test</span> </p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox25} == ProofOfDelivery25"> <input type="checkbox"  />
+                                                    Ortho appliance Wire Splint<br/>
+                                                    Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit6}">test</span></p>-->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox25} == ProofOfDelivery25"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox25} == ProofOfDelivery25" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Ortho appliance Wire Splint<br/>Unit: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit6}">test</span></span>
+                                            </td>
+                                            <td  style="text-align:center;">
+<!--                                                <p  th:if="${proofOfDelivery.patientcheckbox26} == R">
+                                                    <input type="checkbox" checked="checked"/>
+                                                    <b> R </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox26} == R"> <input type="checkbox"  />
+                                                    <b> R </b>
+                                                </p>-->
+                                          <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox26} == R"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox26} == R" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> R</span>
+                                       </td>
+                                            <td  style="text-align:center;">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox27} == L">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    <b> L </b></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox27} == L" > <input type="checkbox"  />
+                                                    <b> L </b>
+                                                </p>-->
+                                           <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox27} == L"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox27} == L" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> L</span>
+                                        </td>
+                                            <td colspan="3">
+<!--                                                <p th:if="${proofOfDelivery.patientcheckbox53} == ProofOfDelivery53">
+                                                    <input type="checkbox"  checked="checked"/>
+                                                    Other Item: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit16}">test</span></p>
+                                                <p th:unless="${proofOfDelivery.patientcheckbox53} == ProofOfDelivery53">  
+                                                    <input type="checkbox"  />
+                                                    Other Item: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit16}">test</span>                                
+
+                                                </p>-->
+                                            <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox53} == ProofOfDelivery53"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox53} == ProofOfDelivery53" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Other Item: <span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.unit16}">test</span> </span>            
+                                            </td>
+                                        </tr>
+                                    </table>   
+                                        <p style="font-style: italic;text-align: justify;text-justify: inter-word;">Prosthetic Approval for Oral Prosthetic appliance (Dentures/Partials, Crown or other) I,  <span style="font-weight:bold;font-style:normal; min-width: 220px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.patienttxt1}">test</span> , have
+                                            evaluated my denture(s)/partial(s) for color, shape, size and (Please print) positioning of the artificial teeth, replacing JP/PO
+                                            (tooth/teeth No (s))  <span style="font-weight:bold;min-width: 220px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;font-style:normal;" th:text="${proofOfDelivery.patienttxt2}">test</span>, and give my permission to proceed with their completion. I understand that I will be charged an
+                                            additional fee for laboratory and professional chair-time if I request to change them after completion. Further, I have had the
+                                            opportunity to discuss any questions regarding my treatment.</p>
+                                        
+                                    <table style="width: 100%;">   
+                                        <tr> 
+                                            <td style="padding:0px!important;">
+<!--                                                <input type="checkbox"  th:if="${proofOfDelivery.patientcheckbox54} == ProofOfDelivery54" checked="checked"/>
+                                                <input type="checkbox"  th:unless="${proofOfDelivery.patientcheckbox54} == ProofOfDelivery54" /> -->
+                                                <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox54} == ProofOfDelivery54"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox54} == ProofOfDelivery54" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>  Color</span></td>
+                                            <td style="padding:0px!important;">Patient Initial<img th:src="@{data:image/png;base64,{image}(image=${proofOfDelivery.patientinitial1})}" height="35px" width="150" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                            <td style="padding:0px!important;">Date:<span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.currentdate1}">test</span></td>
+                                        </tr>
+                                        <tr> 
+                                            <td  style="padding:0px!important;">
+<!--                                                <input type="checkbox"  th:if="${proofOfDelivery.patientcheckbox55} == ProofOfDelivery55" checked="checked"/>
+                                                <input type="checkbox"  th:unless="${proofOfDelivery.patientcheckbox55} == ProofOfDelivery55" /> -->
+                                               <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox55} == ProofOfDelivery55"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox55} == ProofOfDelivery55" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Shape</span></td>                        
+                                            <td style="padding:0px!important;">Patient Initial<img th:src="@{data:image/png;base64,{image}(image=${proofOfDelivery.patientinitial2})}" height="35px" width="150" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                            <td style="padding:0px!important;">Date:<span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.currentdate2}">test</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:0px!important;">
+<!--                                                <input type="checkbox"  th:if="${proofOfDelivery.patientcheckbox56} == ProofOfDelivery56" checked="checked"/>
+                                                <input type="checkbox"  th:unless="${proofOfDelivery.patientcheckbox56} == ProofOfDelivery56"  /> -->
+                                               <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox56} == ProofOfDelivery56"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox56} == ProofOfDelivery56" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Size</span></td>
+                                            <td style="padding:0px!important;">Patient Initial<img th:src="@{data:image/png;base64,{image}(image=${proofOfDelivery.patientinitial3})}" height="35px" width="150" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                            <td style="padding:0px!important;">Date:<span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.currentdate3}">test</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:0px!important;"><!--
+                                                <input type="checkbox"  th:if="${proofOfDelivery.patientcheckbox57} == ProofOfDelivery57" checked="checked"/>
+                                                <input type="checkbox"  th:unless="${proofOfDelivery.patientcheckbox57} == ProofOfDelivery57"  /> -->
+                                               <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox57} == ProofOfDelivery57"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox57} == ProofOfDelivery57" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Position</span>
+                                     </td>
+                                            <td style="padding:0px!important;">Patient Initial<img th:src="@{data:image/png;base64,{image}(image=${proofOfDelivery.patientinitial4})}" height="35px" width="150" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                            <td style="padding:0px!important;">Date:<span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.currentdate4}">test</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:0px!important;">
+<!--                                                <input type="checkbox"  th:if="${proofOfDelivery.patientcheckbox58} == ProofOfDelivery58" checked="checked"/>
+                                                <input type="checkbox"  th:unless="${proofOfDelivery.patientcheckbox58} == ProofOfDelivery58"  /> -->
+                                               <span style="margin-right: -4px;"> 
+                                            <img th:if="${proofOfDelivery.patientcheckbox58} == ProofOfDelivery58"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${proofOfDelivery.patientcheckbox58} == ProofOfDelivery58" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Surface Texture</span></td>
+                                            <td style="padding:0px!important;">Patient Initial<img th:src="@{data:image/png;base64,{image}(image=${proofOfDelivery.patientinitial5})}" height="35px" width="150" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                            <td style="padding:0px!important;">Date:<span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.currentdate5}">test</span></td>
+                                        </tr>
+                                    </table>
+                                    <table  style="width: 100%" border="0">
+                                        <tr>
+                                            <td><img th:src="@{data:image/png;base64,{image}(image=${proofOfDelivery.patientsignature})}" height="50" width="275" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                            <td><img th:src="@{data:image/png;base64,{image}(image=${proofOfDelivery.witnesssignature})}" height="50" width="275" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                            <td style="vertical-align: bottom;"><span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${proofOfDelivery.currentdate6}">test</span> </td>
+                                        </tr>      
+                                        <tr>
+                                            <td style="width:35px;"> Patient/Guardian/Caregiver</td>
+                                            <td style="width:35px;">Witness </td>
+                                            <td style="width:20px;"> Date</td>
+                                        </tr>
+                                    </table>
+                                   
+                                    <!--
+                                                                        <div class="col-5">
+                                                                            <div class="row">
+                                    
+                                                                                <img th:src="@{data:image/png;base64,{image}(image=${sign_65pod1})}" height="50px" width="400"/>
+                                    
+                                                                            </div>
+                                                                            <p>Patient/Guardian/Caregiver</p>
+                                    
+                                    
+                                                                        </div>
+                                                                        <div class="col-5">
+                                                                            <div class="col-6">
+                                                                                <div class="col-12">
+                                    
+                                                                                    <img th:src="@{data:image/png;base64,{image}(image=${sign_65pod2})}" height="50px" width="400"/>
+                                    
+                                                                                </div>
+                                                                            </div>
+                                                                            <p style="margin: 0 30px">Witness</p>
+                                                                        </div>
+                                                                        <div class="col-4">
+                                                                            <p> <span th:text="${proof36}">test</span></p>
+                                                                        </div>-->
+                                </div>
+                            </div>
+
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>

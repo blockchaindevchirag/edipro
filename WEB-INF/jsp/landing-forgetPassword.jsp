@@ -1,0 +1,151 @@
+<%@page contentType="text/html"  pageEncoding="UTF-8" autoFlush="true"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<html lang="en">
+
+    <head>
+
+        <title>AmeriDenti - Forget password</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="Billing Automation with latest innovations in technology and building" />
+        <meta name="keywords" content="HealthOmation,Medical,Billing,automation solutions, Eligibility verification, ebill,Revenue Management,Denial Management,e-Consent Forms,Prior Auth Management,Claim Tracker">
+        <meta name="author" content="Healthomation" />
+
+        <!-- Favicon icon -->
+        <link rel="icon" href="assets/images/AD-AmeriDenti Int Quare No BG (Small).png" type="image/x-icon">
+        <!-- fontawesome icon -->
+        <link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
+        <!-- animation css -->
+        <link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
+
+        <!-- vendor css -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script src="assets/js/vendor-all.min.js"></script>
+        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    </head>
+    <style>
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>
+
+    <!-- [ signin-img-slider2 ] start -->
+
+    <body class="auth-prod-slider">
+        <div class="blur-bg-images"></div>
+        <div class="auth-wrapper">
+            <div class="auth-content col-5">
+                
+                    <div class="card">
+			<div class="card-body text-center">
+				<h5 class="mb-4">Forget password</h5>
+				<form  action="#" >
+                                    <img src="assets/images/AD-Logo-AmeriDenti Initial (SM).png" height="90" width="180"   class="img-fluid mb-4 center"  />
+                                    <h4 class="mb-3 f-w-400"></h4>
+
+                                    <c:set var="errorKey" value="sessionDuplicateLogin"/>
+                                    <c:set var="errorLoginFailed" value="true"/>
+                                    <c:set var="errorSessionExpired" value="sessionexpired"/>
+
+                                    <div class="form-group mb-2">
+                                        <label class="form-label float-left">Enter Email</label>
+                                        <input type="email"  name="email" id="email" autocomplete="off" class="form-control" required="true" placeholder="name@sitename.com" />
+                                    </div>
+
+                                    <c:choose>
+                                        <c:when  test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+                                            <div class="alert alert-danger" role="alert">
+                                                <c:out value="${SPRING_SECURITY_LAST_EXCEPTION}" />
+                                            </div>
+                                            <c:remove var = "SPRING_SECURITY_LAST_EXCEPTION" scope = "session" />
+                                        </c:when >
+                                        <c:when  test="${errorLoginFailed==param.error}">
+                                            <div class="alert alert-danger" role="alert" >
+                                                <a href="#!" class="alert-link">The username or password you entered was incorrect. Please try again.</a>
+                                            </div>
+                                        </c:when >
+                                        <c:when  test="${errorKey==param.error}">
+                                            <div class="card-body" style="background-color: #fbeed5;margin:0 0 10px 0;">
+                                                This session has expired (possibly due to multiple concurrent logins being attempted as the same user).
+                                            </div>
+                                        </c:when >
+                                    </c:choose>
+
+                                    <button class="btn btn-primary mb-4" id="login" name="login" type="submit">Reset Password</button>
+
+                                    <div class="alert alert-danger" role="alert" id="emailError"> 
+                                    </div> 
+                                    <br>
+                                    <a href="#!" class="alert-link alert-danger">${message}</a>
+                                    <br> 
+                                    <p class="mb-2 text-muted"><a href="login" class="f-w-400">Back to Login</a></p> 
+                                    <!--  <p class="mb-2 text-muted"><a href="#" data-toggle="modal" data-target="#forgetModal" class="mb-2 text-muted" style="font-weight:400">Forgot password?</a></p> -->
+                                </form>
+                        </div>
+		</div>
+<!--                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="card-body">
+
+                                
+                            </div>
+                        </div>
+                      
+                    </div>-->
+               
+            </div>
+        </div>
+
+        <!-- Required Js -->
+        <script src="assets/js/vendor-all.min.js"></script>
+        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+
+
+    </body>
+
+    <script>
+        //  var serverContext = [[@{/}]];
+
+        $(document).ready(function () {
+            $("#emailError").hide();
+            $('form').submit(function (event) {
+                $("#emailError").hide();
+                resetPass(event);
+            });
+        });
+
+        function resetPass(event) {
+            event.preventDefault();
+            var email = $("#email").val();
+            $.post("resetPassword", {email: email}, function (data) {
+                window.location.href = "login?message=" + data.message;
+                $("title").html("Forget Password");
+            }).fail(function (data) {
+                $("#emailError").show();
+                $("#emailError").html("Server facing issue in sending reset password email at preset. Try later. If the problem persists contact support");
+                if (data.responseJSON.error.indexOf("MailError") > -1 || data.responseJSON.error.indexOf("InternalError") > -1)
+                {
+                    $("#emailError").show();
+                    $("#emailError").html("Server facing issue in sending reset password email at preset. Try later. If the problem persists contact support");
+                    // window.location.href =  "emailError.html";
+                } else {
+                    window.location.href = "login?message=" + data.responseJSON.message;
+                }
+                $("title").html("Forget Password");
+            });
+        }
+
+        $(document).ajaxStart(function () {
+            $("title").html("LOADING ...");
+        });
+    </script> 
+
+</html>
+

@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="otherbenefits" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="0769bd81-b3be-4fd4-8f36-416b07175234">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="EDIProcessor"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="field" mode="Opaque" forecolor="#000000" backcolor="#FAFAFA" fontName="Calibri" fontSize="8">
+		<pen lineWidth="0.5" lineColor="#737373"/>
+		<box padding="2">
+			<pen lineWidth="0.5" lineStyle="Solid" lineColor="#737373"/>
+			<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#737373"/>
+			<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#737373"/>
+			<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#737373"/>
+			<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#737373"/>
+		</box>
+	</style>
+	<style name="frame_header" mode="Opaque" forecolor="#FFFFFF" backcolor="#006699" pattern="" fontName="Calibri" fontSize="9">
+		<box padding="4"/>
+	</style>
+	<style name="field_odd" mode="Opaque" forecolor="#000000" backcolor="#DBDBDB" fontName="Calibri" fontSize="8">
+		<pen lineWidth="0.5" lineColor="#737373"/>
+		<box padding="2">
+			<pen lineWidth="0.5" lineStyle="Solid" lineColor="#737373"/>
+			<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#737373"/>
+			<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#737373"/>
+			<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#737373"/>
+			<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#737373"/>
+		</box>
+	</style>
+	<style name="text_style" pattern="">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{AuthorizationRequirement} == "NO"]]></conditionExpression>
+			<style mode="Opaque" forecolor="#00520B" backcolor="#00520B"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{AuthorizationRequirement}=="YES"]]></conditionExpression>
+			<style mode="Opaque" forecolor="#590100" backcolor="#940806" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="requestid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select distinct requestid, case when s6 like '%Active Coverage%' then 1  
+when s6 like '% Deductible%' then 2
+when s6 is null and st like '%Co-Insurance%' then 3 
+when s6 is null and st like '%Co-Payment%' then 4
+when s6 like '% OOP%' then 5  end as sectionorder, 
+		 case when s12 like '%Family%' then 1  
+when s12 like '%Individual%' then 2
+ end as sectionorder1 , sort1, sort, substr(heading,2) as heading,
+ case when s6 is null then st else s6 end as s6, 
+ case when s12 = 'Other' then null else s12 end as s12, s2,
+  tagvalue, element, benefit_type, ben_des, 1 AS sno
+ -- , s6, s12, s2, st
+ from repo_data_otherbenefits 
+ left join EB06 on segment = tagvalue
+ inner join  (SELECT benefit_type btype, benefit_code bcode FROM benefit_type where find_in_set(groupid,(select distinct default_group  from ev_result_master
+ where practiceid in (SELECT practiceid_trn02   FROM eligibility_requests where request_id = $P{requestid})))) benresulttype
+ on -- benefit_type = benresulttype.btype --
+ concat('%',benefit_type,'%') like concat('%',benresulttype.bcode,'%')
+  where requestid = $P{requestid}
+and element is not null and ben_des <> ''
+order by  ben_des, s2, sort, sort1]]>
+	</queryString>
+	<field name="requestid" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="requestid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repo_data_otherbenefits"/>
+	</field>
+	<field name="sectionorder" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="sectionorder"/>
+	</field>
+	<field name="sectionorder1" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="sectionorder1"/>
+	</field>
+	<field name="sort1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sort1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repo_data_otherbenefits"/>
+	</field>
+	<field name="sort" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="sort"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repo_data_otherbenefits"/>
+	</field>
+	<field name="heading" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="heading"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_271data_ded"/>
+	</field>
+	<field name="s6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="s6"/>
+	</field>
+	<field name="s12" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="s12"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repo_data_otherbenefits"/>
+	</field>
+	<field name="s2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="s2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repo_data_otherbenefits"/>
+	</field>
+	<field name="tagvalue" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tagvalue"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repo_data_otherbenefits"/>
+	</field>
+	<field name="element" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="element"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repo_data_otherbenefits"/>
+	</field>
+	<field name="benefit_type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="benefit_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repo_data_otherbenefits"/>
+	</field>
+	<field name="ben_des" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ben_des"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="repo_data_otherbenefits"/>
+	</field>
+	<field name="sno" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="sno"/>
+	</field>
+	<group name="Group1" isReprintHeaderOnEachPage="true" keepTogether="true">
+		<groupExpression><![CDATA[$F{ben_des}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField isStretchWithOverflow="true">
+					<reportElement stretchType="ElementGroupHeight" isPrintRepeatedValues="false" mode="Opaque" x="-11" y="0" width="576" height="15" isPrintInFirstWholeBand="true" printWhenGroupChanges="Group1" backcolor="#69B7E0" uuid="41b76058-f3b5-41e3-91af-dde3c14a39b3">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box padding="2">
+						<pen lineWidth="0.5" lineColor="#737373"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ben_des}==null?"General":$F{ben_des}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="565" y="3" width="2" height="12" backcolor="#969595" uuid="ef2b3f50-242c-4dc5-9118-963644ef26ec">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<frame>
+					<reportElement mode="Opaque" x="-6" y="0" width="573" height="2" forecolor="#D0B48E" backcolor="#969595" uuid="a97948e2-d709-43e9-8425-d4ab75920586">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box padding="2"/>
+				</frame>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Group2" isReprintHeaderOnEachPage="true" keepTogether="true">
+		<groupExpression><![CDATA[$F{s6} + " | " + $F{s12}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField>
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="-11" y="0" width="576" height="15" isPrintInFirstWholeBand="true" printWhenGroupChanges="Group2" backcolor="#E6F5FF" uuid="882c3eef-5dd4-4f15-9fdb-8bd08d7ae634">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box padding="2">
+						<pen lineWidth="0.5" lineColor="#737373"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{s6} +   ($F{s12} == null ? "" : " | " + $F{s12})]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement stretchType="ElementGroupHeight" mode="Opaque" x="565" y="0" width="2" height="15" backcolor="#969595" uuid="9e433af9-7ceb-4043-b70b-0c57a5dfb0ef">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Group3"/>
+	<columnHeader>
+		<band height="24">
+			<staticText>
+				<reportElement key="" style="field" mode="Opaque" x="-11" y="0" width="576" height="19" isPrintInFirstWholeBand="true" forecolor="#FFFFFF" backcolor="#006699" uuid="7c645ede-7984-4ae5-a8c6-4499c191470c">
+					<property name="com.jaspersoft.studio.element.name" value="Tittle 1"/>
+					<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
+				</reportElement>
+				<box topPadding="0" leftPadding="6" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#737373"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Other Benefits]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" style="field" mode="Opaque" x="-11" y="0" width="576" height="19" isPrintInFirstWholeBand="true" forecolor="#FFFFFF" backcolor="#006699" uuid="39084d01-142e-42d2-83fd-f60d80a6a9c3">
+					<property name="com.jaspersoft.studio.element.name" value="Tittle contd"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
+				</reportElement>
+				<box topPadding="0" leftPadding="6" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#737373"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Other Benefits - Contd...]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupHeight" mode="Opaque" x="565" y="3" width="2" height="16" backcolor="#969595" uuid="8d84ce3a-f398-4754-9b72-a4d1ed272c48">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="-6" y="19" width="573" height="2" forecolor="#D0B48E" backcolor="#969595" uuid="a6d27807-4593-4ab9-a1a0-11cb9c54857b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="2"/>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18">
+			<printWhenExpression><![CDATA[$F{tagvalue} != null && $F{element} != null && !$F{tagvalue}.equals("Authorization Requirement")]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="ElementGroupHeight" isPrintRepeatedValues="false" mode="Opaque" x="-11" y="0" width="186" height="18" isRemoveLineWhenBlank="true" backcolor="#FAFAFA" uuid="59a5bdff-545e-44a4-b43c-e2b0ec43cc53">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7cdf87e3-7c65-4681-9e6e-c4d87f7659d4"/>
+					<printWhenExpression><![CDATA[$F{tagvalue} != null && $F{element} != null]]></printWhenExpression>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5" lineColor="#737373"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tagvalue} + " | " + $F{s2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="field_odd" positionType="Float" stretchType="ElementGroupHeight" isPrintRepeatedValues="false" mode="Opaque" x="175" y="0" width="390" height="18" isRemoveLineWhenBlank="true" printWhenGroupChanges="Group2" backcolor="#FAFAFA" uuid="8f01d463-0b50-4e34-9c4d-d472b152354c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fecadca3-d9c1-48c8-bb45-acf5e6d361c1"/>
+					<printWhenExpression><![CDATA[$F{tagvalue} != null && $F{element} != null]]></printWhenExpression>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5" lineColor="#737373"/>
+				</box>
+				<textElement markup="styled">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{element}.replace(',', '\n')]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="ElementGroupHeight" mode="Opaque" x="565" y="0" width="2" height="18" backcolor="#969595" uuid="402341d2-5a61-43fe-af68-0368d8c5b34a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{tagvalue} != null]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+		<band height="18">
+			<printWhenExpression><![CDATA[$F{tagvalue}.equals("Authorization Requirement") && $F{element}.equals("YES")]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="ElementGroupHeight" isPrintRepeatedValues="false" mode="Opaque" x="-11" y="0" width="186" height="18" isRemoveLineWhenBlank="true" backcolor="#FAFAFA" uuid="f08d0373-3296-4112-a1f6-88435f02071b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7cdf87e3-7c65-4681-9e6e-c4d87f7659d4"/>
+					<printWhenExpression><![CDATA[$F{tagvalue} != null && $F{element} != null]]></printWhenExpression>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5" lineColor="#737373"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tagvalue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="ElementGroupHeight" mode="Opaque" x="565" y="0" width="2" height="18" backcolor="#969595" uuid="a23296cc-5e9c-4b89-8740-c000ec2875c2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{tagvalue} != null]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="175" y="0" width="390" height="18" isRemoveLineWhenBlank="true" backcolor="#FAFAFA" uuid="40182088-53b4-4f36-afaf-055e40bf64d0"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#737373"/>
+				</box>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="ElementGroupHeight" isPrintRepeatedValues="false" mode="Opaque" x="1" y="2" width="83" height="13" isRemoveLineWhenBlank="true" forecolor="#FCFCFC" backcolor="#F53F38" uuid="40326168-3ece-435b-adab-9898db7d971b">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fecadca3-d9c1-48c8-bb45-acf5e6d361c1"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<printWhenExpression><![CDATA[$F{tagvalue} != null && $F{element} != null]]></printWhenExpression>
+					</reportElement>
+					<box padding="2">
+						<pen lineWidth="0.5" lineColor="#737373"/>
+					</box>
+					<textElement>
+						<font fontName="Calibri" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{element}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="18">
+			<printWhenExpression><![CDATA[$F{tagvalue}.equals("Authorization Requirement") && $F{element}.equals("NO")]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="ElementGroupHeight" isPrintRepeatedValues="false" mode="Opaque" x="-11" y="0" width="186" height="18" isRemoveLineWhenBlank="true" backcolor="#FAFAFA" uuid="de02c107-d8a9-407a-a1e9-303ca0ed2e22">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7cdf87e3-7c65-4681-9e6e-c4d87f7659d4"/>
+					<printWhenExpression><![CDATA[$F{tagvalue} != null && $F{element} != null]]></printWhenExpression>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5" lineColor="#737373"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tagvalue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="ElementGroupHeight" mode="Opaque" x="565" y="0" width="2" height="18" backcolor="#969595" uuid="82a577e8-def4-4ea5-be46-bb73f6b4be5c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{tagvalue} != null]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="175" y="0" width="390" height="18" isRemoveLineWhenBlank="true" backcolor="#FAFAFA" uuid="e7ad5045-4ed1-40a7-b05d-fcf5901e190a"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#737373"/>
+				</box>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="ElementGroupHeight" isPrintRepeatedValues="false" mode="Opaque" x="1" y="2" width="83" height="13" isRemoveLineWhenBlank="true" forecolor="#FCF5F5" backcolor="#437845" uuid="948b8b6c-d88a-45c4-b418-20b34c1e42bf">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fecadca3-d9c1-48c8-bb45-acf5e6d361c1"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<printWhenExpression><![CDATA[$F{tagvalue} != null && $F{element} != null]]></printWhenExpression>
+					</reportElement>
+					<box padding="2">
+						<pen lineWidth="0.5" lineColor="#737373"/>
+					</box>
+					<textElement>
+						<font fontName="Calibri" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{element}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

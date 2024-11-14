@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Family Care Physician Referral Letter</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+
+            .font_small{
+                font-size: 13px;
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="modal fade">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;"> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span> <span  th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-12" style="margin-top:10px">
+                                    <table class="table-responsive" style="position: absolute;right: 0; width: 70%">
+                                        <tbody>
+                                            <tr>
+                                                <td> </td>
+                                                <td>Refer Physician:</td>
+                                                <td><span style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${referalLetterForm.referphysician}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td> </td>
+                                                <td>Office address:</td>
+                                                <td><span style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${referalLetterForm.officeaddress}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td> </td>
+                                                <td>City, State, Zip:</td>
+                                                <td><span style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${referalLetterForm.citystatezip}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td> </td>
+                                                <td>License:</td>
+                                                <td><span style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${referalLetterForm.license}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td> </td>
+                                                <td>Indv. NPI:</td>
+                                                <td><span style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${referalLetterForm.indvnpi}">test</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br/><br/><br/><br/><br/><br/><br/><br/></div>
+                                <h2 style="text-align: center;margin: 15px 0; margin-top:65px">REFERAL LETTER</h2>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <table class="table-responsive" style="width: 80%">
+
+
+                                            <tr>
+                                                <td style="padding:0;"><span style="margin-left:3px">Date:</span></td>
+                                                <td style="padding:0;"><span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${referalLetterForm.currentdate}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><br/>Physician:</td>
+                                                <td><span style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"   th:text="${referalLetterForm.physician}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding:0;"><span style="margin-left:3px">Address:</span></td>
+                                                <td style="padding:0;"><span style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${referalLetterForm.patientaddress}">test</span></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td style="padding:0;"><span style="margin-left:3px">City, State, Zip:</span></td>
+                                                <td style="padding:0;"><span style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${referalLetterForm.patientcitystatezip}">test</span></td>
+                                            </tr>
+                                        </table>
+                                    </div>  
+                                    <h4 style="margin-top: 20px;margin-left:4px;"><span style="font-weight:normal;"> Dear Dr.</span><span style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${referalLetterForm.doctorname}">test</span>:</h4>
+
+
+
+
+                                    <p style="margin-top:15px;margin-left:4px">I have seen our mutual patient <span style="font-weight:bold;min-width: 350px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${referalLetterForm.patientname}">test</span>. He/She chief complains about problem in his/her mouth region.</p>
+
+                                    <table class ="col" style="width: 100%;margin-top:15px;margin-left:4px" >
+                                        <tr> 
+                                            <td>
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox1} == fprl_1" >
+                                                    <input type="checkbox"  checked="checked"/>  Jaw pain </p>
+                                                <p th:unless="${referalLetterForm.patientcheckbox1} == fprl_1" >
+                                                    <input type="checkbox"  />  Jaw pain </p>-->
+                                                
+                                                 <img th:if="${referalLetterForm.patientcheckbox1} == fprl_1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox1} == fprl_1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                                 Jaw pain
+                                            </td>
+                                            <td> 
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox9} == fprl_9">
+                                                    <input type="checkbox"   checked="checked"/> Sensitive drink Hot/Cold water</p>
+                                                <p th:unless="${referalLetterForm.patientcheckbox9} == fprl_9">
+                                                    <input type="checkbox"   /> Sensitive drink Hot/Cold water</p>-->
+                                                <img th:if="${referalLetterForm.patientcheckbox9} == fprl_9"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox9} == fprl_9" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                                Sensitive drink Hot/Cold water
+                                            </td></tr>
+                                        <tr>
+                                            <td>
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox2} == fprl_2">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Oral Surgery</p>
+                                                <p th:unless="${referalLetterForm.patientcheckbox2} == fprl_2">
+                                                    <input type="checkbox"   /> 
+                                                    Oral Surgery</p>-->
+                                                <img th:if="${referalLetterForm.patientcheckbox2} == fprl_2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox2} == fprl_2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                                Oral Surgery
+                                            </td>
+                                            <td> 
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox10} == fprl_10">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Bleeding when brush teeth </p> 
+                                                <p th:unless="${referalLetterForm.patientcheckbox10} == fprl_10">
+                                                    <input type="checkbox"   /> 
+                                                    Bleeding when brush teeth </p> -->
+                                               <img th:if="${referalLetterForm.patientcheckbox10} == fprl_10"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox10} == fprl_10" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                               Bleeding when brush teeth
+                                            </td></tr>
+                                        <tr>
+                                            <td> 
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox3} == fprl_3">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Severe pain  </p>
+                                                <p th:unless="${referalLetterForm.patientcheckbox3} == fprl_3">
+                                                    <input type="checkbox"   /> 
+                                                    Severe pain  </p>-->
+                                           <img th:if="${referalLetterForm.patientcheckbox3} == fprl_3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox3} == fprl_3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                           Severe pain 
+                                            </td>
+                                            <td>
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox11} == fprl_11">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Chronic Fatigue</p> 
+                                                <p th:unless="${referalLetterForm.patientcheckbox11} == fprl_11">
+                                                    <input type="checkbox"   /> 
+                                                    Chronic Fatigue</p> -->
+                                               <img th:if="${referalLetterForm.patientcheckbox11} == fprl_11"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox11} == fprl_11" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                               Chronic Fatigue
+                                            </td></tr>
+                                        <tr>
+                                            <td> 
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox4} == fprl_4">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Broken Tooth </p>
+                                                <p th:unless="${referalLetterForm.patientcheckbox4} == fprl_4">
+                                                    <input type="checkbox"   /> 
+                                                    Broken Tooth </p>-->
+                                            <img th:if="${referalLetterForm.patientcheckbox4} == fprl_4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox4} == fprl_4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                            Broken Tooth
+                                            </td>
+                                            <td> 
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox12} == fprl_12">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Tiredness; Lack of Energy </p>
+                                                <p th:unless="${referalLetterForm.patientcheckbox12} == fprl_12">
+                                                    <input type="checkbox"   /> 
+                                                    Tiredness; Lack of Energy </p> -->
+                                             <img th:if="${referalLetterForm.patientcheckbox12} == fprl_12"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox12} == fprl_12" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                             Tiredness; Lack of Energy 
+                                            </td></tr>
+                                        <tr>
+                                            <td> 
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox5} == fprl_5">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Infection/Abscess</p>
+                                                <p th:unless="${referalLetterForm.patientcheckbox5} == fprl_5">
+                                                    <input type="checkbox"   /> 
+                                                    Infection/Abscess</p>-->
+                                                <img th:if="${referalLetterForm.patientcheckbox5} == fprl_5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox5} == fprl_5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                                Infection/Abscess
+                                            </td> <td> 
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox13} == fprl_13">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Grinding teeth </p> 
+                                                <p th:unless="${referalLetterForm.patientcheckbox13} == fprl_13">
+                                                    <input type="checkbox"   />
+                                                    Grinding teeth </p>-->
+                                            <img th:if="${referalLetterForm.patientcheckbox13} == fprl_13"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox13} == fprl_13" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                            Grinding teeth</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox6} == fprl_6">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Accident/felt &amp; hit on mouth
+                                                </p><p th:unless="${referalLetterForm.patientcheckbox6} == fprl_6">
+                                                    <input type="checkbox"   /> 
+                                                    Accident/felt &amp; hit on mouth
+                                                </p>-->
+                                                <img th:if="${referalLetterForm.patientcheckbox6} == fprl_6"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox6} == fprl_6" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                                Accident/felt &amp; hit on mouth
+                                            </td><td> 
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox14} == fprl_14">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Sleep problem</p>
+                                                <p th:unless="${referalLetterForm.patientcheckbox14} == fprl_14">
+                                                    <input type="checkbox"   /> 
+                                                    Sleep problem</p>-->
+                                               <img th:if="${referalLetterForm.patientcheckbox14} == fprl_14"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox14} == fprl_14" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                               Sleep problem
+                                            </td></tr>
+                                        <tr>
+                                            <td>
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox7} == fprl_7">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Hearing Problem   </p>
+                                                <p th:unless="${referalLetterForm.patientcheckbox7} == fprl_7">
+                                                    <input type="checkbox"   /> 
+                                                    Hearing Problem   </p>-->
+                                               <img th:if="${referalLetterForm.patientcheckbox7} == fprl_7"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox7} == fprl_7" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                               Hearing Problem
+                                            </td> 
+                                            <td>
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox15} == fprl_15">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Snoring</p>
+                                                <p th:unless="${referalLetterForm.patientcheckbox15} == fprl_15">
+                                                    <input type="checkbox"   /> 
+                                                    Snoring</p>-->
+                                           <img th:if="${referalLetterForm.patientcheckbox15} == fprl_15"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox15} == fprl_15" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                           Snoring</td></tr>
+                                        <tr>
+                                            <td colspan="2">
+<!--                                                <p th:if="${referalLetterForm.patientcheckbox8} == fprl_8">
+                                                    <input type="checkbox"   checked="checked"/> 
+                                                    Allergy</p>
+                                                <p th:unless="${referalLetterForm.patientcheckbox8} == fprl_8">
+                                                    <input type="checkbox"   /> 
+                                                    Allergy</p>-->
+                                            <img th:if="${referalLetterForm.patientcheckbox8} == fprl_8"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${referalLetterForm.patientcheckbox8} == fprl_8" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span>
+                                            Allergy</td>
+                                        </tr>
+                                    </table>   
+
+
+                                    <div class="col-12">
+                                        <p style="line-height: 1.5;margin-top:15px;margin-left:4px">Please see our mutual patient for their ENT concern and send us the report for their visit with you. We also need you send the patient back to us for oral surgery consultation.</p>
+                                        <p style="margin-top:30px;margin-left:4px">Sincerely,</p>
+                                        <p style="margin-left:3px"><img th:src="@{data:image/png;base64,{image}(image=${referalLetterForm.doctorsignature})}" height="50" width="400" style="min-width: 120px;border-bottom: 1px solid #000000;"/>
+                                        </p>
+                                        <p style="margin-top: 5px;margin-left:4px">Dr.<span style="font-weight:bold;min-width: 470px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${referalLetterForm.patienttxt1}">test</span></p>
+                                        <p style="margin-top: 5px;margin-left:4px">Title:<span style="font-weight:bold;min-width: 450px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${referalLetterForm.patienttxt2}">test</span></p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>

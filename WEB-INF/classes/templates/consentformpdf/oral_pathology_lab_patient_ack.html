@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> ORAL PATHOLOGY LABORATORY Patient Acknowledgement Form</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 2px;
+                padding: 2px;
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .h4{
+                font-size: 16px !important;
+            }
+            .font_small
+            {
+                font-size: 13px;
+            }
+
+        </style>
+    </head>  
+    <body>
+        <div  id="mymodal">
+            <div class="modal-header" style="text-align: center">
+                <div class="col">
+                    <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}" >test</span></h2>
+                    <h5 style="margin: 1px;"> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                    <h5 style="color:#a2a5a8;">
+                        <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span> <span  th:text="${patientPractice.alertPhone}">test</span>	
+                        <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                    </h5> 
+                </div>
+            </div>
+            <h4 style="text-align: center;">  ORAL PATHOLOGY LABORATORY</h4>
+            <h4 style="text-align: center">Patient Acknowledgement Form</h4>
+            <div class="font_small">
+                <div>
+                    Patient Name : <p style="font-weight:bold;min-width: 190px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyPatientAckForm.patientname}">test</p> 
+                    DOB : <p style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyPatientAckForm.patientdob}">test</p>
+                    Sex: 
+                    <!--                        <input type="checkbox"  checked="checked" th:if="${oralPathologyPatientAckForm.patientgender} == 1" disabled="disabled"/>
+                                            <input type="checkbox"  th:unless="${oralPathologyPatientAckForm.patientgender} == 1" disabled="disabled"/> Male
+                                            <input type="checkbox" checked="checked" th:if="${oralPathologyPatientAckForm.patientgender} == 2" disabled="disabled"/>
+                                            <input type="checkbox"  th:unless="${oralPathologyPatientAckForm.patientgender} == 2" disabled="disabled"/> Female -->
+
+                    <span style="margin-right: -8px;"> 
+                        <img th:if="${oralPathologyPatientAckForm.patientgender} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -11px;" width="15" height="15" alt=""  />  
+                        <span><img  th:unless="${oralPathologyPatientAckForm.patientgender} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                        </span>Male</span>
+                    <span style="margin-right: -8px;"> 
+                        <img th:if="${oralPathologyPatientAckForm.patientgender} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -11px;"  width="15" height="15" alt="" />  
+                        <span><img th:unless="${oralPathologyPatientAckForm.patientgender} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                        </span>Female</span>
+                    <span style="margin-left:20px;">Date: </span><p style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyPatientAckForm.currentdate}">test</p>
+                </div>
+
+
+
+                <div class="col-12" style="margin-top: 20px;">
+
+                    <h4 class="f-12">INFORMATION FOR THE PATIENT</h4>
+                    <p class="justify-content-end" style="margin-top:10px;">The Our ORAL PATHOLOGY LABORATORY provides Oral and Maxillofacial Pathology services to doctors throughout the nation. We provide direct service and also serve as consultants to other doctors and laboratories. Our doctors are all Board Certified with many years of experience.</p>
+
+                    <h4 class="f-12">MICROSCOPIC TISSUE EVALUATION</h4>
+                    <p style="margin-top:5px;">Your doctor has explained that a biopsy procedure of your mouth, jaw or perioral region is indicated. Your tissue sample will be sent to the <i>Our ORAL PATHOLOGY LABORATORY</i> for examination and diagnosis. In some cases, we may seek the diagnostic opinion or consultation of an outside pathologist which may entail a separate fee which they may bill to you or <span style="font-weight:bold"><i>your insurance company.</i></span></p>
+                    <p style="margin-top:10px;">We will mail a report to your doctor who can discuss the results with you. Your signature, below, confirms your acknowledgment that your doctor has ordered oral pathology services to be performed on your behalf and you give permission to Our Oral Pathology Laboratory to share your information with other licensed healthcare providers as needed and requested for diagnostic and/or treatment purposes within HIPAA regulations.</p>
+
+                    <h4 class="f-12">ELECTRONIC TRANSMISSION OF CLINICAL INFORMATION</h4>
+                    <p style="margin-top:5px;">We. may need to communicate with your doctor regarding other information including radiographs, additional clinical information, clinical photos, photomicrographs, and reports from other doctors.</p>
+
+                    <h4 class="f-12">BILLING</h4>
+                    <p style="margin-top:5px;">You will receive a bill from our third-party billing service Agency.   Our billing service can be contacted at (866) 508-9491 ext 101. If the doctor who performed the Radiographic such as CBCT, Orthopanthogram, or any X-Ray flat 2D film  provides us with your billing information, our billing service will bill medical insurance as a courtesy to you.</p>
+                    <p style="margin-top:10px;">We are Medicare providers. If you are Medicare-eligible, we cannot process your radiography unless your doctor is registered with Medicare (PECOS). Your doctor may be registered as "Order &amp; Refer" or "Opt-out". If you are Medicare eligible, inform your doctor and provide your doctor with your Medicare number or a copy of your Medicare card and your date of birth, driver license or U.S legal ID card.</p>
+                    <p style="margin-top:10px;">We are not members of any Preferred Provider network or HMO plans (including Medicare HMO) require prior authorization. You are responsible for payment in full of our services. You are also responsible for any legal or collection agency fees that we may Institute to collect timely payment of this obligation.</p>
+
+                    <p style="font-weight:bold;margin-top:10px;"> My signature below represents my acknowledgment that I have read and understand the foregoing information. </p>
+
+
+                    <table style="width:100%;"> 
+
+                        <td> 
+                            <img th:src="@{data:image/png;base64,{image}(image=${oralPathologyPatientAckForm.signpatient})}" height="50" width="400"  style="border-bottom:1px solid #000000;margin-bottom: -5px; border-width: thin;min-width: 150px;margin-right: 4px;"/>
+                        </td>
+                        <td>  
+                            <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyPatientAckForm.dateofsignature}">test</span>
+                        </td>
+                        <tr>
+                            <td>
+                                Signature of Patient, Legal Guardian or Holder of Power of Attorney</td>
+                            <td> Date </td>
+                        </tr>
+                    </table>
+
+                    <table style="width:100%;"> 
+                        <tr>
+                            <td> 
+                                <p style="font-weight:bold;min-width: 190px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyPatientAckForm.patientname1}">test</p> 
+                            </td></tr>
+                        <tr>
+                            <td>  
+                                Printed name of Signatory
+                            </td></tr>
+                    </table>
+                </div>
+
+
+
+                <p class="f-14" style="font-weight:bold;margin-left:10px;margin-top:20px;">DOCTORS: Please return the original of this form</p>
+
+
+            </div>
+        </div>
+
+    </body>
+</html>
+
+
+

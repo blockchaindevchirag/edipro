@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Medical Record Request Form </title>
+
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 2px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+            .medrecf{
+                font-size:15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="modal fade">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;"><span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span> <span  th:text="${patientPractice.alertPhone}">test</span>    
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div>  
+                    </div>
+                    <h2 class="modal-title" id="myModalLabel" style='text-align: center;margin:15px 0;'>
+                        REFERRAL FOR PHYSICIAN'S EVALUATION 
+                    </h2>
+                    <div class="container">
+
+                        <div class="medrecf">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p>Our mutual patient,</p>
+                                        <table class="col-auto" style="width: 100%">
+                                            <tr>
+                                                <td>Patient Name: <span style="font-weight:bold;min-width: 300px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patientname}">test</span></td>
+                                                <td> 
+                                                    <!--                                                    <input type="checkbox"  checked="checked" th:if="${medicalRecordRequestForm.patientgender} == 1"/>
+                                                                                                        <input type="checkbox"  th:unless="${medicalRecordRequestForm.patientgender} == 1"/>Male
+                                                                                                        <input type="checkbox" checked="checked" th:if="${medicalRecordRequestForm.patientgender} == 2"/>
+                                                                                                        <input type="checkbox"  th:unless="${medicalRecordRequestForm.patientgender} == 2"/>Female-->
+                                                    <span style="margin-right: -4px;"> 
+                                                        <img th:if="${medicalRecordRequestForm.patientgender} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                        <span><img  th:unless="${medicalRecordRequestForm.patientgender} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                        </span> Male</span>
+                                                    <span style="margin-right: -8px;"> 
+                                                        <img th:if="${medicalRecordRequestForm.patientgender} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                                        <span><img th:unless="${medicalRecordRequestForm.patientgender} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                        </span> Female</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Patient's DOB: <span style="font-weight:bold;min-width: 140px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patientdob}">test</span></td>
+
+
+                                                <td>Date :<span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patientcurrentdate}">test</span></td>
+                                            </tr>
+                                        </table><br/>
+
+                                        <p>The patient will be having oral surgery procedures at our Oral Surgery Center that will include use of local anesthetics with epinephrine, also may need premedication with prophylactic antibiotics, and might create a transient septicemia.</p>
+                                        <p style="margin-top:20px">Please evaluate the patient's records to confirm the need for any medication and/or prophylactic antibiotic premedication before high-risk oral surgery procedures and return the next page with your recommendation. Thank you!</p>
+                                        <p style="margin-top: 50px">Sincerely,</p>
+                                        <img th:src="@{data:image/png;base64,{image}(image=${medicalRecordRequestForm.patientsignature})}" height="50px" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+
+                                    </div>
+                                    <div class="col-12" style="margin-top:600px">
+                                        <p>Please return to:</p>    
+                                        <p style="margin-bottom:10px"><span style="font-weight:bold;min-width: 300px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxt1}">test</span></p>
+                                        <table class="col-auto" style="width: 100%">
+                                            <tr>
+                                                <td> Office address:<span style="font-weight:bold;min-width: 350px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patientofficeaddress}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>City, State ZIP:<span style="font-weight:bold;min-width: 350px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.citystate}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tell(<span style="font-weight:bold;min-width: 70px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.telephone}">test</span>)<span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxt2}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Fax(<span style="font-weight:bold;min-width: 70px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.faxnum}">test</span>)<span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxt3}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Dr. <span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patientname1}">test</span></td>
+                                            </tr>
+                                        </table>
+                                        <p>I have evaluated the records of our mutual patient <span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxt4}">test</span> and advise the following:</p>
+
+                                        <p><span style="font-weight:bold;min-width: 55px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxtnum1}">test</span> No prophylactic antibiotic premedication is needed.</p>
+                                        <p><span style="font-weight:bold;min-width: 55px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxtnum2}">test</span> 2 grams <span style="font-style: italic;">Amoxicillin</span> orally one hour before treatment.</p>
+                                        <p><span style="font-weight:bold;min-width: 55px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxtnum3}">test</span> 600mg <span style="font-style: italic;">Clindamycin</span> orally one hour before treatment.</p>
+                                        <p><span style="font-weight:bold;min-width: 55px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxtnum4}">test</span> 2g <span style="font-style: italic;">Cephalexin</span> or <span style="font-style: italic;">Cefadroxil</span> orally one hour before treatment.</p>
+                                        <p><span style="font-weight:bold;min-width: 55px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxtnum5}">test</span> 500mg <span style="font-style: italic;">Azithromycin</span> or <span style="font-style: italic;">Clarithromycin</span> orally one hour before treatment.</p>
+                                        <p> <span style="font-weight:bold;min-width: 55px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxtnum6}">test</span>Other: <span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxt5}">test</span></p><br/>
+
+                                        <!--                                        <p th:if="${medicalRecordRequestForm.patientrec} == recform6">
+                                                                                    <input type="checkbox" checked="checked"/>Please send us photocopy of patient's records</p>
+                                                                                <p th:unless="${medicalRecordRequestForm.patientrec} == recform6">
+                                                                                    <input type="checkbox"/>Please send us photocopy of patient's records</p><br/>-->
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${medicalRecordRequestForm.patientrec} == recform6"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${medicalRecordRequestForm.patientrec} == recform6" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Please send us photocopy of patient's records</span><br/>
+
+                                    </div>
+                                    <table class="col-auto" style="width: 100%">
+                                        <tr>
+                                            <td><span style="font-weight:bold;min-width: 150px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.physicianname}">test</span>
+                                            </td>
+                                            <td> <span style="font-weight:bold;min-width: 90px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patientcurrentdate1}">test</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Physician</td>
+                                            <td> Date </td></tr>
+                                    </table><br/>
+                                    <table class="col-auto" style="width: 100%">
+                                        <tr>
+                                            <td>Tell(<span style="font-weight:bold;min-width: 51px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.telephone1}">test</span>)<span style="font-weight:bold;min-width: 100px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxt6}">test</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fax(<span style="font-weight:bold;min-width: 51px;text-alignmedical_rec17:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.faxnum1}">test</span>)<span style="font-weight:bold;min-width: 100px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${medicalRecordRequestForm.patienttxt7}">test</span> </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div> 
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

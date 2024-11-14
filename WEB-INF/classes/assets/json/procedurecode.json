@@ -1,0 +1,115 @@
+[{
+    "id": 1,
+    "name": "Radiographic X-Ray",
+    "sub_data": [],
+    "objects": [
+                {
+                     "id": 1,
+                    "name": "Pano"
+                },
+                {
+                    "id": 2,
+                    "name": "Ceph"
+                },
+                {
+                   "id": 3,
+                    "name": "CBCT + 3D"
+                },
+                {
+                     "id": 4,
+                    "name": "CT 3 views MAX"
+                },
+                {
+                     "id": 5,
+                    "name": "CT 3 views MAN"
+                },
+                {
+                    "id": 6,
+                    "name": "CT 4 views MAX"
+                },
+                {
+                    "id": 7,
+                    "name":"CT 4 views MAN"
+                }
+            ]
+
+},{
+    "id": 2,
+    "name": "Consultation/Evaluation",
+    "sub_data": [{
+        "id": 1,
+        "name": "New Patient Office Visit",			
+        "objects": [
+                                {
+                                         "id": 1,
+                                        "name": "15-20mins"
+                                },
+                                {
+                                        "id": 2,
+                                        "name": "20-30mins "
+                                },
+                                {
+                                   "id": 3,
+                                        "name": "30-45mins "
+                                },
+                                {
+                                         "id": 4,
+                                        "name": "45-60mins   "
+                                }
+                        ]
+                },
+                {
+        "id": 2,
+        "name": "Office Visit",
+        "objects": [
+                                {
+                                         "id": 1,
+                                        "name": "15-20mins"
+                                },
+                                {
+                                        "id": 2,
+                                        "name": "20-30mins "
+                                },
+                                {
+                                   "id": 3,
+                                        "name": "30-45mins "
+                                },
+                                {
+                                         "id": 4,
+                                        "name": "45-60mins   "
+                                }
+                        ]
+                },
+                {
+        "id": 3,
+        "name": "Pre-Op Evaluation",
+        "objects": [
+                                {
+                                         "id": 1,
+                                        "name": "1-10mins"
+                                },
+                                {
+                                        "id": 2,
+                                        "name": "10-20mins "
+                                },
+                                {
+                                   "id": 3,
+                                        "name": "20-30mins "
+                                }
+                        ]
+                },
+                {
+        "id": 4,
+        "name": "Post-Op Evaluation",
+        "objects": [{
+                            "id": 1,
+                           "name": "1-10mins"
+                   },
+                   {
+                           "id": 2,
+                           "name": "10-20mins "
+                   }]
+            }],
+    "objects": []
+
+}]

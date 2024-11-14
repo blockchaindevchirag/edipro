@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Payment Waiver Form</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 1px;
+                padding: 1px;
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .smallfn1{
+                font-size:16px;
+            }
+            .paywaif{
+                line-height:25px;
+                font-size:16px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="modal fade" >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-header" style="text-align: center">
+                    <div>
+                        <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                        <h5 style="margin: 1px;"> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                        <h5 style="color:#a2a5a8;">
+                            <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span> <span  th:text="${patientPractice.alertPhone}">test</span>	
+                            <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                        </h5> 
+                    </div> 
+                </div>
+                <div class="smallfn1">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <table class="col-auto" style="width: 100%;text-align:center; border: 1px solid black;border-collapse: collapse; margin-bottom:25px;line-height:50px" > 
+                                <tr> 
+                                    <td colspan="2" style=" border: 1px solid black;border-collapse: collapse;">
+                                        <h3>
+                                            LETTER TO PATIENT REGARDING WAIVING OF CO-PAYMENT  
+                                        </h3>
+                                    </td>
+
+                                </tr> 
+                            </table> 
+                            <div>
+                                Date : <span style="font-weight:bold;min-width: 70px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${paymentWaiver.currentdate}">test</span>
+                            </div>
+                        </div>
+                        <div class="container">
+
+                            <div class="card-body">
+                                <h5>To :</h5>
+                                <div class="paywaif" style="padding-top:-30px">
+
+                                    <div>
+                                        PATIENT FIRST NAME:<p style="font-weight:bold;min-width: 190px;text-align: center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${paymentWaiver.patientfirstname}">test</p>
+                                        LAST NAME:<p style="font-weight:bold;min-width: 90px;text-align: center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${paymentWaiver.patientlastname}">test</p>
+                                    </div>
+                                    <div>
+                                        SEX:
+                                        <!--                                        <input type="checkbox"  th:if="${paymentWaiver.patientgender} == 1" checked="checked"/>
+                                                                                <input type="checkbox"  th:unless="${paymentWaiver.patientgender} == 1"  /> Male
+                                                                                <input type="checkbox"  th:if="${paymentWaiver.patientgender} == 2" checked="checked"/>
+                                                                                <input type="checkbox"  th:unless="${paymentWaiver.patientgender} == 2"  /> Female-->
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${paymentWaiver.patientgender} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${paymentWaiver.patientgender} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span> Male</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${paymentWaiver.patientgender} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${paymentWaiver.patientgender} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span> Female</span>
+                                        <span style="margin-left:35px;">ADDRESS :</span> <p style="font-weight:bold;min-width: 300px;text-align: center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${paymentWaiver.patientaddress}">test</p>
+                                    </div>
+                                    <div>
+                                        STATE :<p style="font-weight:bold;min-width: 100px;text-align: center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${paymentWaiver.patientstate}">test</p>
+                                        <span style="margin-left:30px;">CITY :</span><p style="font-weight:bold;min-width: 50px;text-align: center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${paymentWaiver.patientcity}">test</p>
+                                    </div> 
+                                </div>
+
+                                <div class="col-12 center">
+                                    <h4 style=" text-align: center;margin-top: 15px;">
+                                        <span style="font-weight:bold;min-width: 130px;text-align: center;border-bottom: 1px solid #000000;display: inline-block ;"> RE: WAIVING OF PATIENT CO-PAYMENT FOR TREATMENT</span>
+                                    </h4>
+                                </div>
+                                <div class="col-12">
+                                    <div style="margin-top:30px">
+                                        Dear<p style="font-weight:bold;min-width: 250px;text-align: center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${paymentWaiver.patienttxt1}">test</p>,
+                                    </div>
+                                    <p style="margin-top:20px">I am writing to you regarding questions pertaining to your third party
+
+                                        ("insurance") coverage and your financial responsibility for the treatment 
+                                        that you received at this office.</p>
+                                    <div style="margin-top:20px">
+                                        The terms of your Financial Agreement, as discussed with you on DATE, 
+                                        a copy of which you signed and is enclosed, were as follows:
+                                        <div style="margin-top: 20px;">
+                                            <p style="font-weight:bold;min-width: 600px;text-align: center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${paymentWaiver.patienttxt2}">test</p> 
+                                        </div>
+                                        <div>
+                                            <p style="font-weight:bold;min-width: 600px;text-align: center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${paymentWaiver.patienttxt3}">test</p> 
+                                        </div>
+                                        <div>
+                                            <p style="font-weight:bold;min-width: 600px;text-align: center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${paymentWaiver.patienttxt4}">test</p>
+                                        </div>
+                                        <div>
+                                            <p style="font-weight:bold;min-width: 600px;text-align: center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${paymentWaiver.patienttxt5}">test</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12" >
+                                    <p style="margin-top:20px">Due to the financial hardship that this would cause you, we will be waiving 
+                                        the co­payment portion that we are otherwise obligated to collect as part 
+                                        of your employer's contract with your insurance company.</p>
+                                    <p style="margin-top:20px">
+                                        I trust this clarifies our position regarding your balance with our 
+                                        office and will help you through these trying times.
+                                    </p>
+                                    <p style="margin-top:30px;"> Sincerely</p>
+                                    <div>
+                                        <img th:src="@{data:image/png;base64,{image}(image=${paymentWaiver.Signonpatient})}" height="50" width="400" style="font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"/>
+
+                                    </div><br/>
+
+                                    <p>BUSINESS TEAM MANAGER</p>
+
+                                    <!--<p>AmeriDenti Medical Billing</p>-->
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>

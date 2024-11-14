@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Affidavit Intolerance CPAP Device</title>
+
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 0px;
+                padding: 1px;
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .smfn2{
+                font-size:18px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="modal fade">
+            <div class="modal-dialog modal-xl">
+
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;"> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span> <span  th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div>
+                    </div> 
+
+                    <h4 style="text-align: center" class="modal-title" >
+                        AFFIDAVIT FOR INTOLERANCE TO CPAP DEVICE           
+                    </h4> 
+
+                    <div class="smfn2">
+                        <div class="container">
+                            <div class="card-body">          
+                                <table class="col-auto" style="width: 100%">
+                                    <tr>
+                                        <td> Patient Name:  <span style="font-weight:bold;min-width: 300px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${affidavitForm.patientname}">test</span></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Date: <span style="font-weight:bold;min-width: 70px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${affidavitForm.patientcurrentdate}">test</span></td>
+                                    </tr>
+                                </table>
+
+
+                                <div class="row">
+                                    <div style="margin-top:15px;">
+                                        <p>I have attempted to use a CPAP device to manage my sleep-related breathing disorder and find it 
+                                            intolerable to use on a regular basis for the following reason(s):</p>
+                                    </div>
+
+                                    <div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox1}== affidavitcpap">
+                                                <input type="checkbox" checked="checked"/> Mask Leaks</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox1}== affidavitcpap">
+                                                <input type="checkbox"/> Mask Leaks</p>-->
+                                             <img th:if="${affidavitForm.patientcheckbox1} == affidavitcpap"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox1} == affidavitcpap" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Mask Leaks
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox2} == affidavitcpap1">
+                                                <input type="checkbox" checked="checked"/> Mask and/or device uncomfortable</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox2} == affidavitcpap1">
+                                                <input type="checkbox"/> Mask and/or device uncomfortable</p>-->
+                                              <img th:if="${affidavitForm.patientcheckbox2} == affidavitcpap1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox2} == affidavitcpap1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Mask and/or device uncomfortable
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox3} == affidavitcpap2">    
+                                                <input type="checkbox" checked="checked"/> Unable to sleep comfortable</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox3} == affidavitcpap2">    
+                                                <input type="checkbox"/> Unable to sleep comfortable</p>-->
+                                             <img th:if="${affidavitForm.patientcheckbox3} == affidavitcpap2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox3} == affidavitcpap2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Unable to sleep comfortable
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox4}== affidavitcpap3">
+                                                <input type="checkbox" checked="checked"/> Noise from the device disturbs me and/or my bed partner's sleep</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox4}== affidavitcpap3" >
+                                                <input type="checkbox"/> Noise from the device disturbs me and/or my bed partner's sleep</p> -->
+                                             <img th:if="${affidavitForm.patientcheckbox4} == affidavitcpap3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox4} == affidavitcpap3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Noise from the device disturbs me and/or my bed partner's sleep
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox5}== affidavitcpap4">
+                                                <input type="checkbox" checked="checked"/> Restricts movement during sleep</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox5}== affidavitcpap4">
+                                                <input type="checkbox"/> Restricts movement during sleep</p>   -->
+                                             <img th:if="${affidavitForm.patientcheckbox5} == affidavitcpap4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox5} == affidavitcpap4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Restricts movement during sleep
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox6}== affidavitcpap5">
+                                                <input type="checkbox" checked="checked"/> Does not seem to be effective</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox6}== affidavitcpap5">
+                                                <input type="checkbox"/> Does not seem to be effective</p>-->
+                                             <img th:if="${affidavitForm.patientcheckbox6} == affidavitcpap5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox6} == affidavitcpap5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Does not seem to be effective
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox7}== affidavitcpap6">
+                                                <input type="checkbox" checked="checked"/> Strapsheadgear cause discomfort</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox7}== affidavitcpap6">
+                                                <input type="checkbox"/> Strapsheadgear cause discomfort</p>-->
+                                             <img th:if="${affidavitForm.patientcheckbox7} == affidavitcpap6"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox7} == affidavitcpap6" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Strapsheadgear cause discomfort
+                                        </div>
+
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox8}== affidavitcpap7">
+                                                <input type="checkbox" checked="checked"/> Pressure on upper lip causes tooth-related problems</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox8}== affidavitcpap7">
+                                                <input type="checkbox"/> Pressure on upper lip causes tooth-related problems</p>-->
+                                             <img th:if="${affidavitForm.patientcheckbox8} == affidavitcpap7"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox8} == affidavitcpap7" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Pressure on upper lip causes tooth-related problems
+                                        </div>
+
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox9} == affidavitcpap8">
+                                                <input type="checkbox" checked="checked"/> Latex allergy</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox9} == affidavitcpap8">
+                                                <input type="checkbox"/> Latex allergy</p>-->
+                                             <img th:if="${affidavitForm.patientcheckbox9} == affidavitcpap8"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox9} == affidavitcpap8" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Latex allergy
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox10} == affidavitcpap9">    
+                                                <input type="checkbox" checked="checked"/> Claustrophobia</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox10}== affidavitcpap9">    
+                                                <input type="checkbox"/> Claustrophobia</p>-->
+                                             <img th:if="${affidavitForm.patientcheckbox10} == affidavitcpap9"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox10} == affidavitcpap9" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Claustrophobia
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox11}== affidavitcpap10">    
+                                                <input type="checkbox" checked="checked"/> Other:<span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${affidavitForm.patienttxt1}">test</span></p>  
+                                            <p th:unless="${affidavitForm.patientcheckbox11}== affidavitcpap10">    
+                                                <input type="checkbox"/> Other:<span style="font-weight:bold;min-width: 300px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${affidavitForm.patienttxt1}">test</span> </p> 
+                                               -->
+                                                 <img th:if="${affidavitForm.patientcheckbox11} == affidavitcpap10"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox11} == affidavitcpap10" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Other:<span style="font-weight:bold;min-width: 300px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${affidavitForm.patienttxt1}">test</span>
+
+                                        </div><br/>
+                                        <div style="margin-bottom:25px;"> 
+                                            <p>I have not attempted to use a CPAP device and would prefer to use an oral appliance for the
+                                                following reason(s):</p> 
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox12} == affidavitcpap11" >
+                                                <input type="checkbox" checked="checked"/> I'm worried that the mask, straps/headgear will cause discomfort</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox12}== affidavitcpap11">
+                                                <input type="checkbox"/> I'm worried that the mask, straps/headgear will cause discomfort</p>-->
+                                            
+                                            <img th:if="${affidavitForm.patientcheckbox12} == affidavitcpap11"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox12} == affidavitcpap11" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I'm worried that the mask, straps/headgear will cause discomfort
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox13}== affidavitcpap12">
+                                                <input type= "checkbox" checked="checked"/> I'm worried that the noise from the device will disturb me and/or my bed partner's sleep</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox13}== affidavitcpap12">
+                                                <input type= "checkbox"/> I'm worried that the noise from the device will disturb me and/or my bed partner's sleep</p>
+                                           -->
+                                             <img th:if="${affidavitForm.patientcheckbox13} == affidavitcpap12"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox13} == affidavitcpap12" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I'm worried that the noise from the device will disturb me and/or my bed partner's sleep
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox14} == affidavitcpap13"> 
+                                                <input type="checkbox" checked="checked"/> I'm worried that the device will restrict movement during sleep</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox14}== affidavitcpap13"> 
+                                                <input type="checkbox"/> I'm worried that the device will restrict movement during sleep</p>-->
+                                          
+                                             <img th:if="${affidavitForm.patientcheckbox14} == affidavitcpap13"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox14} == affidavitcpap13" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I'm worried that the device will restrict movement during sleep
+                                            
+                                        </div>
+<!--                                        <div class="custom-control custom-checkbox">
+                                            <p th:if="${affidavitForm.patientcheckbox15}== affidavitcpap14"> 
+                                                <input type="checkbox" checked="checked"/> I have a latex allergy</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox15}== affidavitcpap14"> 
+                                                <input type="checkbox"/> I have a latex allergy</p>-->
+                                            
+                                             <img th:if="${affidavitForm.patientcheckbox15} == affidavitcpap14"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox15} == affidavitcpap14" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I have a latex allergy
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox16}==affidavitcpap15">
+                                                <input type="checkbox" checked="checked"/> I suffer from claustrophobia</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox16}== affidavitcpap15">
+                                                <input type="checkbox"/> I suffer from claustrophobia</p>-->
+                                            
+                                             <img th:if="${affidavitForm.patientcheckbox16} == affidavitcpap15"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox16} == affidavitcpap15" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I suffer from claustrophobia
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox17}==affidavitcpap16">
+                                                <input type="checkbox" checked="checked"/> I travel frequently and am worried that a CPAP device will be cumbersome to transport</p>
+                                            <p th:unless="${affidavitForm.patientcheckbox17}== affidavitcpap16">
+                                                <input type="checkbox"/> I travel frequently and am worried that a CPAP device will be cumbersome to transport</p>
+                                            -->
+                                             <img th:if="${affidavitForm.patientcheckbox17} == affidavitcpap16"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox17} == affidavitcpap16" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I travel frequently and am worried that a CPAP device will be cumbersome to transport
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+<!--                                            <p th:if="${affidavitForm.patientcheckbox18}== affidavitcpap17">
+                                                <input type="checkbox" checked="checked"/> Other:<span style="font-weight:bold;min-width: 200px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${affidavitForm.patienttxt2}">test</span></p> 
+                                            <p th:unless="${affidavitForm.patientcheckbox18}== affidavitcpap17">
+                                                <input type="checkbox"/> Other:<span style="font-weight:bold;min-width: 300px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${affidavitForm.patienttxt2}">test</span> </p> -->
+
+                                                
+                                                 <img th:if="${affidavitForm.patientcheckbox18} == affidavitcpap17"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${affidavitForm.patientcheckbox18} == affidavitcpap17" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Other:<span style="font-weight:bold;min-width: 300px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${affidavitForm.patienttxt2}">test</span>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <div> 
+
+                                    </div>
+
+                                    <div style="margin-top:15px;"> 
+                                        <p>Because of my inability to use a CPAP device, I wish to have an alternative method of treatment. I 
+                                            would like to try an oral appliance in an attempt to control my snoring and obstructive sleep apnea</p> 
+                                    </div>
+
+
+                                    <table  style="width: 100%">
+
+                                        <td><img th:src="@{data:image/png;base64,{image}(image=${affidavitForm.patientsignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                        <td><span style="font-weight:bold;min-width: 100px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${affidavitForm.signdate1}">test</span></td>
+
+
+
+                                        <tr>
+                                            <td>Patient's Signature </td>
+                                            <td>Date</td>
+                                        </tr>
+
+
+                                    </table>
+                                </div>
+                            </div>     
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </body>
+</html>

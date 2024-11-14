@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Fixation Screw</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 1px;
+                padding: 1px;
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .smfn6{
+                font-size:14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="modal fade" id="Fixation_Screw" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;"> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span> <span  th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div>
+                    </div>
+
+                    <h3 class="modal-title" id="myModalLabel" style="text-align:center">
+                        DISCUSSION AND INFORMED CONSENT FOR TITANIUM BONE STABILIZER SCREW 
+                    </h3>
+
+                    <div class="container">
+                        <div class="smfn6">
+                            <div class="card-body"> 
+                                <div>
+                                    <p>Patient Name:<span  style="font-weight:bold;min-width: 300px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${fixationScrew.patientname}">test</span> 
+                                        Date: <span  style="font-weight:bold;min-width: 220px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${fixationScrew.patientcurrentdate}">test</span>  </p>
+                                </div>
+                                <p>Diagnosis:<span style="font-weight:bold;min-width: 580px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${fixationScrew.patientdiagnosis}">test</span> </p>
+                                <p>Treatment &amp; Location: <span  style="font-weight:bold;min-width: 505px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${fixationScrew.patienttreatment}">test</span> </p>
+                                <h5 style="margin-top: 10px">Facts for Consideration</h5>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h3 style=""> What Are Implants?  </h3>
+                                        <p style="text-align: justify;text-justify: inter-word;">Bone Stabilizer Screws differ to stabilize from the bone graft to fixed the bone defect, bone lesion, bone 
+                                            infection, tuberculous of bone, fracture of alveolar bone or bone atrophy alveolar thin bridge.  </p>
+                                        <p style="text-align: justify;text-justify: inter-word;">
+                                            The Bone Stabilizer Screws are placed surgically. Usually under local anesthetic or general anesthesia or IV
+                                            sedation, the gum tissue is reflected, precise drilling of holes in the jawbone is performed to accommodate
+                                            the screws (cylindrical metal posts) which are immediately placed in them. The surgical site is then closed.
+                                            The second surgical procedure occurs three to eight months later. The Bone Stabilizer Screws are then
+                                            evaluated for healing and successful integration with the bone. Some revisions may have to be made at this
+                                            time. If the screw failed to integrate, it will have to be removed and alternative treatments considered, such
+                                            as a change of the site or titanium screw. If the Bone Stabilizer Screw has successfully integrated, extending 
+                                            through the gum tissue into the mouth. In the final prosthetic phase, a metal sleeve is threaded into the
+                                            screw to anchor the prosthetic appliance, crown or bridge. The prosthetic appliance or plate fee is separate 
+                                            from the surgical fee.
+                                        </p>
+                                    </div>
+                                    <table class="col-auto" style="width: 100%;text-align:right;">
+                                        <td></td>
+                                        <td>(Initials <img th:src="@{data:image/png;base64,{image}(image=${fixationScrew.patientsignature1})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>)</td> 
+
+                                    </table>
+                                    <div class="col-12">
+                                        <h3> Alternatives to Implants  <br/></h3>
+                                        <p style="text-align: justify;text-justify: inter-word;">As implied above, alternatives to screws replacement may be fixed bone or tissue defect, removable
+                                            partial and complete prosthetic plate or appliance. Infected bone with sound jawbone and bone support
+                                            may be treated with laser therapy.. </p>                    
+                                    </div>
+                                    <table class="col-auto" style="width: 100%;text-align:right;">
+                                        <td></td>
+                                        <td>(Initials <img th:src="@{data:image/png;base64,{image}(image=${fixationScrew.patientsignature2})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/> )</td> 
+
+                                    </table>
+                                    <div class="col-12">
+                                        <h3>Risks </h3>
+                                        <p style="text-align: justify; text-justify: inter-word;">Surgical risks include, but are not limited to: post-surgical infection; bleeding; swelling; pain; facial 
+                                            discoloration; sinus or nasal perforation; TMJ injuries; spasms; bone fracture; poor healing; numbness 
+                                            (paresthesia) of the lip, chin and tongue, which is usually temporary, but, on occasion, may be permanent.</p>
+                                        <p style="text-align: justify;text-justify: inter-word;">
+                                            The prosthetic risks include but are not limited to: unsuccessful integration of the screw(s) to stablelize the 
+                                            bone; fracture of the post-osseointegration mechanical screw components. If a separate surgical procedure 
+                                            is necessary to remove a failed screw(s) or if a replacement is necessary due to changed prosthetic 
+                                            requirements, an additional fee may be charged.
+                                        </p>
+                                    </div>
+                                    <table class="col-auto" style="width: 100%;text-align:right;">
+                                        <td></td>
+                                        <td>(Initials<img th:src="@{data:image/png;base64,{image}(image=${fixationScrew.patientsignature3})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>)</td>
+
+                                    </table>
+                                    <div class="col-12">
+                                        <h3>Unanticipated Conditions <br/></h3>
+                                        <p style="text-align: justify;
+                                           text-justify: inter-word;">During the course of treatment, unknown oral conditions may modify or change the original treatment plan. 
+                                            This possibility necessitates consent for the treating doctor, in consultation with the patient, if possible, to 
+                                            use the best judgment in consideration of the new found conditions.</p>
+                                    </div>
+                                    <table class="col-auto" style="width: 100%;text-align:right;">
+                                        <td></td>
+                                        <td>(Initials <img th:src="@{data:image/png;base64,{image}(image=${fixationScrew.patientsignature4})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>)</td> 
+
+                                    </table>
+                                    <div class="col-12">
+                                        <h3>Summary <br/></h3>
+                                        <p style="text-align: justify;
+                                           text-justify: inter-word;">You have been provided a general overview of Bone Stabilizer Screws. Titanium screws have about an 
+                                            85% success rate with various factors influencing the outcome. The benefits, as well as the risks, have 
+                                            been discussed. The alternatives to titanium screw replacement have also been discussed, as well as 
+                                            the consequence of non-replacement. No discussion or form can be all inclusive and you are 
+                                            encouraged to ask questions regarding any concerns or needed clarifications, to enable you to make 
+                                            an informed decision. Dentistry is not an exact science. Every individual is unique and guarantees of 
+                                            success cannot be made</p>
+                                    </div>
+                                    <table class="col-auto" style="width: 100%;text-align:right;">
+                                        <td></td>
+                                        <td>(Initials <img th:src="@{data:image/png;base64,{image}(image=${fixationScrew.patientsignature5})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>)</td>  
+
+                                    </table>
+                                    <div class="col-12">
+                                        <h4 style="font-weight:bold">Check the boxes below that apply to you:</h4>
+                                        <div style="margin-top:5px"><h4>Consent</h4></div>
+                                        <p style="margin-top:5px">
+                                            <!--                                            <input type="checkbox" th:if="${fixationScrew.patientcheckbox1} == fixationscrew1" checked="checked"/>
+                                                                                        <input type="checkbox" th:unless="${fixationScrew.patientcheckbox1} == fixationscrew1"/>-->
+                                            <img th:if="${fixationScrew.patientcheckbox1} == fixationscrew1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${fixationScrew.patientcheckbox1} == fixationscrew1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>
+                                            I have been informed both verbally and by the information provided on this form of the risks and
+                                            benefits of the proposed treatment.
+                                        </p>
+                                        <p style="margin-top:5px">
+                                            <!--                                            <input type="checkbox" th:if="${fixationScrew.patientcheckbox2} == fixationscrew2" checked="checked"/>
+                                                                                        <input type="checkbox" th:unless="${fixationScrew.patientcheckbox2} == fixationscrew2"/>-->
+                                            <img th:if="${fixationScrew.patientcheckbox2} == fixationscrew2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${fixationScrew.patientcheckbox2} == fixationscrew2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>
+                                            I have been informed both verbally and by the information provided on this form of the material risks
+                                            and benefits of alternative treatment and of electing not to treat my condition. 
+                                        </p>
+                                        <p style="margin-top:5px">
+                                            <!--                                            <input type="checkbox" th:if="${fixationScrew.patientcheckbox3} == fixationscrew3" checked="checked"/>
+                                                                                        <input type="checkbox" th:unless="${fixationScrew.patientcheckbox3} == fixationscrew3"/>-->
+                                            <img th:if="${fixationScrew.patientcheckbox3} == fixationscrew3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${fixationScrew.patientcheckbox3} == fixationscrew3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>
+                                            I certify that I have read and understand the above information and that the explanations referred to
+                                            are understood by me, that my questions have been answered and that the blanks requiring insertions
+                                            or completion have been filled in. I authorize and direct Dr.- <span style="font-weight:bold;min-width: 120px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${fixationScrew.patienttxt1}">test</span> to do whatever he/she
+                                            deems necessary and advisable under the circumstances.
+                                        </p>
+                                        <p style="margin-top:5px">
+                                            <!--                                            <input type="checkbox" th:if="${fixationScrew.patientcheckbox4} == fixationscrew4" checked="checked"/>
+                                                                                        <input type="checkbox" th:unless="${fixationScrew.patientcheckbox4} == fixationscrew4" />-->
+                                            <img th:if="${fixationScrew.patientcheckbox4} == fixationscrew4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${fixationScrew.patientcheckbox4} == fixationscrew4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>
+                                            I consent to have the above-mentioned treatment. 
+                                        </p>
+                                        <p style="margin-top:5px">
+                                            <!--                                            <input type="checkbox" th:if="${fixationScrew.patientcheckbox5} == fixationscrew5" checked="checked"/>
+                                                                                        <input type="checkbox" th:unless="${fixationScrew.patientcheckbox5} == fixationscrew5" />-->
+                                            <img th:if="${fixationScrew.patientcheckbox5} == fixationscrew5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${fixationScrew.patientcheckbox5} == fixationscrew5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>
+                                            While the treatment may be covered by my medical and/or dental insurance, I accept any financial
+                                            responsibility for this treatment and authorize treatment.
+                                        </p>
+                                        <h4 style="margin-top: 10px">or</h4>
+                                        <h4 style="margin-bottom: 10px;">Refusal</h4>
+                                        <p style="margin-top:10px">
+                                            <!--                                            <input type="checkbox" th:if="${fixationScrew.patientcheckbox6} == fixationscrew6" checked="checked"/>
+                                                                                        <input type="checkbox" th:unless="${fixationScrew.patientcheckbox6} == fixationscrew6" />-->
+                                            <img th:if="${fixationScrew.patientcheckbox6} == fixationscrew6"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${fixationScrew.patientcheckbox6} == fixationscrew6" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                            </span>
+                                            I refuse to give my consent for the proposed treatment(s) described above and understand the
+                                            potential consequences associated with this refusal.
+                                        </p>
+                                    </div>
+                                    <table class="col-auto" style="width: 100%">
+
+                                        <td><img th:src="@{data:image/png;base64,{image}(image=${fixationScrew.patientsignature})}" height="80px" width="480" style="border-bottom:1px solid #000000;min-width: 150px;"/> </td>
+                                        <td><span style="font-weight:bold;min-width: 120px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${fixationScrew. signdate1}">test</span></td>
+
+                                        <tr>
+                                            <td>Patient or Patient's Representative Signature </td>
+                                            <td>Date</td>
+                                        </tr>
+                                    </table>
+
+                                    <table class="col-auto" style="width: 100%">
+                                        <td><img th:src="@{data:image/png;base64,{image}(image=${fixationScrew.witnesssignature})}" height="80px" width="480" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                        <td><span style="font-weight:bold;min-width: 120px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${fixationScrew.signdate2}">test</span></td>
+                                        <tr>
+                                            <td>Witness Signature </td>
+                                            <td>Date</td>
+                                        </tr>
+                                    </table>
+                                    <div class="col-12" style="margin-top:15px;">
+                                        <p style="text-align: justify;text-justify: inter-word;">I attest that I have discussed the risks, benefits, consequences and alternatives of the above treatment 
+                                            will <span style="font-weight:bold;min-width: 120px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${fixationScrew.patienttxt2}">test</span> (Patient or Patient's Representative) and they have had the 
+                                            opportunity to ask questions. I believe they understand what has been explained and consents or refuses 
+                                            treatment noted above.</p>   
+                                    </div>
+                                </div>
+                            </div>     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

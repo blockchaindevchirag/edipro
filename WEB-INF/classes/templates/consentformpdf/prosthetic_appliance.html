@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Prosthetic Appliance</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+                .smfn5{
+                    font-size: 4px;
+                    
+                }
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div class="modal fade">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;"> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span> <span  th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div> 
+                    </div>  
+                    <h3 class="modal-title" style="text-align:center; margin-bottom:15px">
+                        DISCUSSION AND INFORMED CONSENT FOR DENTURE(S)       
+                    </h3>  
+
+                    <div class="container">
+                        <div class="smfn5">
+                            <div class="card-body">       <div>   
+                                    <p style="line-height:30px">Patient Name: <span style="font-weight:bold;min-width: 350px;text-align:center;border-bottom: 1px solid #000000;display: inline-block;" th:text="${prostheticAppliance.patientname}">test</span>
+                                        Date:  <span style="font-weight:bold;min-width: 180px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.patientcurrentdate}">test</span> </p>
+
+                                    <p style="line-height:30px">Diagnosis:<span style="font-weight:bold;min-width: 600px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.patientdiagnosis}">test</span></p>
+                                    <p style="line-height:30px">Treatment:<span style="font-weight:bold;min-width: 600px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.patienttreatment}">test</span></p><br/>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <h5 style="margin-bottom:12px">Facts for Consideration</h5>
+                                        <p>Candidates for prosthetic devices have lost some or all of their teeth. Dentures are designed to replace teeth of an upper or lower jaw.
+                                            The following types of removable dentures have been discussed:</p><br/>
+
+
+
+                                       <div class="col-12">
+                                           <ol>
+                                            <li style="margin-left:20px"><p style="margin-bottom:15px">
+                                                     An <span style="border-bottom: 1px solid #000000;display: inline-block; ">immediate denture</span> is placed at the time any remaining teeth are extracted. To make this possible, measurements and models
+                                                    are taken during the preliminary visit. However, bones and gums can shrink over time, especially during the healing period in
+                                                    the first six months after any extraction of teeth. When gums shrink, immediate dentures may require rebasing or refining to fit
+                                                    properly. The immediate denture is often temporary and will require replacement.
+                                                </p></li>
+                                            <li style="margin-left:20px"><p style="margin-bottom:15px"> A <span style="border-bottom: 1px solid #000000;display: inline-block; ">conventional full denture</span> is placed in the mouth after all of the teeth have been removed and any extraction sites have dealed,
+                                                    usually six to eight weeks after typical extractions</p></li>
+                                            <li style="margin-left:20px"><p style="margin-bottom:15px"> A <span style="border-bottom: 1px solid #000000;display: inline-block; ">partial denture</span> is usually composed of framework, artificial teeth and acrylic material. It fills in the spaces created by missing
+                                                    teeth and prevents other remaining teeth from shifting.
+                                                </p></li>
+                                            <li style="margin-left:20px"><p style="margin-bottom:15px"> An <span style="border-bottom: 1px solid #000000;display: inline-block; ">overdenture</span> is usually supported by a small number of remaining natural teeth or implants. The denture fits "over" the teeth or
+                                                    implants. Natural teeth must be prepared (reshaped) to fit into the overdenture and provide stability and support for the denture.</p></li>
+                                        </ol>
+                                    </div>
+
+                                    </div>
+                                    <div class="col-12" style="margin-top:25px">
+                                        <h5>Option(s) Chosen:<span style="font-weight:bold;min-width: 550px;text-align:center;border-bottom: 1px solid #000000;display: inline-block; " th:text="${prostheticAppliance.patienttxt1}">test</span></h5>
+                                            <small><i>Patient's initials required</i></small>
+                                        
+
+                                    </div>
+
+                                    <div class="col-12">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature1})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+
+                                            I understand the stability and retention of the denture(s) depends on many factors, including the attachment and fit of
+                                            the denture(s) to natural teeth, implants (if any), the amount and type of bone, gum tissue and saliva, as well as my
+                                            ability in placing and removing the denture(s).</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature2})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+
+                                            When using natural teeth as support, I understand my dentist may anesthetize (numb) my teeth and the gum tissue
+                                            around the teeth. The teeth acting as support may be filed down along the chewing surface and sides to make room for
+                                            the denture(s) .</p>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature3})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+
+                                            I understand that holding my mouth open during treatment may temporarily leave my |aw feeling stiff and sore and may
+                                            make it difficult for me to open wide for several days. This can occasionally be an indication of a further problem. I
+                                            must notify my dentist if this or other concerns arise. This problem may require other treatment</p>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature4})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+
+                                            I understand there may be gum soreness or discomfort under the denture(s). This can be relieved by the dentist with
+                                            adjustments and tissue treatment. It may take several appointments before the denture(s) fit comfortably.</p>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature5})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+
+                                            I understand the new denture(s) may feel awkward for a few weeks until I become accustomed to them and the
+                                            denture(s) may feel loose while my cheek muscles and tongue learn to keep them in place.
+                                        </p>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature6})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+
+                                            I understand my dentist will make every attempt to create a natural appearance for the denture(s); however, it may not
+                                            be possible for the denture(s) to support my lip and facial contours perfectly or as my natural teeth had done.
+                                        </p>
+                                    </div>
+
+
+                                    <div class="col-12">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature7})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            I understand that pronouncing certain words may take practice. I can do this by reading aloud and repeating
+                                            troublesome words. Sometimes the denture(s) will slip when I laugh, cough or smile. I can reposition the denture(s) by
+                                            gently biting down and swallowing. If a speaking problem persists, I will call my dentist for consultation</p>
+                                    </div>
+
+
+                                    <div class="col-12">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature8})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            Similar to natural teeth, I understand that my denture(s) require(s) daily brushing to remove food deposits and plaque.
+                                            My dentist has explained to me how best to care for my denture(s) and which products to use. I have to brush my gums,
+                                            tongue and palate with a soft bristled brush before wearing my denture(s). If I do not properly clean or care for my
+                                            denture(s), they may stain, develop odor and affect the way food tastes</p>
+                                    </div>
+
+
+                                    <div class="col-12">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature9})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            I understand that any ad|ustments or changes I make to my denture(s) can compromise the denture(s) and cause gum
+                                            and cheek irritation and sores. If my denture(s) become loose, chip, crack or break, I will contact my dentist
+                                            immediately. Glue purchased over the counter to repair a broken denture often contains harmful chemicals and should
+                                            not be used on dentures. Ad|usting my denture(s) on my own is not advised and may result in permanent changes to the
+                                            denture(s) that will affect their fit and function. This may also result in the need to remake the denture, which I
+                                            understand will be at my own expense</p>
+                                    </div>
+
+                                    <div class="col-11">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature10})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            I understand that I am required to keep regular care appointments with my dentist to maintain good oral health and
+                                            ensure my denture(s) retain their proper fit and function. Failure to do so may result in in|ury or damage to my oral
+                                            health including gums and jawbone.</p>
+                                    </div>
+
+                                    <div class="col-11">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature11})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            I understand that every reasonable effort will be made to ensure the success of my treatment but that success cannot be
+                                            guaranteed.</p>
+                                    </div>
+
+                                    <div class="col-12" style="margin-top: 25px">
+                                        <h5>Benefits of Dentures, Not Limited to the Following:</h5>
+                                    </div>
+                                    <div class="col-11">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature12})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            I understand that a reasonable aesthetic appearance may be achieved.</p>
+                                    </div>
+
+                                    <div class="col-11">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature13})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            With my new denture(s), I understand my function and ability to eat will usually improve as opposed to being
+                                            edentulous (without teeth)
+                                        </p>
+                                    </div>
+
+                                    <div class="col-12" style="margin-top: 25px">
+                                        <h5>Risks of Dentures, Not Limited to the Following:</h5>
+
+
+                                        <div class="col-11">
+                                            <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature14})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                                I understand that there are potential problems such as periodontal (gum) disease, porcelain fractures, occlusal (bite)
+                                                changes, stains and color changes, gum recession, food impaction, decay, excessive wear due to grinding and bruxing
+                                                or temporomandibular joint dysfunction (TMD).
+                                                </p>
+                                        </div>
+
+                                        <div class="col-11">
+                                            <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature15})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                                I understand that dentures may have characteristics and potential problems such as odor, chipping and wear, stability
+                                                and retention problems, changes in facial and lip appearance and adaptation of the tongue and lips for proper
+                                                speech. Periodic refines may be required as gum and bone may change over time, oral sensations may change and
+                                                good oral hygiene is imperative.
+                                                .</p>
+                                        </div>
+                                        <div class="col-11">
+                                            <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature16})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                                I understand ill-fitting dentures can cause constant irritation over a long period of time and may contribute to the
+                                                development of sores. Failure to wear my denture(s) over a long period of time may affect the fit of the denture(s). My
+                                                denture(s) may need to be refined or replaced. If my denture(s) begin to feel loose or cause pronounced discomfort, I
+                                                will contact my dentist.
+                                                .</p>
+                                        </div>
+
+                                        <div class="col-11">
+                                            <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature17})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                                I understand a numb lip may occur from the pressure of the removable denture(s). This problem requires selective
+                                                adjustment and in rare cases a nerve might need surgical repositioning.
+                                                .</p>
+                                        </div>
+
+                                        <div class="col-11">
+                                            <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature18})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                                I understand that the edge of the denture(s) usually rests on the gum line, which is in an area prone to gum irritation,
+                                                infection or decay. Proper hygiene at home, a healthy diet and regular professional cleanings are some preventative
+                                                measures essential to control these problems.
+                                                .</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12" style="margin-top:12px">
+                                        <h5>Consequences if No Treatment Is Administered, Not Limited to the Following:</h5>
+                                    </div>
+
+                                    <div class="col-11">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature19})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            I understand that I can choose to do nothing and my present complaints will continue and may worsen. Subsequent
+                                            choices for dentition repair may become more difficult, expensive or not feasible.</p>
+                                    </div>
+
+                                    <div class="col-11">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature20})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            I understand that if I do not replace missing teeth, I risk compromised aesthetics and possible drift of adjacent and/or
+                                            opposing teeth into the space(s) with the resultant collapse of the arch integrity. This could also create or exacerbate a
+                                            temporomandibular |oint problem.</p>
+                                    </div>
+
+                                    <div class="col-12" style="margin-top:20px">
+                                        <h5>Treatment Process:</h5>
+                                    </div>
+
+                                    <div class="col-11 row">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature21})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            I understand the following timeline represents an estimate of the treatment proposed by my dentist. It is important that I
+                                            keep appointments within close succession of the estimated timeline or I risk compromising the entire treatment plan.</p>
+
+                                        <table class="col-auto" style="width: 100%">
+                                            <tr>
+                                                <td><div style="margin-left:25px">Exam, shade, mold selection and impression </div></td>
+                                                <td>Est. date completed: <span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.estdate1}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div style="margin-left:25px">Mouth preparation, surgical adjustment</div></td> 
+                                                <td>Est. date completed: <span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.estdate2}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div style="margin-left:25px">Multiple impressions, custom trays</div></td>  
+                                                <td>Est. date completed: <span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.estdate3}">test</span> </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td><div style="margin-left:25px">Try-in wax adjustment</div></td> 
+                                                <td>Est. date completed: <span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.estdate4}">test</span> </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td> <div style="margin-left:25px">Adjustment and delivery</div></td>
+                                                <td>Est. date completed: <span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.estdate5}">test</span> </td>
+
+                                            </tr>
+                                        </table>
+                                    </div>
+
+
+                                    <div class="col-12" style="margin-top:20px">
+                                        <h5>Alternatives to Dentures, Not Limited to the Following:</h5>
+                                    </div>                
+
+                                    <div class="col-11">
+                                        <p> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.patientsignature22})}" height="40" width="100" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            I understand that depending on the reason I am a candidate for dentures, alternatives may exist including the use of
+                                            dental implants to support the denture. I have asked my dentist about the alternatives and their respective expenses. My
+                                            questions have been answered to my satisfaction regarding the procedures and their risks, benefits and costs.</p>
+                                    </div>
+
+                                    <div class="col-12" style="margin-top: 25px">
+                                        <h5 style="margin-top: 25px">Alternatives Discussed:<span style="font-weight:bold;min-width: 500px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.patienttxt7}">test</span></h5>
+                                        <p>No guarantee or assurance has been given to me by anyone that the proposed treatment will cure or improve the condition(s) listed
+                                            above. I have had my questions answered to my satisfaction.</p>
+                                    </div>
+
+
+
+
+                                    <div class="col-12" style="margin-top:40px" >               
+                                       <h5 style="font-weight:bold;min-width: 230px;text-align:center;border-bottom: 1px solid #000000;display: inline-block;">Check the boxes below that apply to you:</h5>
+                                                    <div style="margin-top:15px"> <h5>Consent</h5></div>
+                                        <p style="margin-top:10px">
+<!--                                            <span th:if="${prostheticAppliance.patientcheckbox1} == prosthetic">
+                                                <input type="checkbox"  checked="checked"/>I have been informed, both verbally and by the information provided on this form, of the risks and benefits of the proposed treatment.</span> 
+                                            <span th:unless="${prostheticAppliance.patientcheckbox1} == prosthetic">
+                                                <input type="checkbox"/>I have been informed, both verbally and by the information provided on this form, of the risks and benefits of the proposed treatment.
+                                            </span>-->
+                                            <img th:if="${prostheticAppliance.patientcheckbox1} == prosthetic"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${prostheticAppliance.patientcheckbox1} == prosthetic" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I have been informed, both verbally and by the information provided on this form, of the risks and benefits of the proposed treatment.
+                                        </p>
+                                        <p style="margin-top:10px">
+<!--                                            <span th:if="${prostheticAppliance.patientcheckbox2} == prosthetic1">
+                                                <input type="checkbox"  checked="checked"/>
+                                                I have been informed, both verbally and by the information provided on this form, of the material risks and benefits of alternative
+                                                treatment and of electing not to treat my condition.</span>
+
+                                            <span th:unless="${prostheticAppliance.patientcheckbox2} == prosthetic1">
+                                                <input type="checkbox"/>
+                                                I have been informed, both verbally and by the information provided on this form, of the material risks and benefits of alternative
+                                                treatment and of electing not to treat my condition.</span>-->
+                                             <img th:if="${prostheticAppliance.patientcheckbox2} == prosthetic1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${prostheticAppliance.patientcheckbox2} == prosthetic1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I have been informed, both verbally and by the information provided on this form, of the material risks and benefits of alternative
+                                                treatment and of electing not to treat my condition.
+                                        </p>
+                                        <p style="margin-top:10px">
+<!--                                            <span th:if="${prostheticAppliance.patientcheckbox3} == prosthetic2">
+                                                <input type="checkbox" checked="checked"/>
+                                                I certify that I have read and understand the above information, that the explanations referred to are understood by me, that my
+                                                questions have been answered and that the blanks requiring insertions or completion have been filled in. I authorize and direct</span>
+                                            <span th:unless="${prostheticAppliance.patientcheckbox3} == prosthetic2">
+                                                <input type="checkbox"/>
+                                                I certify that I have read and understand the above information, that the explanations referred to are understood by me, that my
+                                                questions have been answered and that the blanks requiring insertions or completion have been filled in. I authorize and direct</span>
+                                            Dr.<span style="font-weight:bold;min-width: 170px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.patienttxt8}">test</span> to do whatever he/she deems necessary and advisable under the circumstances.-->
+                                             <img th:if="${prostheticAppliance.patientcheckbox3} == prosthetic2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${prostheticAppliance.patientcheckbox3} == prosthetic2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I certify that I have read and understand the above information, that the explanations referred to are understood by me, that my
+                                            questions have been answered and that the blanks requiring insertions or completion have been filled in. I authorize and direct
+                                            Dr.<span style="font-weight:bold;min-width: 170px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.patienttxt8}">test</span> to do whatever he/she deems necessary and advisable under the circumstances.
+                                        </p>
+                                        <p style="margin-top:10px">
+<!--                                            <span th:if="${prostheticAppliance.patientcheckbox4} == prosthetic3">
+                                                <input type="checkbox" checked="checked"/>
+                                                I consent to have the above-mentioned treatment.</span>
+                                            <span th:unless="${prostheticAppliance.patientcheckbox4} == prosthetic3">
+                                                <input type="checkbox"/>
+                                                I consent to have the above-mentioned treatment.</span>  -->
+                                             <img th:if="${prostheticAppliance.patientcheckbox4} == prosthetic3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${prostheticAppliance.patientcheckbox4} == prosthetic3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I consent to have the above-mentioned treatment.
+                                        </p>
+                                        <p style="margin-top:10px">
+<!--                                            <span th:if="${prostheticAppliance.patientcheckbox5} == prosthetic4">
+                                                <input type="checkbox" checked="checked"/>
+                                                While the treatment may be covered by my medical and/or dental insurance, I accept any financial responsibility for this treatment and
+                                                authorize treatment.</span>
+                                            <span th:unless="${prostheticAppliance.patientcheckbox5} == prosthetic4">
+                                                <input type="checkbox"/>
+                                                While the treatment may be covered by my medical and/or dental insurance, I accept any financial responsibility for this treatment and
+                                                authorize treatment.</span>-->
+                                             <img th:if="${prostheticAppliance.patientcheckbox5} == prosthetic4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${prostheticAppliance.patientcheckbox5} == prosthetic4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> While the treatment may be covered by my medical and/or dental insurance, I accept any financial responsibility for this treatment and
+                                                authorize treatment.
+                                        </p>
+
+                                       <h5 style="margin-bottom:20px">or</h5>
+                                                <h5 style="margin-bottom:20px">Refusal</h5>
+                                        <p style="margin-top:10px">
+<!--                                            <span th:if="${prostheticAppliance.patientcheckbox6} == prosthetic5">
+                                                <input type="checkbox"  checked="checked"/>
+                                                I refuse to give my consent for the proposed treatment(s) described above and understand the potential consequences associated with
+                                                this refusal.</span>
+                                            <span th:unless="${prostheticAppliance.patientcheckbox6} == prosthetic5">
+                                                <input type="checkbox"/>
+                                                I refuse to give my consent for the proposed treatment(s) described above and understand the potential consequences associated with
+                                                this refusal.</span>-->
+                                             <img th:if="${prostheticAppliance.patientcheckbox6} == prosthetic5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${prostheticAppliance.patientcheckbox6} == prosthetic5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> I refuse to give my consent for the proposed treatment(s) described above and understand the potential consequences associated with
+                                                this refusal.
+                                        </p>
+
+                                    </div><br/><br/>
+
+                                    <table class="col-auto" style="width: 100%">
+                                        <td><img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.signatureofpatient})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/> </td>
+                                        <td><span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block" th:text="${prostheticAppliance.signdate1}">test</span></td>
+                                        <tr>
+                                            <td>Patient or Patient's Representative </td> 
+                                            <td>Date</td>
+                                        </tr>
+                                    </table>
+                                    <table class="col-auto" style="width: 100%;margin-top:15px">
+                                        <td><img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.witnesssignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                        <td><span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block " th:text="${prostheticAppliance.signdate2}">test</span></td>
+
+                                        <tr>
+                                            <td>Witness Signature </td>
+                                            <td>Date</td>
+                                        </tr>
+                                    </table>
+
+
+                                    <div class="col-12" style="margin-top: 15px">
+                                        <p>I attest that I have discussed the risks, benefits, consequences and alternatives of the above treatment with
+                                            <span style="font-weight:bold;min-width: 250px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${prostheticAppliance.patienttxt9}">test</span>  (Patient or Patient's Representative) and they have had the opportunity to ask
+                                            questions. I believe they understand what has been explained and consents or refuses treatment noted above.</p>   
+                                    </div>
+                                    <table class="col-auto" style="width: 100%;margin-top: 15px">
+
+                                        <td> <img th:src="@{data:image/png;base64,{image}(image=${prostheticAppliance.dentistsignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                        <td><span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block" th:text="${prostheticAppliance.signdate3}">test</span></td>
+                                        <tr>
+                                            <td>Dentist Signature</td>
+                                            <td>Date</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

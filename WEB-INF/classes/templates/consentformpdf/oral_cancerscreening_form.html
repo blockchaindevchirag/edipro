@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head> 
+        <link rel="stylesheet" href="assets/css/style.css"/>
+
+        <title> Oral Cancer Screening Form</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 2px;
+                padding: 2px;
+                box-sizing: border-box;
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+                font-weight:bold;
+            }
+            .font_small{
+                font-size: 10px;
+                line-height: 10px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="modal"> 
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center">
+                    <div>
+                        <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                        <h5 style="margin: 1px;color:#a2a5a8;"> <span th:text="${patientPractice.addressline1}">test</span><span th:text="${patientPractice.addressline2}">test</span><span th:text="${patientPractice.city}">test</span><span th:text="${patientPractice.state}">test</span><span th:text="${patientPractice.zip}">test</span></h5>
+                        <h5 style="color:#a2a5a8;">
+                            <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span><span  th:text="${patientPractice.contactPhone}">test</span><span  th:text="${patientPractice.alertPhone}">test</span>	
+                            <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                        </h5> 
+                    </div> 
+                </div>
+
+                <h2 style="text-align: center;" class="modal-title" id="myModalLabel">
+                    ORAL CANCER SCREENING QUESTIONAIRE     
+                </h2> 
+                <div>
+                    <div class="font_small">
+                        <div class="row">
+                            <div>
+                                Patient Name  : <p style="font-weight:bold;min-width: 180px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patientname}">test</p>
+                                DOB: <p style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patientdob}">test</p>
+                                Sex :
+                                <!--                                <input type="checkbox"  th:if="${oralCancerForm.patientgender} == 1" checked="checked"/>
+                                                                <input type="checkbox"  th:unless="${oralCancerForm.patientgender} == 1" /> Male
+                                                                <input type="checkbox"  th:if="${oralCancerForm.patientgender} == 2" checked="checked"/>
+                                                                <input type="checkbox"  th:unless="${oralCancerForm.patientgender} == 2" /> Female-->
+                                <span style="margin-right: -4px;"> 
+                                    <img th:if="${oralCancerForm.patientgender} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                    <span><img  th:unless="${oralCancerForm.patientgender} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                    </span> Male</span>
+                                <span style="margin-right: -8px;"> 
+                                    <img th:if="${oralCancerForm.patientgender} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                    <span><img th:unless="${oralCancerForm.patientgender} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                    </span> Female</span>
+
+                                <span style="margin-left:40px">Date:</span><p style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.currentdate}">test</p>
+                            </div>
+                            <div>
+                                Address :  <p style="width:30px;font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${oralCancerForm.patientaddress}">test</p>
+                                City: <p style="width:40px;;font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patientcity}">test</p>
+                                State : <p style="width:15px;font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patientstate}">test</p>
+                                Zip: <p style="width:25px;font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patientzip}">test</p>
+                            </div>
+                            <div> 
+                                Phone: <p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patientphone}">test</p>
+                                Occupation:<p style="font-weight:bold;min-width: 170px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patientoccupation}">test</p>
+                                E-mail:<p style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patientemail}">test</p>
+                            </div>
+                            <div>  
+                                Primary Physician Name:<p style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.physicianname}">test</p> 
+                                Phone: <p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.physicianphone}">test </p>
+                                Fax: <p style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patientfax}">test</p></div>
+                        </div>
+                        <div class="row">
+                            <span style="font-size: 13px;font-weight: bold;margin: 15px 0 15px 0;">Please circle or fill in responses to the following statements:</span>
+
+                            <p>I have been treated for skin cancer of the head and neck.
+
+                                <!--                                <span style="margin-left:5px">
+                                                                    <input type="checkbox"  th:if="${oralCancerForm.patientradiobtn1} == YES"  checked="checked"/>
+                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn1} == YES" /> Yes</span>-->
+                                <!--                                <span style="margin-left:5px">
+                                                                    <input type="checkbox"  th:if="${oralCancerForm.patientradiobtn1} == NO" checked="checked"/>
+                                                                    <input type="checkbox"  th:unless="${oralCancerForm.patientradiobtn1} == NO"/> No</span>-->
+                                <span style="margin-right: -4px;"> 
+                                    <img th:if="${oralCancerForm.patientradiobtn1} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -4px" width="15" height="15" alt=""  />  
+                                    <span><img  th:unless="${oralCancerForm.patientradiobtn1} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -4px" width="15" height="15" alt="" />  
+                                    </span> Yes</span>
+                                <span style="margin-right: -8px;"> 
+                                    <img th:if="${oralCancerForm.patientradiobtn1} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -4px"  width="15" height="15" alt="" />  
+                                    <span><img th:unless="${oralCancerForm.patientradiobtn1} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -4px" width="15" height="15" alt="" />  
+                                    </span> No</span>
+
+                                <span style="margin-left:3px">Other cancer:</span>
+
+                                <!--                                <span style="margin-left:0px">
+                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn2} == YES"  checked="checked"/>
+                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn2} == YES"/> Yes</span>
+                                                                <span style="margin-left:4px">
+                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn2} == NO" checked="checked"/>
+                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn2} == NO" /> No </span>-->
+                                <span style="margin-right: -4px;"> 
+                                    <img th:if="${oralCancerForm.patientradiobtn2} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -4px" width="15" height="15" alt=""  />  
+                                    <span><img  th:unless="${oralCancerForm.patientradiobtn2} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -4px" width="15" height="15" alt="" />  
+                                    </span> Yes</span>
+                                <span style="margin-right: -8px;"> 
+                                    <img th:if="${oralCancerForm.patientradiobtn2} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -4px"  width="15" height="15" alt="" />  
+                                    <span><img th:unless="${oralCancerForm.patientradiobtn2} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -4px" width="15" height="15" alt="" />  
+                                    </span> No</span>
+
+                                <span style="margin-left:5px">Location:</span><span style="font-weight:bold;min-width: 85px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt1}">test</span>
+                            </p>
+                            <p>  I have family members who have been treated for cancer of the oral, head and neck.
+
+                                <!--                                <span style="margin-left:35px">
+                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn3} == YES"  checked="checked"/>
+                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn3} == YES"  /> Yes</span>
+                                                                <span style="margin-left:5px">
+                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn3} == NO"  checked="checked"/>
+                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn3} == NO"  /> No </span>-->
+                                <span style="margin-right: -4px;"> 
+                                    <img th:if="${oralCancerForm.patientradiobtn3} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                    <span><img  th:unless="${oralCancerForm.patientradiobtn3} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                    </span> Yes</span>
+                                <span style="margin-right: -8px;"> 
+                                    <img th:if="${oralCancerForm.patientradiobtn3} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                    <span><img th:unless="${oralCancerForm.patientradiobtn3} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                    </span> No</span>
+
+                                <span style="margin-left:5px">Location:</span><span style="font-weight:bold;min-width: 85px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt2}">test</span></p>
+
+                            <p> I have had prior medical, surgical, or radiation treatments to the head, neck &amp; mouth region.
+                                <!--                                <span style="margin-left:2px">
+                                                                    <input type="checkbox"  th:if="${oralCancerForm.patientradiobtn4} == YES"  checked="checked"/>
+                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn4} == YES"/> Yes</span>
+                                                                <span style="margin-left:5px">
+                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn4} ==NO"  checked="checked"/>
+                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn4} ==NO"/> No </span>-->
+                                <span style="margin-right: -4px;"> 
+                                    <img th:if="${oralCancerForm.patientradiobtn4} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                    <span><img  th:unless="${oralCancerForm.patientradiobtn4} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                    </span> Yes</span>
+                                <span style="margin-right: -8px;"> 
+                                    <img th:if="${oralCancerForm.patientradiobtn4} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                    <span><img th:unless="${oralCancerForm.patientradiobtn4} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                    </span> No</span>
+
+                                <span style="margin-left:5px">Location:</span><span style="font-weight:bold;min-width: 85px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt3}">test</span></p>
+                            <table  style="width: 100%">
+                                <tr>
+                                    <td>I currently use tobacco.</td>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox1} == oralcanc1">
+                                                                                    <input type="checkbox"   checked="checked"/> Chewing</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox1} == oralcanc1">
+                                                                                    <input type="checkbox"   /> Chewing</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox1} == oralcanc1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox1} == oralcanc1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Chewing
+                                    </td>
+                                    <td> 
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox2} == oralcanc2">
+                                                                                    <input type="checkbox"  checked="checked"/> Snuff</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox2} == oralcanc2">
+                                                                                    <input type="checkbox"  /> Snuff</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox2} == oralcanc2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox2} == oralcanc2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Snuff
+                                    </td>
+                                    <td> 
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox3} == oralcanc3">
+                                                                                    <input type="checkbox"  checked="checked"/> Cigarettes</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox3} == oralcanc3">
+                                                                                    <input type="checkbox"  /> Cigarettes</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox3} == oralcanc3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox3} == oralcanc3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Cigarettes
+                                    </td>
+                                    <td> 
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox4} == oralcanc4">
+                                                                                    <input type="checkbox"  checked="checked"/> Cigars</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox4} == oralcanc4">
+                                                                                    <input type="checkbox"  /> Cigars</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox4} == oralcanc4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox4} == oralcanc4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Cigars
+                                    </td>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox5} == oralcanc5">
+                                                                                    <input type="checkbox"  checked="checked"/> Pipe</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox5} == oralcanc5">
+                                                                                    <input type="checkbox"  /> Pipe</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox5} == oralcanc5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox5} == oralcanc5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Pipe
+                                    </td>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox6} == oralcanc6">
+                                                                                    <input type="checkbox"  checked="checked"/> None</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox6} == oralcanc6">
+                                                                                    <input type="checkbox"  /> None</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox6} == oralcanc6"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox6} == oralcanc6" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        None
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>I formerly used tobacco.</td>
+                                    <td> 
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox7} == oralcanc7">
+                                                                                    <input type="checkbox"  checked="checked"/> Chewing</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox7} == oralcanc7"> 
+                                                                                    <input type="checkbox"  /> Chewing</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox7} == oralcanc7"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox7} == oralcanc7" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Chewing
+                                    </td>
+                                    <td> 
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox8} == oralcanc8">
+                                                                                    <input type="checkbox"  checked="checked"/> Snuff</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox8} == oralcanc8">
+                                                                                    <input type="checkbox"  /> Snuff</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox8} == oralcanc8"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox8} == oralcanc8" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Snuff
+                                    </td>
+                                    <td>                                                                   
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox9} == oralcanc9">
+                                                                                    <input type="checkbox"  checked="checked"/> Cigarettes</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox9} == oralcanc9">
+                                                                                    <input type="checkbox"  /> Cigarettes</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox9} == oralcanc9"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox9} == oralcanc9" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Cigarettes
+                                    </td>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox10} == oralcanc10">
+                                                                                    <input type="checkbox"  checked="checked"/> Cigars</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox10} == oralcanc10">
+                                                                                    <input type="checkbox"  /> Cigars</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox10} == oralcanc10"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox10} == oralcanc10" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Cigars
+                                    </td>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox11} == oralcanc11">
+                                                                                    <input type="checkbox"  checked="checked"/> Pipes</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox11} == oralcanc11">
+                                                                                    <input type="checkbox"  /> Pipes</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox11} == oralcanc11"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox11} == oralcanc11" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Pipes
+                                    </td>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox12} == oralcanc12">
+                                                                                    <input type="checkbox"  checked="checked"/> None</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox12} == oralcanc12">
+                                                                                    <input type="checkbox"  /> None</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox12} == oralcanc12"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox12} == oralcanc12" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        None
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="col-12">                        
+
+
+                                <p>In my lifetime, I used tobacco for <span style="font-weight:bold;min-width: 60px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${oralCancerForm.patienttxt4}">test</span>years with an average of <span style="font-weight:bold;min-width: 60px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt5}">test </span>per day.</p>
+                                <p>In my lifetime, I drank alcoholic beverages for<span style="font-weight:bold;min-width: 60px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt6}">test</span>years with an average of <span style="font-weight:bold;min-width: 60px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt7}">test</span> drinks per day.</p>
+
+                                <span style="font-size: 13px;font-weight: bold;margin: 15px 0 15px 0;">Please check any of the following head and neck problems you currently have:</span>
+                            </div>
+                            <table class="col" style="width: 100%;background-color: #eeeeee;">
+                                <tr>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox13} == oralcanc13">
+                                                                                    <input type="checkbox"  checked="checked"/> Change in voice</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox13} == oralcanc13">
+                                                                                    <input type="checkbox" /> Change in voice</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox13} == oralcanc13"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox13} == oralcanc13" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Change in voice
+                                    </td>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox16} == oralcanc16">
+                                                                                    <input type="checkbox"  checked="checked"/> Bleeding</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox16} == oralcanc16">
+                                                                                    <input type="checkbox"/> Bleeding</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox16} == oralcanc16"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox16} == oralcanc16" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Bleeding
+                                    </td>
+                                    <td> 
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox19} == oralcanc19">
+                                                                                    <input type="checkbox"  checked="checked"/> Earache</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox19} == oralcanc19">
+                                                                                    <input type="checkbox"/> Earache</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox19} == oralcanc19"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox19} == oralcanc19" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Earache
+                                    </td>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox22} == oralcanc22">
+                                                                                    <input type="checkbox"  checked="checked"/> Swelling in head or neck</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox22} == oralcanc22">
+                                                                                    <input type="checkbox"/> Swelling in head or neck</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox22} == oralcanc22"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox22} == oralcanc22" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Swelling in head or neck
+                                    </td>	
+                                </tr>
+                                <tr> <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox14} == oralcanc14">
+                                                                                    <input type="checkbox" checked="checked"/> Sore throat</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox14} == oralcanc14">
+                                                                                    <input type="checkbox" /> Sore throat</p>
+                                        -->
+                                        <img th:if="${oralCancerForm.patientcheckbox14} == oralcanc14"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox14} == oralcanc14" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Sore throat
+                                    </td> 
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox17} == oralcanc17">
+                                                                                    <input type="checkbox"  checked="checked"/> Lump in throat</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox17} == oralcanc17">
+                                                                                    <input type="checkbox" /> Lump in throat</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox17} == oralcanc17"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox17} == oralcanc17" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Lump in throat
+                                    </td>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox20} == oralcanc20">
+                                                                                    <input type="checkbox"  checked="checked"/> Swallowing difficulty</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox20} == oralcanc20">
+                                                                                    <input type="checkbox" /> Swallowing difficulty</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox20} == oralcanc20"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox20} == oralcanc20" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Swallowing difficulty
+                                    </td>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox23} == oralcanc23">
+                                                                                    <input type="checkbox"  checked="checked"/> Denture problems</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox23} == oralcanc23">
+                                                                                    <input type="checkbox" /> Denture problems</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox23} == oralcanc23"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox23} == oralcanc23" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Denture problems
+                                    </td>
+                                </tr>
+                                <tr><td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox15} == oralcanc15">
+                                                                                    <input type="checkbox"  checked="checked"/> Sore in mouth</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox15} == oralcanc15">
+                                                                                    <input type="checkbox"  /> Sore in mouth</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox15} == oralcanc15"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox15} == oralcanc15" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Sore in mouth
+                                    </td>
+                                    <td> 
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox18} == oralcanc18">
+                                                                                    <input type="checkbox"  checked="checked"/> Tooth or gum problem</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox18} == oralcanc18">
+                                                                                    <input type="checkbox"  /> Tooth or gum problem</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox18} == oralcanc18"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox18} == oralcanc18" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Tooth or gum problem
+                                    </td>
+                                    <td> 
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox21} == oralcanc21">
+                                                                                    <input type="checkbox"  checked="checked"/> Growth in neck</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox21} == oralcanc21">
+                                                                                    <input type="checkbox"  /> Growth in neck</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox21} == oralcanc21"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox21} == oralcanc21" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Growth in neck
+                                    </td>
+                                    <td>
+                                        <!--                                        <p th:if="${oralCancerForm.patientcheckbox24} == oralcanc24">
+                                                                                    <input type="checkbox"  checked="checked"/> Red or white patches in mouth</p>
+                                                                                <p th:unless="${oralCancerForm.patientcheckbox24} == oralcanc24">
+                                                                                    <input type="checkbox"  /> Red or white patches in mouth</p>-->
+                                        <img th:if="${oralCancerForm.patientcheckbox24} == oralcanc24"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${oralCancerForm.patientcheckbox24} == oralcanc24" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                        </span>
+                                        Red or white patches in mouth
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td colspan="2">Did you know that any of these problems could be the earliest sign of a head or neck cancer?</td>
+                                    <td> 
+                                        <!--                                        <p >
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn5} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn5} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn5} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn5} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn5} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn5} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn5} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn5} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Has anyone ever shown you how to do an oral self-examination? </td>
+                                    <td> 
+                                        <!--                                        <p >
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn6} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn6} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn6} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn6} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn6} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn6} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn6} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn6} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"> Would you be interested in volunteering to promote awareness of this disease?</td>
+
+                                    <td>
+                                        <!--                                        <p >
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn7} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn7} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn7} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn7} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn7} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn7} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn7} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn7} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Has this program increased your knowledge and  awareness of this disease? </td>
+
+                                    <td> 
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn8} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn8} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn8} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn8} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn8} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn8} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn8} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn8} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"> Are your teeth sensitive to heat/cold?</td>
+
+                                    <td> 
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn9} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn9} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn9} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn9} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn9} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn9} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn9} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn9} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span></td>
+                                </tr>
+                                <tr> 
+                                    <td colspan="2">Do you have problem of chewing or digest foods?</td>
+
+                                    <td>
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn10} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn10} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn10} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn10} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn10} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn10} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn10} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn10} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Do you dench or grind your teeth? </td>
+
+                                    <td> 
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn11} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn11} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn11} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn11} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn11} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn11} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn11} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn11} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Do you have frequent headaches? </td>
+
+                                    <td> 
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn12} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn12} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn12} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn12} == NO" checked="checked" /> No</span></p>-->
+                                     <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn12} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn12} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn12} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn12} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Do you now or have you ever experienced pain/discomfort in your jaw or joint (TMJ / TMD)?</td>
+
+                                    <td> 
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn13} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn13} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn13} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn13} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn13} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn13} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn13} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn13} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span></td>
+                                </tr>
+                                <tr> 
+                                    <td colspan="2"> Do you have sleep problem?</td>
+
+                                    <td>
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn14} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn14} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn14} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn14} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn14} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn14} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn14} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn14} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Have you noticed any mouth odors or bad tastes? </td>
+
+                                    <td> 
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn15} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn15} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn15} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn15} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn15} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn15} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn15} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn15} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"> Do your gums ever bleed?</td>
+
+                                    <td> 
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn16} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn16} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn16} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn16} == NO" checked="checked" /> No</span></p>-->
+
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn16} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn16} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn16} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn16} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Have you ever had gum treatment? </td>
+
+                                    <td> 
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn17} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn17} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn17} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn17} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn17} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn17} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn17} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn17} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Do you have any dental problems now? </td>
+                                    <td>
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn18} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn18} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn18} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn18} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn18} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn18} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn18} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn18} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span></td>
+                                </tr>
+                                <tr> 
+                                    <td>Do you have diabetes diagnostic? </td>
+                                    <td>Type: <p style="font-weight:bold;min-width: 250px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt8}">test</p></td>
+                                    <td>
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn19} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn19} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn19} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn19} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn19} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn19} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn19} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn19} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span></td>
+                                </tr>
+                                <tr>
+                                    <td>If yes, please describe: </td>
+                                    <td colspan="2"><p style="font-weight:bold;min-width: 400px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt9}">test</p></td></tr>
+                                <tr>
+                                    <td colspan="3"> <p style="margin-left: 188px;font-weight:bold;min-width: 400px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt10}">test</p> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Did you ever go to the doctor to check for heart  problems? </td>
+                                    <td> 
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn20} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn20} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn20} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn20} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn20} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn20} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn20} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn20} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span></td>
+                                </tr>
+                                <tr>
+                                    <td> If so, what are the problems?</td>
+                                    <td colspan="2"><p style="font-weight:bold;min-width: 400px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt11}">test</p></td></tr>
+                                <tr>
+                                    <td colspan="3"><p style="margin-left: 188px;font-weight:bold;min-width: 400px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt12}">test</p> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Are you currently taking any medications or drugs?<span style="font-size:9px;">(including Tylenol, Aspirin, or over the counter medicines)</span></td>
+                                    <td> 
+                                        <!--                                        <p>
+                                                                                    <input type="checkbox" th:if="${oralCancerForm.patientradiobtn21} == YES"  checked="checked"/>
+                                                                                    <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn21} == YES" /> Yes
+                                                                                    <span style="margin-left:3px">
+                                                                                        <input type="checkbox" th:unless="${oralCancerForm.patientradiobtn21} == NO"  /> 
+                                                                                        <input type="checkbox" th:if="${oralCancerForm.patientradiobtn21} == NO" checked="checked" /> No</span></p>-->
+                                        <span style="margin-right: -4px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn21} == YES"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${oralCancerForm.patientradiobtn21} == YES" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Yes</span>
+                                        <span style="margin-right: -8px;"> 
+                                            <img th:if="${oralCancerForm.patientradiobtn21} == NO"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                            <span><img th:unless="${oralCancerForm.patientradiobtn21} == NO" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px;margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> No</span></td>
+                                </tr>
+                                <tr> 
+                                    <td> If yes, please list:</td>
+                                    <td colspan="2"><p style="font-weight:bold;min-width: 400px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt13}">test</p></td></tr>
+                                <tr>
+                                    <td colspan="3"><p style="margin-left: 188px;font-weight:bold;min-width: 400px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.patienttxt14}">test</p> </td>
+                                </tr>
+                            </table>  
+                            <div class="col-12" style="margin-top: 15px;">
+                                <span style="font-size: 14px;font-weight: bold;">RELEASE OF LIABILITY</span>
+                                <p>I hereby release the Head and Neck Cancer Alliance, screening facility, and all health-care personnel 
+                                    from any and all responsibility associated with the evaluation and results. I accept all responsibility 
+                                    for the evaluation, future scheduling and costs of further medical evaluation, diagnostic tests, and treatment 
+                                    in addition to the pursuit of any recommendations provided. I understand that this examination is not intended 
+                                    to be a complete head and neck examination or substitute for any examination performed by future or past
+                                    practitioners. I am responsible for any follow-up examination, evaluation, or tests and release all other
+                                    parties from any responsibility. The Head and Neck Cancer Alliance may use the results of this examination and the
+                                    information on this form for statistical and educational purposes, but my name will not be released to any other
+                                    person or organization without my express written consent.</p>              
+                            </div>
+                            <p>
+                                Patient's Signature: <img th:src="@{data:image/png;base64,{image}(image=${oralCancerForm.patientsignature})}" height="50" width="380" style="border-bottom:1px solid #000000;min-width: 150px;margin-bottom: -5px;"/>
+                                Date:<span style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralCancerForm.signdate}">test</span> 
+                            </p>
+                        </div>
+                    </div> 
+
+                </div> 
+            </div> 
+        </div>
+    </body>
+</html>

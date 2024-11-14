@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Surgical Excision Lesion</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 1px;
+                padding: 1px;
+                box-sizing: border-box;
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .small_font{
+                font-size: 13px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="modal fade">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;color:#a2a5a8;"> <span th:text="${patientPractice.addressline1}">test</span><span th:text="${patientPractice.addressline2}">test</span><span th:text="${patientPractice.city}">test</span><span th:text="${patientPractice.state}">test</span><span th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span><span  th:text="${patientPractice.contactPhone}">test</span><span  th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div> 
+                    </div>
+
+                    <h3 class="modal-title" style="text-align: center">
+                        DISCUSSION AND INFORMED CONSENT FOR INFECTION EXCISION          
+                    </h3>
+
+                    <div class="small_font">
+                        <div class="container">
+                            <div class="card-body">          
+
+
+                                <p>   Patient Name:<span style="font-weight:bold;min-width: 430px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${surgicalForm.patientname}">test</span>
+
+                                    Date: <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${surgicalForm.currentdate}">test</span>
+                                </p>
+
+                                <p>
+                                    Diagnosis:<span style="font-weight:bold;min-width: 585px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${surgicalForm.patientdiagnosis}">test</span>
+                                </p>
+                                <p>
+                                    Treatment &amp; Tooth Numbers: <span style="font-weight:bold;min-width: 485px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${surgicalForm.patienttreatment}">test</span>
+                                </p>
+
+                                <h4 style="margin-top: 3px;font-weight: bold;">Facts for Consideration</h4>
+                                <small style="font-style: italic;">Patient's initials required </small>
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature1})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    An extraction involves removing one or more bone and/or tissue infected and disorder. Depending on their condition, 
+                                    excision may require sectioning (dividing) the gum or bone tissue. If any unexpected difficulties occur during treatment, I 
+                                    may refer you to an oral surgeon who is a specialist in oral surgery.</p>
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature2})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+                                    Once the infected is removed, then fixed bone or tissue defect by replace with allograft or autograft bone and/or cell membrance. 
+                                    Prosthetic appliance may be need to correct and complete repair from infected and/or bone lesion </p>
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature3})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    As in all surgical procedures, excesions are not without potential risks or complications. Because each person is unique and 
+                                    responds differently to surgery, the healing process may vary; no guarantees can be made.</p>
+
+
+                                <h4 style="font-weight: bold;margin-top: 60px;">Benefits of Extraction, Not Limited to the Following:</h4>
+
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature4})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+                                    The proposed treatment is intended to help relieve your symptoms and may also enable you to proceed with further 
+                                    proposed treatment</p>
+
+
+                                <h4 style="font-weight: bold;margin-top: 10px;" >Risks of Extraction, Not Limited to the Following:</h4>
+
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature5})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    understand that following treatment I may experience bleeding, pain, swelling and discomfort for several days, which may 
+                                    be treated with pain medication. It is possible infection can follow extraction and must be treated with antibiotics or other
+                                    procedures. I will contact the office immediately if symptoms persist or worsen</p>
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature6})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    I understand that I will receive a local anesthetic and/or other medication. In rare instances, patients have a reaction to the 
+                                    anesthetic, which may require emergency medical attention, or find that it reduces their ability to control swallowing. This 
+                                    increases the chance of swallowing foreign objects during treatment.<span style='font-weight: bold'> Depending on the anesthesia and 
+                                        medications administered, I may need a designated driver to take me home.</span> Rarely, temporary or 
+                                    permanent nerve injury to the oral cavity and face can result from an injection resulting in numbness of the lip, chin, sheet, 
+                                    gums, teeth or tongue, including loss of taste.</p>
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature7})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    I understand that all medications have the potential for accompanying risks, side effects and drug interactions. Therefore, it 
+                                    is critical that I tell my dentist of all medications and supplements I am currently taking, which are:<span style="font-weight:bold;min-width: 400px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${surgicalForm.patienttxt1}">test</span><br/>
+                                    <span style="font-weight:bold;min-width: 600px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;margin:0px;padding:0px;" th:text="${surgicalForm.patienttxt2}">test</span>
+                                </p> 
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature8})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    I understand that holding my mouth open during treatment may temporarily leave my jaw feeling stiff and sore and may 
+                                    make it difficult for me to open wide for several days; this is sometimes referred to as trismus. However, this can 
+                                    occasionally be an indication of a more significant condition or problem. In the event this occurs, I must notify this office if I 
+                                    experience persistent trismus or other similar concerns arise</p>
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature9})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    I understand that the necessary blood clot that forms in the socket may disintegrate or dislodge. This painful condition, called 
+                                    dry socket, lasts a week or more and is treated by placing a medicated dressing in the tooth socket to aid healing. To 
+                                    protect against developing dry socket, I must not smoke tobacco or marijuana, drink through a straw, rinse with water or mouthwash, chew food in that area or disturb the socket in any way for 24 to 48 hours. Smoking may adversely affect the 
+                                    extraction site healing and may cause dry socket (an infection of the bone of the socket walls). Smokers are at higher risk for 
+                                    dry socket and have more dry sockets than nonsmokers.</p>
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature10})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    I understand that the instruments used in extracting a tooth may unavoidably chip or damage adjacent teeth, which could 
+                                    require further treatment to restore their appearance or function</p>
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature11})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    I understand that upper teeth have roots that may extend close to the sinuses. Removing these teeth may temporarily leave a 
+                                    small opening into the sinuses. Antibiotics and additional treatment may be needed to prevent a sinus infection and help this
+                                    opening to close. If such a complication occurs, I may require additional treatment by a physician or an oral and 
+                                    maxillofacial surgeon.</p>
+
+                                <p>
+                                    <img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature12})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+                                    I understand that an extraction may cause a fracture in the surrounding bone. Occasionally, the tooth to be extracted may 
+                                    be fused to the surrounding bone. In both situations, additional treatment is necessary. Bone fragments called 'spicules? may 
+                                    arise at the site following extraction and are generally easily removed.</p>
+
+                                <p>
+                                    <img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature13})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+                                    I understand that tooth fragments may be left in the extraction site following treatment due to the condition and position of
+                                    the tooth/teeth. Generally, this causes no problems, but on rare occasions the fragments can become infected and 
+                                    subsequently must be removed. 
+                                </p>
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature14})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    I understand that the nerves that control sensations in my teeth, gums, tongue, lips and chin run through my jaw. Depending 
+                                    on the tooth to be extracted (particularly lower teeth or third molars), occasionally it may be difficult or impossible to avoid 
+                                    touching, moving, stretching, bruising, cutting or severing a nerve. This could change the normal sensations in any of these 
+                                    areas causing itching, tingling or burning or the loss of all sensation, including numbness of the chin, cheeks, lips, gums or 
+                                    tongue and the loss of taste. These changes could last from several weeks to several months or, in some cases, indefinitely or 
+                                    permanent. </p>
+
+                                <h4 style="font-weight: bold;margin-top: 10px;"> Consequences if No Treatment is Administered, Not Limited to the Following</h4>
+
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature15})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    I understand that if no treatment is performed, I may continue to experience symptoms, which could include pain and/or 
+                                    infection, deterioration of the bone surrounding my teeth, changes to my bite, discomfort in my jaw joint and possibly the 
+                                    premature loss of other teeth</p>
+
+                                <h4 style="font-weight: bold;margin-top: 10px;">Alternative Treatments if Extraction Is Not the Only Solution, Not Limited to the Following:</h4>
+
+                                <p>
+                                    <img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature16})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    &ensp;I understand that depending on my diagnosis, alternatives to extraction may exist that involve other disciplines in dentistry
+                                    including endodontics (root canal treatment). I asked my dentist about them and their respective costs. My questions have
+                                    been answered to my satisfaction regarding the procedures and their risks, benefits and costs.
+                                </p> 
+
+                                <h4 style="font-weight: bold;margin-top: 10px;">Alternatives discussed:<span style="min-width: 500px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${surgicalForm.patienttxt3}">test</span></h4>
+
+                                <p><img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature17})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                    No guarantee or assurance has been given to me by anyone that the proposed treatment or surgery will cure or improve the 
+                                    condition(s) listed above.<br/></p>
+                                <div style="margin-top:70px;">
+                                    <h4 style="font-weight: bold;min-width: 30px;border-bottom: 1px solid #000000;display: inline-block; ">Check the boxes below that apply to you:</h4>
+                                    <h4 style="font-weight: bold;margin-top: 10px;">Consent</h4>
+                                    <p style="margin-top: 10px;">
+                                        <!--                                        <input type="checkbox"  th:if="${surgicalForm.patientcheckbox1} == surgicalexcusion" checked="checked"/> 
+                                                                                <input type="checkbox"  th:unless="${surgicalForm.patientcheckbox1} == surgicalexcusion"/>-->
+                                        <img th:if="${surgicalForm.patientcheckbox1} == surgicalexcusion"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${surgicalForm.patientcheckbox1} == surgicalexcusion" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                        </span> I have been informed both verbally and by the information provided on this form of the risks and benefits of the proposed
+                                        treatment.
+                                    </p>
+                                    <p style="margin-top: 10px;">
+                                        <!--                                        <input type="checkbox"  th:if="${surgicalForm.patientcheckbox2} == surgicalexcusion1" checked="checked"/> 
+                                                                                <input type="checkbox"  th:unless="${surgicalForm.patientcheckbox2} == surgicalexcusion1" /> -->
+                                        <img th:if="${surgicalForm.patientcheckbox2} == surgicalexcusion1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${surgicalForm.patientcheckbox2} == surgicalexcusion1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                        </span> I have been informed both verbally and by the information provided on this form of the material risks and benefits of alternative
+                                        treatment and of electing not to treat my condition
+                                    </p>
+
+                                    <p style="margin-top: 10px;">
+                                        <!--                                        <input type="checkbox"  th:if="${surgicalForm.patientcheckbox3} == surgicalexcusion2" checked="checked"/> 
+                                                                                <input type="checkbox"  th:unless="${surgicalForm.patientcheckbox3} == surgicalexcusion2"/>-->
+                                        <img th:if="${surgicalForm.patientcheckbox3} == surgicalexcusion2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${surgicalForm.patientcheckbox3} == surgicalexcusion2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                        </span> I certify that I have read and understand the above information and that the explanations referred to are understood by me, that my
+                                        questions have been answered and that the blanks requiring insertions or completion have been filled in. I authorize and direct
+                                        Dr.<span style="font-weight:bold;min-width: 400px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${surgicalForm.patienttxt4}">test</span>to do whatever he/she deems necessary and advisable under the circumstances.
+                                    </p>
+
+                                    <p style="margin-top: 10px;">
+                                        <!--                                        <input type="checkbox"  th:if="${surgicalForm.patientcheckbox4} == surgicalexcusion3" checked="checked"/> 
+                                                                                <input type="checkbox"  th:unless="${surgicalForm.patientcheckbox4} == surgicalexcusion3"/> -->
+                                        <img th:if="${surgicalForm.patientcheckbox4} == surgicalexcusion3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${surgicalForm.patientcheckbox4} == surgicalexcusion3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                        </span>I consent to have the above-mentioned treatment
+                                    </p>
+
+                                    <p style="margin-top: 10px;">
+                                        <!--                                        <input type="checkbox"  th:if="${surgicalForm.patientcheckbox5} == surgicalexcusion4" checked="checked"/> 
+                                                                                <input type="checkbox"  th:unless="${surgicalForm.patientcheckbox5} == surgicalexcusion4" /> -->
+                                        <img th:if="${surgicalForm.patientcheckbox5} == surgicalexcusion4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${surgicalForm.patientcheckbox5} == surgicalexcusion4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                        </span> While the treatment may be covered by my medical and/or dental insurance, I accept any financial responsibility for this treatment and
+                                        authorize treatment
+                                    </p>
+                                    <h4 style="font-weight: bold;margin-top: 10px;">or</h4>
+                                    <h4 style="font-weight: bold;margin-top: 10px;">Refusal</h4> 
+
+                                    <p style="margin-top: 10px;">
+                                        <!--                                        <input type="checkbox" th:if="${surgicalForm.patientcheckbox6} == surgicalexcusion5" checked="checked"/> 
+                                                                                <input type="checkbox" th:unless="${surgicalForm.patientcheckbox6} == surgicalexcusion5" />-->
+                                        <img th:if="${surgicalForm.patientcheckbox6} == surgicalexcusion5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                        <span><img  th:unless="${surgicalForm.patientcheckbox6} == surgicalexcusion5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                        </span> I refuse to give my consent for the proposed treatment(s) described above and understand the potential consequences associated with
+                                        this refusal.
+                                    </p>
+                                </div>
+                                <table style="width: 100%;margin-top:10px;">
+
+                                    <td>
+                                        <img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.patientsignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+
+                                    </td>
+                                    <td>
+                                        <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center; ;  " th:text="${surgicalForm.signdate1}">test</span>   
+                                    </td>
+                                    <tr> <td>Patient or Patient's Representative Signature </td>
+                                        <td>Date </td> 
+                                    </tr>
+
+
+                                    <td>
+                                        <img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.witnesssignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/> 
+                                    </td>
+                                    <td>
+                                        <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;  " th:text="${surgicalForm.signdate2}">test</span>    
+                                    </td>
+                                    <tr>
+                                        <td>Witness Signature </td>
+                                        <td>Date </td>
+                                    </tr>
+
+                                </table> 
+
+                                <p style="margin-top: 10px;">I attest that I have discussed the risks, benefits, consequences and alternatives of the above treatment with 
+                                    <span style="font-weight:bold;min-width: 400px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${surgicalForm.patienttxt5}">test</span>  (Patient or Patient's Representative) and they have had the opportunity to ask 
+                                    questions. I believe they understand what has been explained and consents or refuses treatment noted above.</p>  
+
+
+                                <!--======================= Witness Signature======================-->
+                                <table class="col-auto" style="width: 100%">
+                                    <td>
+                                        <img th:src="@{data:image/png;base64,{image}(image=${surgicalForm.dentistsignature})}" height="50" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+
+                                    </td>
+                                    <td>
+                                        <span  style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${surgicalForm.signdate3}">test</span>   
+                                    </td> 
+                                    <tr>
+                                        <td>Dentist Signature </td>
+                                        <td>  Date</td>
+                                    </tr>
+                                </table> 
+
+                            </div>     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

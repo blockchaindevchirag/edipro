@@ -1,0 +1,1548 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <title>Surgical Tray Sheet</title>
+        <style>
+            body {
+                font-size: 11px;
+                font-family: "Roboto", sans-serif;
+            }
+            .table {
+                border-spacing: 0;
+            }
+            * {
+                /*margin: 2px;*/
+                /*padding: 2px;*/
+                box-sizing: border-box;
+
+            }
+
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+
+            h4,
+            h6 {
+                font-size: 16px !important;
+            }
+
+            .font_small {
+                font-size: 12px;
+            }
+
+            .keep-together {
+                page-break-inside: avoid;
+            }
+
+            .break-before {
+                page-break-before: always;
+            }
+
+            .break-after {
+                page-break-after: always;
+            }
+
+            .container {
+                min-width: 100% !important;
+            }
+
+            .card-body {
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                padding: 1.25rem;
+            }
+            .row {
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+                margin-right: -15px;
+                margin-left: -15px;
+            }
+            .table-borderless th,
+            .table-borderless td,
+            .table-borderless thead th,
+            .table-borderless tbody+tbody {
+                border: 0;
+            }
+            .border {
+                border: 1px solid #000 !important;
+            }
+
+            .border-top {
+                border-top: 1px solid #000 !important;
+            }
+
+            .border-right {
+                border-right: 1px solid #000 !important;
+            }
+
+            .border-bottom {
+                border-bottom: 1px solid #000 !important;
+            }
+
+            .border-left {
+                border-left: 1px solid #000 !important;
+            }
+
+            .font-weight-bold {
+                font-weight: 700 !important;
+            }
+
+            .border-dark {
+                border-color: #000 !important;
+            }
+
+            .col-1,
+            .col-2,
+            .col-3,
+            .col-4,
+            .col-5,
+            .col-6,
+            .col-7,
+            .col-8,
+            .col-9,
+            .col-10,
+            .col-11,
+            .col-12,
+            .col,
+            .col-auto,
+            .col-sm-1,
+            .col-sm-2,
+            .col-sm-3,
+            .col-sm-4,
+            .col-sm-5,
+            .col-sm-6,
+            .col-sm-7,
+            .col-sm-8,
+            .col-sm-9,
+            .col-sm-10,
+            .col-sm-11,
+            .col-sm-12,
+            .col-sm,
+            .col-sm-auto,
+            .col-md-1,
+            .col-md-2,
+            .col-md-3,
+            .col-md-4,
+            .col-md-5,
+            .col-md-6,
+            .col-md-7,
+            .col-md-8,
+            .col-md-9,
+            .col-md-10,
+            .col-md-11,
+            .col-md-12,
+            .col-md,
+            .col-md-auto,
+            .col-lg-1,
+            .col-lg-2,
+            .col-lg-3,
+            .col-lg-4,
+            .col-lg-5,
+            .col-lg-6,
+            .col-lg-7,
+            .col-lg-8,
+            .col-lg-9,
+            .col-lg-10,
+            .col-lg-11,
+            .col-lg-12,
+            .col-lg,
+            .col-lg-auto,
+            .col-xl-1,
+            .col-xl-2,
+            .col-xl-3,
+            .col-xl-4,
+            .col-xl-5,
+            .col-xl-6,
+            .col-xl-7,
+            .col-xl-8,
+            .col-xl-9,
+            .col-xl-10,
+            .col-xl-11,
+            .col-xl-12,
+            .col-xl,
+            .col-xl-auto {
+                position: relative;
+                width: 100%;
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            .col-12 {
+                -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+
+            .col-5 {
+                -ms-flex: 0 0 41.666667%;
+                flex: 0 0 41.666667%;
+                max-width: 41.666667%;
+            }
+
+            .modal-header {
+                text-align: center;
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-align: start;
+                align-items: flex-start;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+                padding: 1rem 1rem;
+                border-bottom: 2px solid #17a2b8;
+                border-top-left-radius: 0.3rem;
+                border-top-right-radius: 0.3rem;
+            }
+
+            .text-justify {
+                text-align: justify;
+                text-justify: inter-word;
+            }
+
+            p.text-justify {
+                text-indent: 30px;
+            }
+
+            #invoice {
+                padding: 0px;
+            }
+
+            .invoice {
+                position: relative;
+                background-color: #FFF;
+            }
+
+
+            .invoice .invoice-details {
+                text-align: center;
+            }
+
+            .invoice .invoice-details .invoice-id {
+                margin-top: 0;
+                color: #17a2b8;
+            }
+
+            .invoice main {
+                padding-bottom: 50px;
+            }
+
+            .invoice main .thanks {
+                margin-top: -100px;
+                /*font-size: 2em;*/
+                margin-bottom: 50px
+            }
+
+            .invoice main .notices {
+                padding-left: 6px;
+                border-left: 6px solid #17a2b8;
+                background: #f3f8fa;
+                /* padding: 10px;*/
+            }
+
+            .invoice main table tr.notices {
+                padding-left: 6px;
+                border-left: 6px solid #17a2b8;
+                background: #f3f8fa;
+                /* padding: 10px;*/
+            }
+
+            .invoice table {
+                width: 100%;
+                border-collapse: collapse;
+                border-spacing: 0;
+                margin-bottom: 10px
+            }
+
+            .invoice table td,
+            .invoice table th {
+                padding: 5px;
+                /* background: #eee; */
+                border-bottom: 1px solid #fff
+            }
+
+            .invoice table th {
+                white-space: nowrap;
+                font-weight: 400;
+                /* font-size: 16px*/
+            }
+
+            .invoice table td h3 {
+                margin: 0;
+                font-weight: 400;
+                /*color: #0d6efd;*/
+                /* font-size: 1.2em*/
+            }
+
+            .invoice table .qty,
+            .invoice table .total,
+            .invoice table .unit {
+                text-align: right;
+                /* font-size: 1.2em*/
+            }
+
+            .invoice table .no {
+                color: #fff;
+                font-size: 1.6em;
+                background: #17a2b8;
+            }
+
+            .invoice table .unit {
+                background: #ddd
+            }
+
+            .invoice table .total {
+                background: #0d6efd;
+                color: #fff
+            }
+
+            .invoice table tbody tr:last-child td {
+                border: none
+            }
+
+            .invoice table tfoot td {
+                background: 0 0;
+                border-bottom: none;
+                white-space: nowrap;
+                text-align: right;
+                padding: 10px 20px;
+                /* font-size: 1.5em; */
+                border-top: 1px solid #aaa
+            }
+
+            .invoice table tfoot tr:first-child td {
+                border-top: none
+            }
+
+            .card {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                min-width: 0;
+                word-wrap: break-word;
+                background-color: #fff;
+                background-clip: border-box;
+                border: 0px solid rgba(0, 0, 0, 0);
+                border-radius: .25rem;
+                margin-bottom: 1.5rem;
+                box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+            }
+
+            .invoice table tfoot tr:last-child td {
+                color: #0d6efd;
+                /*  font-size: 1.4em; */
+                border-top: 1px solid #0d6efd
+            }
+
+            .invoice table tfoot tr td:first-child {
+                border: none
+            }
+
+            .invoice footer {
+                width: 100%;
+                text-align: center;
+                color: #777;
+                border-top: 1px solid #aaa;
+                padding: 8px 0
+            }
+
+            .text-secondary-d1 {
+                color: #728299 !important;
+            }
+
+            .page-header {
+                margin: 0 0 1rem;
+                padding-bottom: 1rem;
+                padding-top: .5rem;
+                border-bottom: 1px dotted #e2e2e2;
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+                -ms-flex-align: center;
+                align-items: center;
+            }
+
+            .page-title {
+                padding: 0;
+                margin: 0;
+                font-size: 1.75rem;
+                font-weight: 300;
+            }
+
+            .brc-default-l1 {
+                border-color: #dce9f0 !important;
+            }
+
+            .ml-n1,
+            .mx-n1 {
+                margin-left: -.25rem !important;
+            }
+
+            .mr-n1,
+            .mx-n1 {
+                margin-right: -.25rem !important;
+            }
+
+            .mb-4,
+            .my-4 {
+                margin-bottom: 1.5rem !important;
+            }
+
+            hr {
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                border: 0;
+                border-top: 1px solid rgba(0, 0, 0, .1);
+            }
+
+            .text-grey-m2 {
+                color: #888a8d !important;
+            }
+
+            .text-success-m2 {
+                color: #86bd68 !important;
+            }
+
+            .font-bolder,
+            .text-600 {
+                font-weight: 600 !important;
+            }
+
+            .text-110 {
+                font-size: 110% !important;
+            }
+
+            .text-blue {
+                color: #478fcc !important;
+            }
+
+            .pb-25,
+            .py-25 {
+                padding-bottom: .75rem !important;
+            }
+
+            .pt-25,
+            .py-25 {
+                padding-top: .75rem !important;
+            }
+
+            .bgc-default-l4,
+            .bgc-h-default-l4:hover {
+                background-color: #f3f8fa !important;
+            }
+
+            .page-header .page-tools {
+                -ms-flex-item-align: end;
+                align-self: flex-end;
+            }
+
+            .btn-light {
+                color: #757984;
+                background-color: #f5f6f9;
+                border-color: #dddfe4;
+            }
+
+            .w-2 {
+                width: 1rem;
+            }
+
+            .text-120 {
+                font-size: 120% !important;
+            }
+
+            .text-primary-m1 {
+                color: #4087d4 !important;
+            }
+
+            .text-danger-m1 {
+                color: #dd4949 !important;
+            }
+
+            .text-blue-m2 {
+                color: #68a3d5 !important;
+            }
+
+            .text-150 {
+                font-size: 150% !important;
+            }
+
+            .text-60 {
+                font-size: 60% !important;
+            }
+
+            .text-grey-m1 {
+                color: #7b7d81 !important;
+            }
+
+            .align-bottom {
+                vertical-align: bottom !important;
+            }
+
+
+            .table-striped tbody tr {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            .table-striped tbody tr:nth-of-type(odd) {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            .text-white {
+                color: #fff !important;
+            }
+
+            .bgc-default-tp1 {
+                background-color: #17a2b8 !important;
+            }
+
+            .table-bordered thead th,
+            .table-bordered tbody td {
+                border: 1px solid #dee2e6 !important;
+            }
+
+            .bd-highlight {
+                background-color: rgba(86, 61, 124, 0.15);
+                border: 1px solid rgba(86, 61, 124, 0.15);
+            }
+
+            .border-left-side {
+                border-left: 6px solid #17a2b8;
+            }
+
+            .card-border-c-info {
+                border-top: 4px solid #17a2b8;
+            }
+            .m-t-10{
+                margin-top:10px!important;
+            }
+            th:empty, td:empty  {
+                display:none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div id="invoice" style="padding:0px;
+                         width:100%;">
+                        <div class="invoice">
+
+                            <div class="modal-header">
+                                <h2><span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                                <div style="margin-top: -10px;
+                                     font-weight:bold;
+                                     font-size:12px;"> <span th:text="${patientPractice.addressline1}">test</span>
+                                    <span th:text="${patientPractice.addressline2}">test</span> <span
+                                        th:text="${patientPractice.city}">test</span> <span
+                                        th:text="${patientPractice.state}">test</span> <span
+                                        th:text="${patientPractice.zip}">test</span>
+                                </div>
+                                <div style="font-weight:bold;
+                                     font-size:12px;
+                                     padding-bottom: 15px;">
+                                    <span
+                                        th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span>
+                                    <span th:text="${patientPractice.contactPhone}">test</span> <span
+                                        th:text="${patientPractice.alertPhone}">test</span>
+                                    <span th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span>
+                                    <span th:text="${patientPractice.fax}">test</span>
+                                </div>
+                                <div style="font-weight:bold;
+                                     font-size:12px;
+                                     padding-bottom: 15px;">
+                                    <div>
+                                    <span th:if="${patientPractice.taxid!= null and patientPractice.taxid!= ''}">Tax ID:</span> 
+                                    <span th:text="${patientPractice.taxid}">test</span> 
+                                    <span th:if="${patientPractice.groupNpi1!= null and patientPractice.groupNpi1!= ''}">| Organization NPI:</span> 
+                                    <span th:text="${patientPractice.groupNpi1}">test</span> 
+                                    <span th:if="${patientPractice.ptan!= null and patientPractice.ptan!= ''}">| Org. PTAN:</span> 
+                                    <span th:text="${patientPractice.ptan}">test</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <main>
+                                <div class="invoice-details">
+                                    <h6 class="invoice-id" style="text-align: center;
+                                        margin-top:15px;">SURGICAL TRAY SHEET</h6>
+                                </div>
+                                <div class="col-12" >
+                                    <div class="container">
+                                        <div class="notices" style="padding:0;">
+                                            <table class="" width="100%" align="center">
+                                                <tr>
+                                                    <td style="width:15%;">Patient Name :</td>
+                                                    <td style="width:35%;"><span style="font-weight:bold;"
+                                                              th:text="${patient.lastName+', '+patient.firstName}">test</span>
+                                                    </td>
+                                                    <td style="width:15%;">STS No :</td>
+                                                    <td style="width:35%;"><span style="font-weight:bold;"
+                                                              th:text="${surgicalObj.surgicalTrayId+'/'+surgicalObj.practiceId+'/'+surgicalObj.dateOfService}">test</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:15%;">DOB : </td>
+                                                    <td style="width:35%;"><span style="font-weight:bold;"
+                                                              th:text="${surgicalObj.patientDob}">test</span> </td>
+                                                    <td style="width:15%;">Gender :</td>
+                                                    <td style="width:35%;">
+                                                        <span style="font-weight:bold;"
+                                                              th:if="${patient.genderIdentity} == 1"> Male</span>
+                                                        <span style="font-weight:bold;"
+                                                              th:if="${patient.genderIdentity} == 2"> Female</span>
+                                                        <span style="font-weight:bold;"
+                                                              th:if="${patient.genderIdentity} == 3"> Other</span>
+                                                    </td>
+                                                </tr>
+                                                <tr th:if="${surgicalObj.primaryInsurance}!= null and ${surgicalObj.primaryInsurance}!= '' or ${surgicalObj.primaryMemberId}!= null and ${surgicalObj.primaryMemberId}!= ''">
+                                                <td style="width:15%;">Primary Insurance:</td>
+                                                    <td style="width:35%;"><span style="font-weight:bold;" th:text="${surgicalObj.primaryInsurance}">test</span> </td>
+                                                     <td style="width:15%;">Primary Member Id:</td>
+                                                     <td style="width:35%;"><span style="font-weight:bold;" th:text="${surgicalObj.primaryMemberId}">test</span> </td>
+                                                </tr>
+                                                <tr th:if="${surgicalObj.secondaryInsurance}!= null and ${surgicalObj.secondaryInsurance}!= '' or ${surgicalObj.secondaryMemberId}!= null and ${surgicalObj.secondaryMemberId}!= ''">
+                                                    <td style="width:15%;">Secondary Insurance:</td>
+                                                    <td style="width:35%;"><span style="font-weight:bold;"
+                                                                                 th:text="${surgicalObj.secondaryInsurance}">test</span> </td>
+                                                    <td style="width:15%;">Secondary Member Id:</td>
+                                                    <td style="width:35%;"><span style="font-weight:bold;"
+                                                                                 th:text="${surgicalObj.secondaryMemberId}">test</span> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:15%;">Date of Service :</td>
+                                                    <td style="width:35%;"><span style="font-weight:bold;"
+                                                              th:text="${surgicalObj.dateOfService}">test</span></td>
+                                                    <td style="width:16%;">Treating Provider:</td>
+                                                    <td style="width:35%;"><span style="font-weight:bold;"
+                                                              th:text="${surgicalObj.treatingProvider}">test</span></td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td style="width:15%;">Individual NPI :</td>
+                                                    <td style="width:35%;"><span style="font-weight:bold;"
+                                                              th:text="${surgicalObj.individualNpi}">test</span></td>
+                                                    <td style="width:15%;"><span th:if="${surgicalObj.individualPtan!= null and surgicalObj.individualPtan!= ''}">Ind.PTAN : </span></td>
+                                                    <td style="width:35%;"><span style="font-weight:bold;"
+                                                              th:text="${surgicalObj.individualPtan}">test</span></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="width:15%;">Admit Time :</td> 
+                                                    <td style="width:35%;" >
+                                                        <span style="font-weight:bold;" th:if="${surgicalObj.patientAdmitTime!= null and surgicalObj.patientAdmitTime!= ''}"  th:text="${surgicalObj.patientAdmitTime}">test</span></td>
+                                                    <td style="width:15%;">Discharge Time :</td> 
+                                                    <td style="width:35%;"  >
+                                                        <span style="font-weight:bold;" th:if="${surgicalObj.patientDischargeTime!= null and surgicalObj.patientDischargeTime!= ''}" th:text="${surgicalObj.patientDischargeTime}">test</span></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="col-12" style="padding:0; margin:0;">
+
+                                            <table class="table" style="width:100%; padding:0; margin:0;" cellspacing="0"
+                                                   cellpadding="0">
+                                                <tr>
+                                                    <td style="width:50%;font-weight:bold ;font-size:12px; padding:0;"> Vital
+                                                    </td></tr>
+                                            </table>
+                                            <table align="center" class="table  table-bordered " style="width:100%;
+                                                   padding:0;
+                                                   border: 1px solid #dfdfdf !important;">
+                                                <thead>
+                                                    <tr class="bgc-default-tpl" style="
+                                                        text-align: center;
+                                                        background-color: #F3F3F0!important; font-weight:bold; ">
+                                                        <th scope="col" style="font-weight:bold; width:12.5%;  padding:5px!important;">
+                                                            Temperature
+
+                                                        </th>
+                                                        <th scope="col" style="font-weight:bold; width:12.5%; padding:5px!important;">
+                                                            Blood Pressure
+
+                                                        </th>
+                                                        <th scope="col" style="font-weight:bold; width:12.5%; padding:5px!important;"> 
+                                                            Heart Rate
+                                                        </th>
+                                                        <th scope="col" style="font-weight:bold; width:12.5%; padding:5px!important;">
+                                                            SpO2
+                                                        </th>
+                                                        <th scope="col" style="font-weight:bold; width:12.5%; padding:5px!important;">
+                                                            Height(Feet and Inch)
+                                                        </th>
+                                                        <th scope="col" style="font-weight:bold; width:12.5%; padding:5px!important;">
+                                                            Weight(Pounds)
+                                                        </th>
+                                                        <th scope="col" style="font-weight:bold; width:12.5%; padding:5px!important;">
+                                                            BMI
+
+                                                        </th>
+                                                        <th scope="col" style="font-weight:bold; width:12.5%; padding:5px!important;">
+                                                            Resp Rate
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.patientTemperature}">test</span></td>
+                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.patientBloodPressure}">test</span></td>
+                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.patientHeartRate}">test</span></td>
+                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.patientSpo2}">test</span></td>
+                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.patientHeight}">test</span></td>
+                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.patientWeight}">test</span></td>
+                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.patientBMI}">test</span></td>
+                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.patientRespRate}">test</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                        <div>
+                                            <table border="0" style="padding:0; margin:0;">
+                                                <tr>
+                                                    <td style="vertical-align: text-top; padding:0; width:100%;" th:if="${surgicalObj.anesthesiaType1}!= null and ${surgicalObj.anesthesiaType1}!= '' or ${surgicalObj.anesthesiaType2}!= null and ${surgicalObj.anesthesiaType2}!= '' or ${surgicalObj.anesthesiaType3}!= null and ${surgicalObj.anesthesiaType3}!= '' 
+                                                        or ${surgicalObj.anesthesiaType4}!= null and ${surgicalObj.anesthesiaType4}!= '' or ${surgicalObj.anesthesiaType5}!= null and ${surgicalObj.anesthesiaType5}!= '' or ${surgicalObj.anesthesiaType6}!= null and ${surgicalObj.anesthesiaType6}!= ''  ">
+                                                        <table class="table" style="width:100%; margin:0; padding:0;" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td style="width:50%;font-weight:bold; border-bottom: 1px solid #dfdfdf; font-size:12px; padding:0;">
+                                                                    Anesthesia (I.V) Sedation &amp; Oral Sedation
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding:0!important;margin:0!important;">
+                                                                    <table style="margin:0; padding:0;" border="0">
+                                                                        <tr>
+                                                                            <td style="padding:0px!important; margin:0!important;"> 
+                                                                                <div style="" th:if="${surgicalObj.anesthesiaType1!= null and surgicalObj.anesthesiaType1!= ''}">
+                                                                                    <ul style="padding:0 0 0 18px; margin:0!important;">
+                                                                                        <li style="list-style: square; "><span style="font-weight:bold;"  th:text="${surgicalObj.anesthesiaType1}">test</span></li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="padding:0px!important;">
+                                                                                <div  style="" th:if="${surgicalObj.anesthesiaType2!= null and surgicalObj.anesthesiaType2!= '' }">
+                                                                                    <ul style="padding:0 0 0 18px; margin:0!important;">
+                                                                                        <li style="list-style:square;"><span style="font-weight:bold;" th:text="${surgicalObj.anesthesiaType2}">test</span></li>
+                                                                                    </ul></div></td>
+                                                                            <td style="padding:0px!important;">
+                                                                                <div  style="" th:if="${surgicalObj.anesthesiaType3!= null and surgicalObj.anesthesiaType3!= '' }">
+                                                                                    <ul style="padding:0 0 0 18px;">
+                                                                                        <li style="list-style:square;"><span style="font-weight:bold;" th:text="${surgicalObj.anesthesiaType3}">test</span></li>
+                                                                                    </ul> </div></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="padding:0px!important;">
+                                                                                <div style="" th:if="${surgicalObj.anesthesiaType4!= null and surgicalObj.anesthesiaType4!= '' }">
+                                                                                    <ul style="padding:0 0 0 18px; margin:0!important;">
+                                                                                        <li style="list-style:square;"><span style="font-weight:bold;" th:text="${surgicalObj.anesthesiaType4}">test</span></li>
+                                                                                    </ul> </div></td>
+                                                                            <td style="padding:0px!important;">
+                                                                                <div  style="" th:if="${surgicalObj.anesthesiaType5!= null and surgicalObj.anesthesiaType5!= '' }">
+                                                                                    <ul style="padding:0 0 0 18px; margin:0!important;">
+                                                                                        <li style="list-style:square;"><span style="font-weight:bold;" th:text="${surgicalObj.anesthesiaType5}">test</span></li>
+                                                                                    </ul></div></td>
+                                                                            <td style="padding:0px!important;">
+                                                                                <div  style="" th:if="${surgicalObj.anesthesiaType6!= null and surgicalObj.anesthesiaType6!= '' }">
+                                                                                    <ul style="padding:0 0 0 18px; margin:0!important;">
+                                                                                        <li style="list-style: square;"><span style="font-weight:bold;" th:text="${surgicalObj.anesthesiaType6}">test</span></li>
+                                                                                    </ul></div></td>
+
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <div class="">
+                                            <table border="0" style="padding:0!important; margin:0!important;">
+                                                <tr>
+                                                    <td style="vertical-align: text-top; padding:0; width:50%;"  th:if="${surgicalObj.oralAnesthesiaContentType}!= null and ${surgicalObj.oralAnesthesiaContentType}!= '' or ${surgicalObj.oralAnesthesiaContentType1}!= null and ${surgicalObj.oralAnesthesiaContentType1}!= '' or ${surgicalObj.oralAnesthesiaContentType2}!= null and ${surgicalObj.oralAnesthesiaContentType2}!= '' or ${surgicalObj.oralAnesthesiaContentType3}!= null and ${surgicalObj.oralAnesthesiaContentType3}!= '' 
+                                                        or  ${surgicalObj.oralAnesthesiaContentType4}!= null and ${surgicalObj.oralAnesthesiaContentType4}!= '' or ${surgicalObj.oralAnesthesiaContentType5}!= null and ${surgicalObj.oralAnesthesiaContentType5}!= '' or ${surgicalObj.oralAnesthesiaContentType6}!= null and ${surgicalObj.oralAnesthesiaContentType6}!= '' or ${surgicalObj.woundDrainageType}!=null and ${surgicalObj.woundDrainageType}!='' or ${surgicalObj.woundDrainageType1}!=null and ${surgicalObj.woundDrainageType1}!='' or ${surgicalObj.woundDrainageType2}!=null and ${surgicalObj.woundDrainageType2}!='' or ${surgicalObj.woundDrainageType3}!=null and ${surgicalObj.woundDrainageType3}!='' or ${surgicalObj.woundDrainageType4}!=null and ${surgicalObj.woundDrainageType4}!='' or ${surgicalObj.woundDrainageType5}!=null and ${surgicalObj.woundDrainageType5}!='' or ${surgicalObj.woundDrainageType6}!=null and ${surgicalObj.woundDrainageType6}!='' or ${surgicalObj.woundDrainageType7}!=null and ${surgicalObj.woundDrainageType7}!='' or ${surgicalObj.woundDrainageType8}!=null and ${surgicalObj.woundDrainageType8}!='' or ${surgicalObj.woundDrainageType9}!=null and ${surgicalObj.woundDrainageType9}!=''">                                                                                   
+                                                        
+                                                        
+                                                        <table class="table" style="width:100%; padding:0!important; margin:0!important;" cellspacing="0"
+                                                               cellpadding="0">
+
+                                                            <tr  th:if="${surgicalObj.oralAnesthesiaContentType}!= null and ${surgicalObj.oralAnesthesiaContentType}!= '' or ${surgicalObj.oralAnesthesiaContentType1}!= null and ${surgicalObj.oralAnesthesiaContentType1}!= '' or ${surgicalObj.oralAnesthesiaContentType2}!= null and ${surgicalObj.oralAnesthesiaContentType2}!= '' or ${surgicalObj.oralAnesthesiaContentType3}!= null and ${surgicalObj.oralAnesthesiaContentType3}!= '' 
+                                                                    or  ${surgicalObj.oralAnesthesiaContentType4}!= null and ${surgicalObj.oralAnesthesiaContentType4}!= '' or ${surgicalObj.oralAnesthesiaContentType5}!= null and ${surgicalObj.oralAnesthesiaContentType5}!= '' or ${surgicalObj.oralAnesthesiaContentType6}!= null and ${surgicalObj.oralAnesthesiaContentType6}!= ''">
+                                                                <td style="width:25%;font-weight:bold; font-size:12px;border-bottom:1px solid #dfdfdf; padding:0;">
+                                                                    Oral Anesthesia </td>
+                                                            </tr>
+                                                            <tr th:if="${surgicalObj.oralAnesthesiaContentType}== OA" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;"> Lidocaine 2% <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.oralAnesthesiaType}">test</span> x 1.8cc 1:100,000 epinephrine.</li>
+                                                                        </ul></div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.oralAnesthesiaContentType1}== OA1">
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Carbocaine 3%  <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.oralAnesthesiaType1}">test</span> x 1.8cc 1:100,000 epinephrine.</li>
+                                                                        </ul></div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.oralAnesthesiaContentType2}== OA2">
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Carbocaine 3%  <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.oralAnesthesiaType2}">test</span> x 1.8ccc without epinephrine.</li>
+                                                                        </ul></div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.oralAnesthesiaContentType3}== OA3" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Septocaine 4%  <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.oralAnesthesiaType3}">test</span> x 1.8cc 1:100,000 epinephrine.</li>
+                                                                        </ul></div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.oralAnesthesiaContentType4}== OA4" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:Square;"> Bupivicaine 0.5%  <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.oralAnesthesiaType4}">test</span> x 1.8cc 1:200,000 epinephrine.</li>
+                                                                        </ul></div>
+                                                                </td>   
+                                                            </tr>
+                                                            <tr th:if="${surgicalObj.oralAnesthesiaContentType5}== OA5" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style: square;">Marcaine  0.5%   <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.oralAnesthesiaType5}">test</span> x 1.8cc 1:200,00 epinephrine.</li>
+                                                                        </ul></div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.oralAnesthesiaContentType6}== OA6" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+
+                                                                            <li style="list-style: square;">Other: <span style="font-weight:bold; min-width: 200px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.oralAnesthesiaType6}">test</span>epi.</li>
+                                                                        </ul></div>
+                                                                </td>
+                                                            </tr> 
+                                                        </table>
+                                                        
+                                                        <table class="table" style="width:100%; margin-top: 15px;" cellspacing="0"  
+                                                               cellpadding="0">
+                                                            <tr th:if="${surgicalObj.woundDrainageType}!=null and ${surgicalObj.woundDrainageType}!='' or ${surgicalObj.woundDrainageType1}!=null and ${surgicalObj.woundDrainageType1}!='' or ${surgicalObj.woundDrainageType2}!=null and ${surgicalObj.woundDrainageType2}!='' or ${surgicalObj.woundDrainageType3}!=null and ${surgicalObj.woundDrainageType3}!='' or ${surgicalObj.woundDrainageType4}!=null and ${surgicalObj.woundDrainageType4}!='' or ${surgicalObj.woundDrainageType5}!=null and ${surgicalObj.woundDrainageType5}!='' or ${surgicalObj.woundDrainageType6}!=null and ${surgicalObj.woundDrainageType6}!='' or ${surgicalObj.woundDrainageType7}!=null and ${surgicalObj.woundDrainageType7}!='' or ${surgicalObj.woundDrainageType8}!=null and ${surgicalObj.woundDrainageType8}!='' or ${surgicalObj.woundDrainageType9}!=null and ${surgicalObj.woundDrainageType9}!=''">
+                                                                <td style="width:25%; font-weight:bold; font-size:12px;  border-bottom: 1px solid #dfdfdf;padding:0;">
+                                                                  Biospy Of Wound Drainage Abscesses</td>
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.woundDrainageType}== WD" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style: square">Purulent (pus) drainage<span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.woundDrainage}">test</span>ml.</li>
+                                                                        </ul></div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.woundDrainageType1}== WD1" >
+                                                                <td style="padding:2px!important;"> 
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Acute abscess drainage <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.woundDrainage1}">test</span>ml.
+                                                                            </li></ul></div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr th:if="${surgicalObj.woundDrainageType2}== WD2" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Subacute abscess drainage<span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.woundDrainage2}">test</span>ml.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr  th:if="${surgicalObj.woundDrainageType3}== WD3" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Chronic abscess drainage <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.woundDrainage3}">test</span>ml.
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                            </tr><tr th:if="${surgicalObj.woundDrainageType4}== WD4" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">
+                                                                                Granulomatous drainage <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.woundDrainage4}">test</span>ml.
+                                                                            </li></ul> </div>
+                                                                </td>   
+                                                            </tr><tr  th:if="${surgicalObj.woundDrainageType5}== WD5" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">
+                                                                                Tissue infected drainage <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.woundDrainage5}">test</span>ml.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr  th:if="${surgicalObj.woundDrainageType6}== WD6" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div><ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">
+                                                                                Mucosa fluids  <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.woundDrainage6}">test</span>ml.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.woundDrainageType7}== WD7" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div><ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">
+                                                                                Ulcers / Fibrosis <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.woundDrainage7}">test</span>ml.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr  th:if="${surgicalObj.woundDrainageType8}== WD8">
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Abscess blood drainage <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.woundDrainage8}">test</span>ml.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr  th:if="${surgicalObj.woundDrainageType9}== WD9">
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Wound mucosa inflammation <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.woundDrainage9}">test</span>ml. 
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr>
+                                                 
+                                                        </table>
+                                                    </td>
+                                                    <td style="vertical-align: text-top;" th:if="${surgicalObj.rxContentType}!= null and ${surgicalObj.rxContentType}!= '' or ${surgicalObj.rxContentType1}!= null and ${surgicalObj.rxContentType1}!= '' or ${surgicalObj.rxContentType2}!= null and ${surgicalObj.rxContentType2}!= '' or ${surgicalObj.rxContentType3}!= null and ${surgicalObj.rxContentType3}!= '' 
+                                                        or  ${surgicalObj.rxContentType4}!= null and ${surgicalObj.rxContentType4}!= '' or ${surgicalObj.rxContentType5}!= null and ${surgicalObj.rxContentType5}!= '' or ${surgicalObj.rxContentType6}!= null and ${surgicalObj.rxContentType6}!= '' or ${surgicalObj.rxContentType7}!= null and ${surgicalObj.rxContentType7}!= '' 
+                                                        or  ${surgicalObj.rxContentType8}!= null and ${surgicalObj.rxContentType8}!= '' or ${surgicalObj.rxContentType9}!= null and ${surgicalObj.rxContentType9}!= '' or ${surgicalObj.rxContentType10}!= null and ${surgicalObj.rxContentType10}!= '' or ${surgicalObj.rxContentType11}!= null and ${surgicalObj.rxContentType11}!= '' 
+                                                        or  ${surgicalObj.rxContentType12}!= null and ${surgicalObj.rxContentType12}!= '' or ${surgicalObj.rxContentType13}!= null and ${surgicalObj.rxContentType13}!= '' or ${surgicalObj.rxContentType14}!= null and ${surgicalObj.rxContentType14}!= '' or ${surgicalObj.rxContentType15}!= null and ${surgicalObj.rxContentType15}!= '' 
+                                                        or  ${surgicalObj.rxContentType16}!= null and ${surgicalObj.rxContentType16}!= '' or ${surgicalObj.rxContentType17}!= null and ${surgicalObj.rxContentType17}!= '' or ${surgicalObj.rxContentType18}!= null and ${surgicalObj.rxContentType18}!= '' or ${surgicalObj.rxContentType19}!= null and ${surgicalObj.rxContentType19}!= '' ">
+
+                                                        <table class="table" style="width:100%;" cellspacing="0"
+                                                               cellpadding="0">
+                                                            <tr>
+                                                                <td style="width:25%; font-weight:bold; font-size:12px;  border-bottom: 1px solid #dfdfdf;padding:0;">
+                                                                    Rx</td>
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.rxContentType}== RX" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style: square">Amox 500mg x  <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType}">test</span> Sig: Take 1tab TID until gone.</li>
+                                                                        </ul></div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.rxContentType1}== RX1" >
+                                                                <td style="padding:2px!important;"> 
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Amox 500mg x   <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType1}">test</span> Sig: take 4tabs 1hr prior treatment, then 1Q8h til gone.
+                                                                            </li></ul></div>
+                                                                </td>
+                                                            </tr><tr th:if="${surgicalObj.rxContentType2}== RX2" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Pen 600mg x   <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType2}">test</span> Sig: Take 1tab TID until gone.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr  th:if="${surgicalObj.rxContentType3}== RX3" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;"> Clindamycin 300mg x <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType3}">test</span> Take 1 tablet BID until gone.
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                            </tr><tr th:if="${surgicalObj.rxContentType4}== RX4" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">
+                                                                                Z-Pack Take as package direction.
+                                                                            </li></ul> </div>
+                                                                </td>   
+                                                            </tr><tr  th:if="${surgicalObj.rxContentType5}== RX5" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">
+                                                                                Naproxen 50mg x  <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType4}">test</span> Sig: Take 1 tablet Q4-6h prn .
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr  th:if="${surgicalObj.rxContentType6}== RX6" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div><ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">
+                                                                                Augmentin 500mg x <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType5}">test</span>Sig: take 1 TID  x 5, 1 BID x 6-10.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.rxContentType7}== RX7" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div><ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">
+                                                                                Augmentin 875mg  x <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType6}">test</span> Sig: take 1 Tablet TID .
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr  th:if="${surgicalObj.rxContentType8}== RX8">
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Decadron injection 4mg/ml x 1ml.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr  th:if="${surgicalObj.rxContentType9}== RX9">
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Metformin 850mg.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr th:if="${surgicalObj.rxContentType10}== RX10" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Januvia 100mg.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr th:if="${surgicalObj.rxContentType11}== RX11" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;"> Rosuvastatin 10mg.
+                                                                            </li></ul></div>
+                                                                </td>   
+                                                            </tr><tr th:if="${surgicalObj.rxContentType12}== RX12" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;"> Flector 180mg.
+                                                                            </li></ul></div>
+                                                                </td>
+                                                            </tr><tr th:if="${surgicalObj.rxContentType13}== RX13" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">Ibuprofen 600mg x  <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType7}">test</span>Sig:  take 1 tablet Q4-6h prn for pain if needed.
+                                                                            </li></ul></div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr th:if="${surgicalObj.rxContentType14}== RX14" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;"> oIbuprofen 800mg x  <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType8}">test</span> Sig: Take 1 tablet Q4-6h prn for pain if needed.
+                                                                            </li></ul></div>
+                                                                </td>
+                                                            </tr><tr  th:if="${surgicalObj.rxContentType15}== RX15">
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:Square;">Norco 325/5mg x <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType9}">test</span> Sig: Take 1 tablet Q4-6h prn for pain.
+                                                                            </li></ul></div>
+                                                                </td>
+                                                            </tr><tr  th:if="${surgicalObj.rxContentType16}== RX16">
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;"> Tylenol 500mg x <span style="font-weight:bold; min-width: 50px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType10}">test</span> Take 1 tablet Q4-6h prn for pain.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr th:if="${surgicalObj.rxContentType17}== RX17" >
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">CHX 0.12% (#1) sig, rinse ½ cap BID until gone.
+                                                                            </li></ul> </div>
+                                                                </td>
+                                                            </tr><tr  th:if="${surgicalObj.rxContentType18}== RX18">
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style:square;">CHX 0.12% (#1) sig, rinse ½ cap TID for 7 days.
+                                                                            </li></ul></div>
+                                                                </td>   
+                                                            </tr>
+                                                            <tr  th:if="${surgicalObj.rxContentType19}== RX19">
+                                                                <td style="padding:2px!important;">
+                                                                    <div>
+                                                                        <ul style="padding:0 0 0 15px; margin:0!important;">
+                                                                            <li style="list-style: square;">Other  <span style="font-weight:bold; min-width: 200px; text-align:center; border-bottom: 1px solid #000000; display: inline-block ;" th:text="${surgicalObj.rxType11}">test</span>.
+                                                                            </li></ul></div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <div class="" style="margin:0!important; padding:0!important;"> 
+                                            <table class="table" style="width:100%; margin:0!important; padding:0!important;" cellspacing="0"
+                                                   cellpadding="0" >
+                                                <tr><td style="width:25%;font-weight:bold; font-size:12px; padding-left:0;">
+                                                        <span  th:if="${surgicalObj.sutureTypeName!= null and surgicalObj.sutureTypeName!= ''} or ${surgicalObj.sutureTypeOther!= null and surgicalObj.sutureTypeOther!= ''}">
+                                                            Suture type:</span> <span th:text="${surgicalObj.sutureTypeName}">test</span><span  th:if="${surgicalObj.sutureTypeOther!= null and surgicalObj.sutureTypeOther!= ''}">,</span><span style="font-weight:bold;" th:text="${surgicalObj.sutureTypeOther}">test</span>    
+                                                    </td>
+                                                    <td style="width:25%;font-weight:bold; font-size:12px;"><span  th:if="${surgicalObj.sutureLengthName!= null and surgicalObj.sutureLengthName!= ''}">Suture Length: </span><span th:text="${surgicalObj.sutureLengthName}">test</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="keep-together">
+                                            <table style="margin:0!important; padding:0!important;">
+                                                <tr>
+                                                    <td style="vertical-align: text-top; padding:0; width:50%;" th:if="${surgicalObj.boneGraftType}!= null and ${surgicalObj.boneGraftType}!= ''  or ${surgicalObj.boneGraftType2}!= null and ${surgicalObj.boneGraftType2}!= '' ">                                                          
+                                                        <table class="table" style="width:100%; margin:0;" cellspacing="0"
+                                                               cellpadding="0">
+                                                            <tr>
+                                                                <td style="width:50%;padding:0;
+                                                                    font-weight:bold;font-size:12px;">
+                                                                    Bone Graft Material</td>
+                                                            </tr>
+                                                        </table>
+                                                        <table align="center" class="table table-bordered" style="width:100%;
+                                                               padding:0!important;
+                                                               border: 1px solid #dfdfdf !important;">
+                                                            <thead>
+                                                                <tr class="bgc-default-tp1 " style=" color: #000;
+                                                                    text-align: center;
+                                                                    background-color: #F3F3F0!important;" >
+                                                                    <th scope="col" style="font-weight:bold; width:25%;padding:5px!important;">
+                                                                        Type  </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:25%;padding:5px!important;">
+                                                                        SN
+                                                                    </th>
+                                                                    <th scope="col" style="font-weight:bold; width:25%; padding:5px!important;">
+                                                                        Value </th>
+                                                                    <th scope="col" style="font-weight:bold; width:25%; padding:5px!important;">
+                                                                        Exp Date </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr th:if="${surgicalObj.boneGraftType}== BG">
+                                                                        <td style="padding: 3px 5px!important;">
+                                                                        Allograft/Donor bone
+                                                                    </td>
+                                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.boneGraftSno}">test</span></td>
+                                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.boneGraftValue}">test</span></td>
+                                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.expDate15}">test</span></td>
+                                                                </tr>
+                                                                <!--                                                                    <tr th:if="${surgicalObj.boneGraftType1}== BG1">
+                                                                                                                                        <td style="font-weight:bold;">
+                                                                                                                                            Autologous bone</td>
+                                                                                                                                       <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.boneGraftValue1}">test</span></td>
+                                                                                                                                        <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.expDate1}">test</span></td>
+                                                                                                                                    </tr>-->
+                                                                <tr th:if="${surgicalObj.boneGraftType2}== BG2">
+                                                                        <td style="padding:3px 5px!important;">
+                                                                        Xenograft</td>
+                                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.boneGraftSno1}">test</span></td>
+                                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.boneGraftValue2}">test</span></td>
+                                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.expDate2}">test</span></td>
+                                                                </tr>
+                                                                <!--                                                                    <tr th:if="${surgicalObj.boneGraftType3}== BG3">
+                                                                                                                                        <td style="font-weight:bold;">
+                                                                                                                                            growth factors</td>
+                                                                                                                                        <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.boneGraftValue3}">test</span></td>
+                                                                                                                                        <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.expDate3}">test</span></td>
+                                                                                                                                    </tr>-->
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+
+                                                    <td style="vertical-align: text-top;" th:if="${surgicalObj.tissueGraftType}!= null and ${surgicalObj.tissueGraftType}!= '' ">
+                                                        <table class="table" style="width:100%; margin:0;" cellspacing="0"
+                                                               cellpadding="0">
+
+                                                            <tr>
+                                                                <td style="width:50%;font-weight:bold; font-size:12px; padding:0;">
+                                                                    Tissue Graft Material</td>
+                                                            </tr>
+                                                        </table>
+                                                        <table align="center" class="table table-bordered" style="width:100%;
+                                                               padding:0;
+                                                               border: 1px solid #dfdfdf!important;">
+                                                            <thead>
+                                                                <tr class="bgc-default-tp1" style="
+                                                                    text-align: center;
+                                                                    background-color: #F3F3F0!important;">
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:25%;padding:5px!important;">
+                                                                        Type
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:25%;padding:5px!important;">
+                                                                        SN
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:25%;padding:5px!important;">
+                                                                        Length
+
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:25%; padding:5px!important;">
+                                                                        Exp Date
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr th:if="${surgicalObj.tissueGraftType}== TG">
+                                                                        <td style="padding:3px 5px!important;">
+                                                                        Alloderm</td>
+                                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.tissueGraftNo}">test</span></td>
+                                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.tissueGraftLength}">test</span></td>
+                                                                        <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.expDate5}">test</span></td>
+                                                                </tr>
+                                                                <!--                                                                    <tr th:if="${surgicalObj.tissueGraftType1}== TG1">
+                                                                                                                                        <td style="font-weight:bold;">
+                                                                                                                                            Autologous derm</td>
+                                                                                                                                        <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.tissueGraftNo1}">test</span></td>
+                                                                                                                                        <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.expDate6}">test</span></td>
+                                                                                                                                    </tr>-->
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="keep-together">
+                                            <table style="margin:0!important; padding:0!important;">
+                                                <tr>
+
+                                                    <td style="vertical-align: text-top; padding:0; width:50%;" th:if=" ${surgicalObj.membraneType3}!= null and ${surgicalObj.membraneType3}!= ''   ">
+                                                        <table class="table" style="width:100%;margin:0;" cellspacing="0"
+                                                               cellpadding="0">
+                                                            <tr>
+                                                                <td style="width:50%;font-weight:bold; font-size:12px;padding:0;">
+                                                                    Membrane</td>
+                                                            </tr>
+                                                        </table>
+                                                        <table align="center" class="table table-bordered" style="width:100%;
+                                                               padding:0;
+                                                               border: 1px solid #dfdfdf !important;">
+                                                            <thead>
+                                                                <tr class="bgc-default-tp1" style="
+                                                                    text-align: center;
+                                                                    background-color: #f3f3f0!important;">
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        Type
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        SN
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        Exp Date
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!--                                                                <tr th:if="${surgicalObj.membraneType}== MT">
+                                                                                                                                    <td style="font-weight:bold;">
+                                                                                                                                        PRF</td>
+                                                                                                                                    <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.membraneNo}">test</span></td>
+                                                                                                                                    <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.expDate7}">test</span></td>
+                                                                                                                                </tr>-->
+                                                                <!--                                                                <tr th:if="${surgicalObj.membraneType1}== MT1">
+                                                                                                                                    <td style="font-weight:bold;">
+                                                                                                                                        CGF</td>
+                                                                                                                                    <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.membraneNo1}">test</span></td>
+                                                                                                                                    <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.expDate8}">test</span></td>
+                                                                                                                                </tr>-->
+                                                                <!--                                                                <tr th:if="${surgicalObj.membraneType2}== MT2">
+                                                                                                                                    <td style="font-weight:bold;">
+                                                                                                                                        PRP</td>
+                                                                                                                                    <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.membraneNo2}">test</span></td>
+                                                                                                                                    <td style="text-align: center;"><span style="font-weight:bold;" th:text="${surgicalObj.expDate9}">test</span></td>
+                                                                                                                                </tr>-->
+                                                                <tr th:if="${surgicalObj.membraneType3}== MT3">
+                                                                    <td style="padding:3px 5px!important;">
+                                                                        Absorable Membranes</td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.membraneNo3}">test</span></td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.expDate10}">test</span></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="keep-together">
+                                            <table style="margin:0!important; padding:0!important;" border="0">
+                                                <tr>
+                                                    <td style="vertical-align: text-top; padding:0; width:50%;" th:if="${surgicalObj.phlebotomyTypeName!= null and surgicalObj.phlebotomyTypeName!= '' and surgicalObj.phlebotomyTypeName!= '0'} or ${surgicalObj.vaccutube!= null and surgicalObj.vaccutube!= ''} or ${surgicalObj.expDate4!= null and surgicalObj.expDate4!= ''}">
+
+                                                        <table class="table" style="width:100%; margin:0;" cellspacing="0"
+                                                               cellpadding="0">
+
+                                                            <tr>
+                                                                <td style="width:50%;padding:0; font-weight:bold; font-size:12px;">
+                                                                    Phlebotomy
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <table align="center" class="table table-bordered" style="width:100%;
+                                                               padding:0;
+                                                               border: 1px solid #dfdfdf !important;">
+                                                            <thead>
+                                                                <tr class="bgc-default-tp1" style="
+                                                                    text-align: center;
+                                                                    background-color: #f3f3f0!important;">
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;" th:if="${surgicalObj.phlebotomyTypeName!= null and surgicalObj.phlebotomyTypeName!= '' and surgicalObj.phlebotomyTypeName!= '0'}">
+                                                                        Phlebotomy taken
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;" th:if="${surgicalObj.vaccutube!= null and surgicalObj.vaccutube!= '' and surgicalObj.vaccutube!= '0'}" >
+                                                                        Vial(s)
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;" th:if="${surgicalObj.expDate4!= null and surgicalObj.expDate4!= ''  and surgicalObj.expDate4!= '0'} ">
+                                                                        Exp Date
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td th:if="${surgicalObj.phlebotomyTypeName!= null and surgicalObj.phlebotomyTypeName!= '' and surgicalObj.phlebotomyTypeName!= '0'}" style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.phlebotomyTypeName}">test</span></td>
+                                                                    <td th:if="${surgicalObj.vaccutube!= null and surgicalObj.vaccutube!= ''}"  style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.vaccutube}">test</span></td>
+                                                                    <td th:if="${surgicalObj.expDate4!= null and surgicalObj.expDate4!= ''}" style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.expDate4}">test</span></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td style="vertical-align:text-top;" th:if="${surgicalObj.surgicalFixationScrewType}!= null and ${surgicalObj.surgicalFixationScrewType}!= '' or ${surgicalObj.surgicalFixationScrewType1}!= null and ${surgicalObj.surgicalFixationScrewType1}!= ''  ">
+                                                        <table class="table" style="width:100%;margin:0;" cellspacing="0"
+                                                               cellpadding="0">
+
+
+                                                            <tr>
+                                                                <td style="width:50%;padding:0;font-weight:bold; font-size:12px;">
+                                                                    Surgical Fixation Screw </td>
+                                                            </tr>
+                                                        </table>
+                                                        <table align="center" class="table table-bordered" style="width:100%;
+                                                               margin:0!important; padding:0!important;
+                                                               border: 1px solid #dfdfdf !important;">
+                                                            <thead>
+                                                                <tr class="bgc-default-tp1" style="
+                                                                    text-align: center;
+                                                                    background-color: #f3f3f0!important;">
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        Type
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        SN
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        Exp Date
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr th:if="${surgicalObj.surgicalFixationScrewType}== SFS">
+                                                                    <td style="padding:3px 5px!important;">
+                                                                        Prosthetic</td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.surgicalFixationScrewNo}">test</span></td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.expDate}">test</span></td>
+                                                                </tr>
+                                                                <tr th:if="${surgicalObj.surgicalFixationScrewType1}== SFS1">
+                                                                    <td style="padding:3px 5px!important;">
+                                                                        Metal</td>
+                                                                    <td style="text-align: center;  padding:3px 5px!important;"><span th:text="${surgicalObj.surgicalFixationScrewNo1}">test</span></td>
+                                                                    <td style="text-align: center;  padding:3px 5px!important;"><span th:text="${surgicalObj.expDate1}">test</span></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            
+                                            
+                                        </div>
+                                        <!--                                        <div class="keep-together m-t-10" >
+                                                                                    <table style="margin:0!important; padding:0!important;">
+                                                                                        <tr>
+                                        
+                                                                                            <td style="vertical-align: text-top; padding:0; width:50%;" th:if="${surgicalObj.fixationScrewType!= null and surgicalObj.fixationScrewType!= '' and surgicalObj.fixationScrewType!= '0'} and ${surgicalObj.fixationScrewId!= null and surgicalObj.fixationScrewId!= ''} and ${surgicalObj.expDate!= null and surgicalObj.expDate!= ''} and ${surgicalObj.fixationScrewSize!= null and surgicalObj.fixationScrewSize!= ''} ">
+                                        
+                                                                                                <table class="table" style="width:100%; margin:0;" cellspacing="5"
+                                                                                                       cellpadding="5">
+                                        
+                                                                                                    <tr>
+                                                                                                        <td style="width:30%;font-weight:bold; font-size:12px; padding:0;">
+                                                                                                            Surgical Fixation Screw
+                                                                                                        </td>
+                                                                                                        <td style="font-weight:bold; padding:0;">: <span style="font-weight:bold;" th:text="${surgicalObj.fixationScrewType}">test</span></td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                                <div>
+                                                                                                    <table align="center" class="table table-bordered" style="width:100%; padding:0; border: 1px solid #dfdfdf !important;">
+                                                                                                        <thead>
+                                                                                                            <tr  class="bgc-default-tp1" style="text-align: center; background-color: #f3f3f0!important;">
+                                                                                                                <th scope="col"
+                                                                                                                    style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                                                                    SN
+                                                                                                                </th>
+                                                                                                                <th scope="col"
+                                                                                                                    style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                                                                    Exp Date
+                                                                                                                </th>
+                                                                                                                <th scope="col"
+                                                                                                                    style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                                                                    Size
+                                                                                                                </th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody>
+                                                                                                            <tr th:each="screw: ${screwDetailList}">
+                                                                                                                <td style="text-align: center; padding:5px!important;"><span style="font-weight:bold;" th:text="${screw.fixationScrewId}">test</span></td>
+                                                                                                                <td style="text-align: center; padding:5px!important;"><span style="font-weight:bold;" th:text="${screw.expDate}">test</span></td>
+                                                                                                                <td style="text-align: center; padding:5px!important;"><span style="font-weight:bold;" th:text="${screw.fixationScrewSize}">test</span></td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </div>-->
+                                       
+                                        <div class="keep-together" >
+                                            <table style="margin:0!important; padding:0!important;">
+                                                <tr>
+                                                    <td style="vertical-align:text-top; padding:0;width:50%" th:if="${surgicalObj.surgicalFixationScrew}!= null and ${surgicalObj.surgicalFixationScrew}!= '' or ${surgicalObj.surgicalFixationScrew1}!= null and ${surgicalObj.surgicalFixationScrew1}!= ''  ">
+                                                        <table class="table" style="width:100%;margin:0;" cellspacing="0"
+                                                               cellpadding="0" >
+
+
+                                                            <tr>
+                                                                <td style="width:50%;padding:0;font-weight:bold; font-size:12px;">
+                                                                    Surgical Screw </td>
+                                                            </tr>
+                                                        </table>
+                                                        <table align="center" class="table table-bordered" style="width:100%;
+                                                               padding:0;
+                                                               border: 1px solid #dfdfdf !important;">
+                                                            <thead>
+                                                                <tr class="bgc-default-tp1" style="
+                                                                    text-align: center;
+                                                                    background-color: #f3f3f0!important;">
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        Type
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        SN
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        Exp Date
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr th:if="${surgicalObj.surgicalFixationScrew}== SS">
+                                                                    <td style="padding:3px 5px!important;">
+                                                                        Prosthetic</td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.fixationScrewNo}">test</span></td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.expDate11}">test</span></td>
+                                                                </tr>
+                                                                <tr th:if="${surgicalObj.surgicalFixationScrew1}== SS1">
+                                                                    <td style="padding:3px 5px!important;">
+                                                                        Metal</td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.fixationScrewNo1}">test</span></td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.expDate12}">test</span></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td style="vertical-align:text-top;" th:if="${surgicalObj.surgicalPlateType}!= null and ${surgicalObj.surgicalPlateType}!= '' or ${surgicalObj.surgicalPlateType1}!= null and ${surgicalObj.surgicalPlateType1}!= ''  ">
+                                                        <table class="table" style="width:100%; margin:0;" cellspacing="0"
+                                                               cellpadding="0" >
+
+
+                                                            <tr>
+                                                                <td style="width:50%;padding:0;font-weight:bold;font-size:12px;">
+                                                                    Surgical Plate </td>
+                                                            </tr>
+                                                        </table>
+                                                        <table align="center" class="table table-bordered" style="width:100%;
+                                                               padding:0;
+
+                                                               border: 1px solid #dfdfdf !important;">
+                                                            <thead>
+                                                                <tr class="bgc-default-tp1" style="
+                                                                    text-align: center;
+                                                                    background-color: #f3f3f0!important;">
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        Type
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        SN
+                                                                    </th>
+                                                                    <th scope="col"
+                                                                        style="font-weight:bold; width:33%; padding:5px!important;">
+                                                                        Exp Date
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr th:if="${surgicalObj.surgicalPlateType}== SP">
+                                                                    <td style="padding:3px 5px!important;">
+                                                                        Prosthetic</td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.surgicalPlateNo}">test</span></td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.expDate13}">test</span></td>
+                                                                </tr>
+                                                                <tr th:if="${surgicalObj.surgicalPlateType1}== SP1">
+                                                                    <td style="padding:3px 5px!important;">
+                                                                        Metal</td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.surgicalPlateNo1}">test</span></td>
+                                                                    <td style="text-align: center; padding:3px 5px!important;"><span th:text="${surgicalObj.expDate14}">test</span></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div>
+                                    </div> 
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>

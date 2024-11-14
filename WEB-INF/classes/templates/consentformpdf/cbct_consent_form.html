@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> CBCT Consent Form</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 1px;
+                padding: 1px;
+                box-sizing: border-box;
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .h6{
+                font-size: 16px !important;
+            }
+            .font_small{
+                font-size: 14px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="modal fade">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;color:#a2a5a8;"> <span th:text="${patientPractice.addressline1}">test</span><span th:text="${patientPractice.addressline2}">test</span><span th:text="${patientPractice.city}">test</span><span th:text="${patientPractice.state}">test</span><span th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span><span th:text="${patientPractice.contactPhone}">test</span><span th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div>
+                    </div>
+
+                    <h4 class="modal-title" id="myModalLabel" style="text-align: center">DISCUSSION AND INFORMED CONSENT FOR CONE BEAM COMPUTERIZED TOMOGRAPHY</h4>  
+
+                    <div class="container">
+                        <div class="card-body">
+                            <div class="font_small">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <table class="col" style="width: 100%;cell-spacing:0;margin-top:10px;">
+                                            <tr>
+                                                <td style="padding:0;">
+                                                    <span style="margin-left:-3px">Patient Name:</span><span style="font-weight:bold;min-width: 350px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${cbctForm.patientname}">test</span>
+                                                </td>
+                                                <td style="padding:0;">
+                                                    Date:<span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${cbctForm.currentdate}">test</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <p>Diagnosis:<span style="font-weight:bold;min-width: 575px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${cbctForm.patientdiagnosis}">test</span></p>
+                                        <p>Treatment:<span style="font-weight:bold;min-width: 571px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;margin-top: 5px;" th:text="${cbctForm.patienttreatment}">test</span></p>
+
+
+
+
+                                        <h4 style="margin-top:8px;">Facts for Consideration</h4>
+                                        <p style="font-style:italic;margin-top:8px;">Patient's initials required</p>
+
+                                        <p  style="margin-top:5px;">    <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.patientsignature1})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                            A Cone Beam Computerized Tomography (CBCT) scan, is an X-ray technique that can produce three-
+                                            dimensional (3-D) images of your head and allows visualization of internal bony structures in cross
+                                            section rather than as overlapping images typically produced by conventional two-dimensional (2-D) X-
+                                            ray exams. Dentists use CBCT scans to visualize many areas, including bony structures, such as your teeth
+                                            and jaws, but not necessarily soft tissue, such as your tongue or gums.</p>
+
+                                        <h4 style="margin-top:7px;">Benefits of CBCT Scan, Not Limited to the Following:</h4>
+                                        <p style="margin-top:5px;">    <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.patientsignature2})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                            A conventional X-ray of your mouth limits your dentist to a 2-D (flat) visualization. Some diagnosis and
+                                            treatment planning can be aided with a more complete visualization by way of 3-D anatomy. CBCT
+                                            scans can provide dentists with 3-D information when planning some treatment such as dental implants,
+                                            surgical extractions, maxillofacial surgery and advanced dental restorative procedures.</p>
+                                        <p style="margin-top:5px;">   <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.patientsignature3})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                            Greater opportunity to diagnose conditions such as vertical root fractures that can be missed on
+                                            conventional X-ray films.</p>
+                                        <p style="margin-top:5px;">   <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.patientsignature4})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                            Greater chance of providing images and information that may allow better evaluation of the necessity of
+                                            a particular dental treatment.</p>
+                                        <p style="margin-top:5px;">  <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.patientsignature5})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                            Potential for improved diagnosis of third molar (wisdom teeth) and other teeth positioning in proximity to
+                                            vital structures, such as nerves and blood vessels and sinuses prior to removal.</p>
+                                        <p style="margin-top:5px;">   <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.patientsignature6})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                            Potential for increased accuracy when planning implant placement surgery.</p>
+
+                                        <h4 style="margin-top:7px;">Risks of CBCT Scan, Not Limited to the Following:</h4>
+                                        <p style="margin-top:5px;">   <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.patientsignature7})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                            CBCT scans, like conventional X-rays, expose you to radiation. The dose of radiation used for the CBCT
+                                            scan is controlled to allow the smallest dose used that will still give sufficient data to achieve a useful
+                                            result. The dosage per scan is equivalent to two (2) regular dental X-rays. Scientists have linked radiation
+                                            exposure with a slightly higher risk of developing cancer; however, the advantages of the CBCT scan
+                                            generally outweigh the risks.</p>
+                                        <div>   <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.patientsignature8})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                            X-ray imaging of the mouth is generally not contraindicated in pregnancy and should be utilized as
+                                            required to complete a full examination, diagnosis and treatment plan. Please advise your dentist if you
+                                            are pregnant or planning to become pregnant so that your dentist can make the best determination of the
+                                            types of radiographs needed to ensure you receive the lowest amount of reasonably achievable radiation <p>for your dental treatment needs and can discuss whether the benefits of the scan outweigh the risks.
+                                                Discuss concerns specific to X-rays during pregnancy with your physician.</p></div>
+                                        <p style="margin-top:5px;">   <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.patientsignature9})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                            The CBCT scan may or may not reveal coincidental medical findings unrelated to your dental condition,
+                                            dental care and dental treatment. A CBCT scan is a diagnostic procedure intended solely to facilitate
+                                            diagnosis of your dental condition and your dental care and to help plan your dental treatment. The
+                                            CBCT scan will be evaluated solely for the purposes associated with the dental procedures discussed in
+                                            your treatment plan. The data obtained during this study may result in incidental findings unrelated to
+                                            your dental condition, dental care and dental treatment and are beyond the scope and purpose of your
+                                            dental condition. Your dentist is not a physician or a specialist qualified to make the assessment
+                                            concerning anatomy and pathology beyond your mouth and jaw. As a result, you may elect to have the
+                                            CBCT scan data evaluated by a physician or dental and or medical radiologist.</p>
+
+                                        <h4 style="margin-top:15px;">Alternatives to CBCT Scan, Not Limited to the Following:</h4>
+                                        <p style="margin-top:5px;">   <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.patientsignature10})}" height="40px" width="100" style="border-bottom:1px solid #000000;min-width: 50px;"/>
+
+                                            An alternative to CBCT scans are conventional X-rays; however, they have limitations. Conventional X-
+                                            rays of your mouth and jaws limit your dentist to evaluating anatomical structures in a two-dimensional
+                                            view. A more complete understanding of complex 3-D anatomy can enhance your diagnosis and
+                                            treatment planning. The relationship of anatomical structures in three dimensions is important in assessing
+                                            your condition as well as treatment planning for dental implants, surgical extractions, endodontic
+                                            treatment, oral surgery or advanced dental restorative procedures. CBCT scans may be useful in
+                                            evaluating and potentially diagnosing conditions that cannot be fully appreciated with conventional X-
+                                            rays. The use of CBCT should be a decision between you and your dentist.</p>
+
+                                        <h4 style="margin-top:15px;">Check the boxes below that apply to you:</h4>
+                                        <h4 style="margin-top:15px;">Consent</h4>
+                                        <div>
+                                            <p style="margin-top:15px;">
+                                                <!--                                                <input type="checkbox" th:if="${cbctForm.patientcheckbox1} == CBCTCONSENT" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${cbctForm.patientcheckbox1} == CBCTCONSENT"/>-->
+                                                <img th:if="${cbctForm.patientcheckbox1} == CBCTCONSENT"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${cbctForm.patientcheckbox1} == CBCTCONSENT" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span> I have been informed both verbally and by the information provided on this form of the risks and benefits of the
+                                                proposed CBCT scan as described above.
+                                            </p>
+                                            <p style="margin-top:15px;">
+                                                <!--                                                <input type="checkbox" th:if="${cbctForm.patientcheckbox2} == CBCTCONSENT1" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${cbctForm.patientcheckbox2} == CBCTCONSENT1"/>-->
+                                                <img th:if="${cbctForm.patientcheckbox2} == CBCTCONSENT1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${cbctForm.patientcheckbox2} == CBCTCONSENT1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span> I have been informed both verbally and by the information provided on this form of the material risks and
+                                                benefits of alternative X-rays and of electing not to have the scan performed.
+                                            </p>
+                                            <p style="margin-top:15px;">
+                                                <!--                                                <input type="checkbox" th:if="${cbctForm.patientcheckbox3} == CBCTCONSENT2" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${cbctForm.patientcheckbox3} == CBCTCONSENT2" />-->
+                                                <img th:if="${cbctForm.patientcheckbox3} == CBCTCONSENT2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${cbctForm.patientcheckbox3} == CBCTCONSENT2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span> I certify that I have read and understand the above information and that the explanations referred to are
+                                                understood by me, that my questions have been answered and that the blanks requiring insertions or completion
+                                                have been filled in. I authorize and direct Dr.<span style="font-weight:bold;min-width: 380px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${cbctForm.patienttxt1}">test</span>to do whatever he/she deems
+                                                necessary and advisable under the circumstances.
+                                            </p>
+                                            <p style="margin-top:15px;">
+                                                <!--                                                <input type="checkbox" th:if="${cbctForm.patientcheckbox4} == CBCTCONSENT3" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${cbctForm.patientcheckbox4} == CBCTCONSENT3" />-->
+                                                <img th:if="${cbctForm.patientcheckbox4} == CBCTCONSENT3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${cbctForm.patientcheckbox4} == CBCTCONSENT3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span> I consent to have the above-mentioned CBCT scan.
+                                            </p>
+                                            <p style="margin-top:15px;">
+                                                <!--                                                <input type="checkbox" th:if="${cbctForm.patientcheckbox5} == CBCTCONSENT4" checked="checked"/>
+                                                                                                <input type="checkbox" th:unless="${cbctForm.patientcheckbox5} == CBCTCONSENT4" />-->
+                                                <img th:if="${cbctForm.patientcheckbox5} == CBCTCONSENT4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                <span><img  th:unless="${cbctForm.patientcheckbox5} == CBCTCONSENT4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                </span> While the scan may be covered by my medical and/or dental insurance, I accept any financial responsibility
+                                                for this scan and authorize the scan.
+                                            </p>
+                                            <h4 style="margin-top:15px;">or</h4>
+                                            <div style="margin-top:150px;">
+                                                <h4>Refusal</h4>
+                                                <p style="margin-top:15px;">
+                                                    <!--                                                    <input type="checkbox" th:if="${cbctForm.patientcheckbox6} == CBCTCONSENT5" checked="checked"/>
+                                                                                                        <input type="checkbox" th:unless="${cbctForm.patientcheckbox6} == CBCTCONSENT5" />-->
+                                                    <img th:if="${cbctForm.patientcheckbox6} == CBCTCONSENT5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                                                    <span><img  th:unless="${cbctForm.patientcheckbox6} == CBCTCONSENT5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                                                    </span>I refuse to give my consent for the proposed CBCT scan described above and understand the potential
+                                                    consequences associated with this refusal. <b>Note:</b><span style="font-style:italic;"> Failure to have a CBCT scan may result in failure to detect or
+                                                        diagnose significant disease and associated potential harm.</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <table style="width:100%;"> 
+
+                                            <td> 
+                                                <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.patientsignature})}" height="80px" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            </td>
+                                            <td>  
+                                                <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${cbctForm.signdate1}">test</span>
+                                            </td>
+                                            <tr>
+                                                <td>
+                                                    Patient or Patient's Representative</td>
+                                                <td> Date </td></tr>
+
+                                            <td>  
+                                                <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.witnesssignature})}" height="80px" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/>
+                                            </td>
+                                            <td>   
+                                                <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${cbctForm.signdate2}">test</span>
+                                            </td>
+                                            <tr>
+                                                <td>
+                                                    Witness Signature </td>
+                                                <td> Date </td>
+                                            </tr>
+                                        </table>
+
+                                        <p style="margin-top: 20px;">I attest that I have discussed the risks, benefits, consequences and alternatives of the above treatment with  <span style="font-weight:bold;min-width: 380px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${cbctForm.patienttxt2}">test</span>(Patient or Patient's Representative) and they have had the opportunity to ask questions. I believe they understand what has been explained and consents or refuses treatment CBCT.</p>
+                                        <table style="width:100%;">  
+                                            <td>  <img th:src="@{data:image/png;base64,{image}(image=${cbctForm.dentistsignature})}" height="80px" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+
+                                            <td>   <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${cbctForm.signdate3}">test</span> </td>
+                                            <tr><td>
+                                                    Dentist Signature</td>
+                                                <td> Date </td></tr></table>
+
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

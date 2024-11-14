@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <link rel="stylesheet" href="assets/images/patientregister/oralpathology.png"/>
+        <title>ORAL PATHOLOGY ORDER FORM  </title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 1.5px;
+                padding: 2px;
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .h4{
+                font-size: 16px !important;
+            }
+            .font_small
+            {
+                font-size: 12.5px;
+            }
+            .line{
+                box-sizing: content-box;
+                width: 250px;
+                height: 50px;
+                padding: 10px;
+                border: 1px solid black;
+            }
+        </style>
+    </head>  
+    <body>
+        <div  id="mymodal" style="">
+            <div class="modal-header" style="text-align: center; border-bottom:1px solid #4c586b;">
+                <div class="col">
+                    <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}" >test</span></h2>
+                    <h5 style="margin: 1px;"> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span> <span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                    <h5 style="color:#a2a5a8;">
+                        <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span> <span  th:text="${patientPractice.alertPhone}">test</span>	
+                        <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                    </h5> 
+                </div>
+            </div>
+            <h4 style="text-align: center;">ORAL PATHOLOGY ORDER FORM  </h4>
+            <div class="font_small">
+                <div class="line" style="margin-left:350px;margin-bottom: 20px;">
+                    <div>
+                        <p style="text-align: center;"><span style="font-weight: bold;"> Lab Use Only</span></p></div>
+                    <span style="font-weight: bold;margin-bottom: 20px;">LAB#:</span><span style="font-weight:bold;min-width: 170px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.patienttestno1}">test </span>
+                </div>
+                <div style="margin-left:5px;">
+                    Last Name : <p style="font-weight:bold;min-width: 120px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.lastname}">test </p>
+                    <span style="margin-left:30px">First Name :</span>  <p style="font-weight:bold;min-width: 120px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.firstname}">test</p> 
+                    <span style="margin-left:30px">Middle Initial :</span>  <p style="font-weight:bold;min-width: 50px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.middlename}">test</p> 
+                </div>
+                <div style="margin-left:5px;">
+                    DOB : <p style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.patientdob}">test</p>
+                    <span style="margin-left:110px">Sex: </span> 
+                    <!--                    <input type="checkbox"  checked="checked" th:if="${oralPathologyOrderForm.patientgender} == 1" disabled="disabled"/>
+                                        <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientgender} == 1" disabled="disabled"/> Male
+                                        <input type="checkbox" checked="checked" th:if="${oralPathologyOrderForm.patientgender} == 2" disabled="disabled"/>
+                                        <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientgender} == 2" disabled="disabled"/> Female -->
+                    <span style="margin-right: -8px;"> 
+                        <img th:if="${oralPathologyOrderForm.patientgender} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                        <span><img  th:unless="${oralPathologyOrderForm.patientgender} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                        </span> Male</span>
+                    <span style="margin-right: -8px;"> 
+                        <img th:if="${oralPathologyOrderForm.patientgender} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                        <span><img th:unless="${oralPathologyOrderForm.patientgender} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                        </span> Female</span>
+
+
+                    <span style="margin-left:60px;">Date of Procedure : </span><p style="font-weight:bold;min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.currentdate}">test</p>
+                </div>
+                <div>
+                    <h4 style="margin-top: 10px;">SPECIMEN INFORMATION (Must Be Completed):</h4>
+                    <div style="margin-top: 10px;">
+                        <div>Clinical Pre-Diagnosis:<span style="font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center; width:530px;" th:text="${oralPathologyOrderForm.patienttxt}">test</span> </div>
+                        <span style="margin-top:10px; font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center; width:670px;" th:text="${oralPathologyOrderForm.patienttxt1}">test</span> 
+                    </div>
+                    <div style="margin-top: 10px;">
+                        Biopsy Location:
+                        <span style="font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center; width:550px;" th:text="${oralPathologyOrderForm.patienttxt2}">test</span> 
+                    </div>
+                    <div style="margin-top: 10px;">
+                        History:
+                        <span style="font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center; width:620px;" th:text="${oralPathologyOrderForm.patienttxt4}">test</span> 
+                    </div>
+                    <div style="margin-top:10px;">
+                        Radiographs / Photos submitted? 
+                        <!--                        <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientradiobtn} == 1"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientradiobtn} == 1" /> No
+                                                </span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientradiobtn} == 2" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientradiobtn} == 2"/> Yes</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientradiobtn3} == 3" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientradiobtn3} == 3"/> Please Return</span>-->
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientradiobtn} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientradiobtn} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> No</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientradiobtn} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientradiobtn} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> Yes</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientradiobtn3} == 3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientradiobtn3} == 3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> Please Return</span>
+
+                    </div>
+                    <div style="margin-top: 10px;">
+                        Previous specimens sent to Us on this patient? 
+                        <!--                        <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientradiobtn1} == No"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientradiobtn1} == No" /> No</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientradiobtn1} == Yes" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientradiobtn1} ==Yes"/> Yes</span>-->
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientradiobtn1} == No"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientradiobtn1} == No" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> No</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientradiobtn1} == Yes"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientradiobtn1} == Yes" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> Yes</span>
+
+
+                        <span  style="padding-left:20px;">Previous Lab#: <span style="font-weight:bold;min-width: 150px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.patienttestno}">test</span></span>
+                    </div>
+
+                    <!--<div class="" style="text-align:center; font-weight:bold;">Areas of concern (please mark)</div>-->
+
+                    <p style="text-align:center;"> <img th:src="@{data:image/png;base64,{image}(image=${base64String})}" width="500" height="200" /></p>
+
+                    <div style="margin-top: 10px;">
+                        Lab Use Only Number of specimen/formalin bottles received
+                        <!--                        <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox} == 1"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox} == 1" /> 1</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox1} == 2" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox1} ==2"/> 2</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox2} == 3"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox2} == 3" /> 3</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox3} == 4" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox3} ==4"/> 4</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox4} == 5"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox4} == 5" /> 5</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox5} == 6" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox5} ==6"/> 6</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox6} == 7"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox6} == 7" /> 7</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox7} == 8" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox7} ==8"/> 8</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox8} == 9"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox8} == 9" /> 9</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox9} == 10" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox9} ==10"/> 10</span>-->
+
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientcheckbox} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> 1</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox1} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox1} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> 2</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox2} == 3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox2} == 3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> 3</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox3} == 4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientcheckbox3} == 4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> 4</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox4} == 5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox4} == 5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> 5</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox5} == 6"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox5} == 6" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> 6</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox6} == 7"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientcheckbox6} == 7" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> 7</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox7} == 8"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox7} == 8" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> 8</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox8} == 9"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox8} == 9" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> 9</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox9} == 10"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox9} == 10" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> 10</span> 
+
+
+
+                    </div> 
+
+                    <div style="margin-top: 10px;">
+                        <!--                        <span>
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox10} == GR1"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox10} == GR1" /> GR1</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox11} == GR2" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox11} ==GR2"/> GR2</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox12} == GR3"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox12} == GR3" /> GR3</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox13} == GR4" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox13} ==GR4"/> GR4</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox14} == GR5"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox14} == GR5" /> GR5</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox15} == GR6" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox15} ==GR6"/> GR6</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox16} == GR7"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox16} == GR7" /> GR7</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox17} == GR8" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox17} ==GR8"/> GR8</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox18} == GHS"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox18} == GHS" /> GHS</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox19} == Other" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox19} ==Other"/> Other
+                                                    <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.patienttxt5}">test</span>
+                                                </span>
+                        -->
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox10} == GR1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientcheckbox10} == GR1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GR1</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox11} == GR2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox11} == GR2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GR2</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox12} == GR3"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox12} == GR3" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GR3</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox13} == GR4"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientcheckbox13} == GR4" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GR4</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox14} == GR5"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox14} == GR5" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GR5</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox15} == GR6"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox15} == GR6" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GR6</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox16} == GR7"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientcheckbox16} == GR7" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GR7</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox17} == GR8"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox17} == GR8" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GR8</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox18} == GHS"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox18} == GHS" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GHS</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox19} == Other"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox19} == Other" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> Other <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.patienttxt5}">test</span></span> 
+                    </div>
+                    <div style="margin-top: 10px;"> 
+                        <!--                        <span>
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox20} == GRA"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox20} == GRA" /> GRA</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox21} == GRB" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox21} ==GRB"/> GRB</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox22} == GRC"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox22} == GRC" /> GRC</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox23} == GRD" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox23} ==GRD"/> GRD</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox24} == GRE"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox24} == GRE" /> GRE</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox25} == GRF" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox25} ==GRF"/> GRF</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox26} == GRG"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox26} == GRG" /> GRG</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox27} == GRH" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox27} ==GRH"/> GRH</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox28} == GSC"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientcheckbox28} == GSC" /> GSC</span>
+                                                <span style="margin-left:5px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientcheckbox29} == Other" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientcheckbox29} ==Other"/> Other
+                                                    <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.patienttxt6}">test</span>
+                                                </span> -->
+
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox20} == GRA"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientcheckbox20} == GRA" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GRA</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox21} == GRB"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox21} == GRB" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GRB</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox22} == GRC"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox22} == GRC" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GRC</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox23} == GRD"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientcheckbox23} == GRD" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GRD</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox24} == GRE"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox24} == GRE" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GRE</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox25} == GRF"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox25} == GRF" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GRF</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox26} == GRG"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientcheckbox26} == GRG" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GRG</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox27} == GRH"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox27} == GRH" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GRH</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox28} == GSC"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox28} == GSC" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> GSC</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientcheckbox29} == Other"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientcheckbox29} == Other" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> Other <span style="font-weight:bold;min-width: 100px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.patienttxt5}">test</span></span> 
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        Previous specimens on this patient in the Oral Pathology database:
+                        <!--                        <span style="margin-left:10px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientradiobtn2} == Yes"  checked="checked"/>
+                                                    <input type="checkbox" th:unless="${oralPathologyOrderForm.patientradiobtn2} == Yes" /> Yes</span>
+                                                <span style="margin-left:10px">
+                                                    <input type="checkbox"  th:if="${oralPathologyOrderForm.patientradiobtn2} == No" checked="checked"/>
+                                                    <input type="checkbox"  th:unless="${oralPathologyOrderForm.patientradiobtn2} ==No"/> No</span>-->
+
+                        <span> 
+                            <img th:if="${oralPathologyOrderForm.patientradiobtn2} == Yes"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;"  width="15" height="15" alt="" />  
+                            <span><img th:unless="${oralPathologyOrderForm.patientradiobtn2} == Yes" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> Yes</span>
+                        <span style="margin-right: -8px;"> 
+                            <img th:if="${oralPathologyOrderForm.patientradiobtn2} == No"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -6px;" width="15" height="15" alt=""  />  
+                            <span><img  th:unless="${oralPathologyOrderForm.patientradiobtn2} == No" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -6px" width="15" height="15" alt="" />  
+                            </span> No</span>
+                    </div>
+
+                    <div class="" style="margin-top:30px;">
+                        Ordering Provider <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.doctorname}">test</span> 
+                        <span style="margin-left:150px;"> Date </span><span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${oralPathologyOrderForm.dateofsignature}">test</span> 
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+</html>
+
+
+

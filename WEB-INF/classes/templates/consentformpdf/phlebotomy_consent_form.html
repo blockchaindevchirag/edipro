@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title>PHLEBOTOMY CONSENT FORM</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 2px;
+                padding: 2px;
+                box-sizing: border-box;
+
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+            }
+            .h4{
+                font-size: 16px !important;
+            }
+            .font_small
+            {
+                font-size: 14px;
+            }
+
+        </style>
+    </head>  
+    <body>
+        <div>
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div class="col">
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;color:#a2a5a8;"> <span th:text="${patientPractice.addressline1}">test</span><span th:text="${patientPractice.addressline2}">test</span><span th:text="${patientPractice.city}">test</span><span th:text="${patientPractice.state}">test</span><span th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span><span th:text="${patientPractice.contactPhone}">test</span><span th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div>
+                    </div>
+
+                    <h4 class="modal-title" id="myModalLabel" style="text-align:center;">
+                        DISCUSSION AND INFORMED CONSENT FOR PHLEBOTOMY &amp;PLATELET DEVELOPMENT       
+                    </h4>
+
+
+                    <div class="container">
+                        <div class="card-body">
+                            <form id="phle_form">
+                                <div class="font_small">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p>Patient Name:<span style="font-weight:bold;min-width: 340px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${phlebotomyForm.patientname}">test</span>
+                                            Date:<span style="font-weight:bold;min-width: 130px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${phlebotomyForm.currentdate}">test</span></p>
+                                        <p>Diagnosis:<span style="font-weight:bold;min-width: 530px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${phlebotomyForm.patientdiagnosis}">test</span></p>
+                                        <p>Treatment and Site:<span style="font-weight:bold;min-width: 480px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${phlebotomyForm.patienttreatment}">test</span></p>
+                                    </div>
+                                    <p class="col-12" style="margin-top: 30px; line-height: 21px;"> After careful examination of my condition, Dr.<span style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${phlebotomyForm.patienttxt1}">test</span> has
+                                        recommended the use of Platelet Rich Fibrin (PRF) enhance post-operative healing. Platelet rich fibrin (PRP) is a component of my own blood which contains growth factors. These growth factors
+                                        are known to stimulate bone and soft tissue healing. I understand that PRP is processed in a sterile fashion from your own blood and is therefore safe from transmission of diseases from others.
+                                    </p>
+                                    <p class="col-12" style="margin-top: 10px; line-height: 21px;"> I understand that in order to process PRP there will be a 30ml to 50ml of blood will be drawn from a vein using and aseptic technique. My blood will be processed, activated and added to the surgical
+                                        site. To activate PRP my blood is mixed with Calcium Chloride. I have been fully informed about the use of PRP, the procedure to be utilized for development, the risks, benefits and alternatives.
+                                        I have had an opportunity to ask questions and to discuss any concerns with Dr.<span style="font-weight:bold;min-width: 290px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${phlebotomyForm.patienttxt2}">test</span>. This is termed phlebotomy and is accomplished with a
+                                        sterile needle, which is inserted into a vein through the skin. This is generally a safe technique, but complications may arise from this portion of the procedure. These complications are rare, but may
+                                        include bleeding under the skin, infection, nerve injury, and others. Your blood will be processed in an FDA approved device in 10-12 minutes. After thorough deliberation, I hereby fully consent
+                                        to the PRP process.
+                                    </p>
+                                    <p class="col-12" style="margin-top: 30px;font-weight: bold;font-size: 12px;"> I CERTIFY THAT I HAVE READ AND FULLY UNDERSTAND THIS DOCUMENT.
+                                    </p>
+
+                                    <div class="row">
+                                        <table style="width:100%;"> 
+
+                                            <td> <img th:src="@{data:image/png;base64,{image}(image=${phlebotomyForm.patientsignature})}" height="80px" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                            <td>  <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${phlebotomyForm.signdate1}">test</span> </td>
+                                            <tr>
+                                                <td> Patient or Patient's Representative</td>
+                                                <td> Date </td>
+                                            </tr>
+                                            <td>  <img th:src="@{data:image/png;base64,{image}(image=${phlebotomyForm.doctorsignature})}" height="80px" width="400" style="border-bottom:1px solid #000000;min-width: 150px;"/> </td>
+                                            <td>  <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${phlebotomyForm.signdate2}">test</span></td>
+                                            <tr>
+                                                <td>
+                                                    Witness Signature </td>
+                                                <td> Date </td>
+                                            </tr>
+                                        </table>  
+                                    </div>
+                                </div> 
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

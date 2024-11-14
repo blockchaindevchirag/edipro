@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Medical Record Request Form </title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 2px;
+                padding: 2px;
+                box-sizing: border-box;
+            }
+
+            .font_small{
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"> <span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;color:#a2a5a8;"> <span th:text="${patientPractice.addressline1}">test</span> <span th:text="${patientPractice.addressline2}">test</span><span th:text="${patientPractice.city}">test</span><span th:text="${patientPractice.state}">test</span><span th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span> <span  th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span> <span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div>  
+                    </div> 
+                    <h2 style="text-align: center;margin:10px 0;" >
+                        MEDICATION  RECORD REQUEST      
+                    </h2> 
+                    <div class="container">
+
+                        <div class="font_small">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4 style="margin-top:30px;font-weight: normal;">Our mutual patient,</h4> 
+
+                                        <p>   Patient Name :<span style="font-weight:bold;min-width: 300px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.patientname}">test</span> 
+                                            <span style='margin-left:30px'>  Date :</span> <span style="font-weight:bold;min-width: 80px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.currentdate}">test</span> </p>
+                                        <p>   Date of birth:<span style="font-weight:bold;min-width: 90px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.patientdob}">test</span>
+                                            <span style='margin-left:50px'>
+                                                Sex: 
+<!--                                                <input type="checkbox"  checked="checked" th:if="${medicationRecordForm.gender} == 1"/>
+                                                <input type="checkbox"  th:unless="${medicationRecordForm.gender} == 1"/> Male
+                                                <input type="checkbox" checked="checked" th:if="${medicationRecordForm.gender} == 2"/>
+                                                <input type="checkbox"  th:unless="${medicationRecordForm.gender} == 2"/> Female-->
+                                                <span style="margin-right: -4px;"> 
+                                                        <img th:if="${medicationRecordForm.gender} == 1"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt=""  />  
+                                                        <span><img  th:unless="${medicationRecordForm.gender} == 1" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                        </span> Male</span>
+                                                    <span style="margin-right: -8px;"> 
+                                                        <img th:if="${medicationRecordForm.gender} == 2"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -2px;margin-right: -1px"  width="15" height="15" alt="" />  
+                                                        <span><img th:unless="${medicationRecordForm.gender} == 2" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -2px;margin-right: -1px" width="15" height="15" alt="" />  
+                                                        </span> Female</span>
+                                            </span>
+                                        </p>
+
+
+                                        <p style="margin-top:30px;">The patient will be having oral surgery procedures at our Oral Surgery Center that will
+                                            include use of local anesthetics with epinephrine, also may need premedication with
+                                            prophylactic antibiotics, and might create a transient septicemia.</p>
+                                        <p style="margin-top:15px;">Please release of Medications record for review prior patient's appointment for oral
+                                            surgery, to prevent high-risk during oral surgery procedures and return the next page with
+                                            your recommendation. Thank you!</p>
+                                        <p style="margin-top: 40px;">Sincerely,</p>
+                                        <p style="margin-top: 30px;">
+                                            <img th:src="@{data:image/png;base64,{image}(image=${medicationRecordForm.patientsignature})}" height="50" width="400" style="min-width: 150px;border-bottom: 1px solid #000000;"/>,</p>
+
+                                        <p style="margin-top:450px;">Please return to:</p>
+                                        <p><span style="margin-top: 5px;font-weight:bold;min-width: 250px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.patienttxt1}">test</span></p>
+
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td style="font-weight: bold;">Office address:<span style="min-width: 350px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.patientofficeaddress}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold;">City, State ZIP: <span style="min-width: 350px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.citystate}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold;"> Tell( <span style="min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.telephonecode}">test</span>) <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.telephone1}">test</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold;"> Fax( <span style="min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.faxcode}">test</span>) <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.faxnum1}">test</span></td>
+                                            </tr>
+                                        </table>
+                                        <p style="margin-top:25px;">The patient will be having oral surgery procedures at our Oral Surgery Center that will
+                                            include use of local anesthetics with epinephrine, also may need premedication with
+                                            prophylactic antibiotics, and might create a transient septicemia.</p>
+                                        <p style="margin-top:25px;">Please release of Medications record for review prior patient's appointment for oral
+                                            surgery, to prevent high-risk during oral surgery procedures.</p>
+                                    </div>
+                                    <table style="width: 100%;margin-top:15px;">
+
+                                        <td><span style="font-weight:bold;min-width: 250px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.pharamacyname}">test</span></td>
+                                        <td><span style="font-weight:bold;min-width: 250px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.pharamacist}">test</span></td>
+                                        <td><span style="font-weight:bold;min-width: 90px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.currentdate}">test</span> </td>
+
+                                        <tr>
+                                            <td>Pharmacy name </td>
+                                            <td>Pharmacist</td>
+                                            <td>Date </td>
+                                        </tr>
+                                    </table>
+
+                                    <div class="col-12">
+                                        <p style="margin-top:5px;font-weight:bold;">Tell( <span style="min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.telephonecode1}">test</span>) <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.telephone2}">test</span></p>
+                                        <p style="margin-top:5px;font-weight:bold;">Fax( <span style="min-width: 70px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;"  th:text="${medicationRecordForm.faxcode1}">test</span> ) <span style="font-weight:bold;min-width: 200px;border-bottom: 1px solid #000000;display: inline-block;text-align: center;" th:text="${medicationRecordForm.faxnum2}">test</span></p>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+

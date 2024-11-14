@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <title> Pre-Operative Instruction Given Form</title>
+        <style>
+            .table{
+                border-spacing: 0;
+            }
+            * {
+                margin: 3px 1px;
+                padding: 3px 1px;
+                box-sizing: border-box;
+            }
+            input[type='checkbox'] {
+                margin: 0px;
+                padding: 0px;
+                font-weight:bold;
+            }
+            .pregiven{
+                font-size:14px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="modal fade">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">  
+                    <div class="modal-header" style="text-align: center">
+                        <div>
+                            <h2 style="color: #4c586b;"><span th:text="${patientPractice.actualPracticeName}">test</span></h2>
+                            <h5 style="margin: 1px;"><span style="color:#a2a5a8;" th:text="${patientPractice.addressline1}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.addressline2}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.city}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.state}">test</span><span style="color:#a2a5a8;" th:text="${patientPractice.zip}">test</span></h5>
+                            <h5 style="color:#a2a5a8;">
+                                <span th:if="${patientPractice.contactPhone!= null and patientPractice.contactPhone!= ''}">Tel:</span> <span  th:text="${patientPractice.contactPhone}">test</span><span  th:text="${patientPractice.alertPhone}">test</span>	
+                                <span  th:if="${patientPractice.fax!= null and patientPractice.fax!= ''}">Fax:</span><span th:text="${patientPractice.fax}">test</span>
+                            </h5> 
+                        </div> 
+                    </div>
+                    <div class="container">
+
+                        <div class="pregiven">
+                            <div class="card-body">
+                                <h2 style='text-align: center;margin-top: -27px'>PRE-OP EVALUATION</h2>
+
+                                <p>This patient is scheduled for Oral Surgery in the near future. Please fax or email this form with any relevant supporting 
+                                    documentation to us. Your assistance is greatly appreciated.
+                                </p>
+                                <div>
+
+                                    <div>
+                                        Patient Name: <span style="font-weight:bold;min-width: 300px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patientname}">test</span>
+                                        Birth Date : <span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patientdob}">test</span>
+                                        Date : <span style="font-weight:bold;min-width: 80px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ; " th:text="${preoperativeInstruction.currentDate}">test</span>
+                                    </div>
+
+                                    <div> Patient's Contact &nbsp; Home:<span style="font-weight:bold;min-width: 150px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patientaddress}">test</span>
+                                        Cell :<span style="font-weight:bold;min-width: 150px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patientphone}">test</span>
+                                    </div>
+
+
+                                    <p> <span>
+<!--                                            <input type="checkbox" checked="checked" th:if="${preoperativeInstruction.patientcheckbox1} == preopdate0001"/>
+                                            <input type="checkbox" th:unless="${preoperativeInstruction.patientcheckbox1} == preopdate0001"/>-->
+                                             <img th:if="${preoperativeInstruction.patientcheckbox1} == preopdate0001"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${preoperativeInstruction.patientcheckbox1} == preopdate0001" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Pre-op Date : 
+                                            <span style="font-weight:bold;min-width: 100px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.preopdate}">test</span></span>
+                                        <span>
+<!--                                            <input type="checkbox" checked="checked"  th:if="${preoperativeInstruction.patientcheckbox2} == surgerydate001"/>
+                                            <input type="checkbox"  th:unless="${preoperativeInstruction.patientcheckbox2} == surgerydate001"/> -->
+                                             <img th:if="${preoperativeInstruction.patientcheckbox2} == surgerydate001"  th:src="@{data:image/png;base64,{image}(image=${base64CheckboxImage})}" style="margin-bottom: -4px;margin-right: -1px;" width="15" height="15" alt=""  />  
+                                            <span><img  th:unless="${preoperativeInstruction.patientcheckbox2} == surgerydate001" th:src="@{data:image/png;base64,{image}(image=${base64UnCheckImage})}" style="margin-bottom: -4px; margin-right: -1px" width="15" height="15" alt="" />  
+                                            </span> Surgery Date :  
+                                            <span style="font-weight:bold;min-width: 100px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.surgerydate}">test</span> </span> 
+                                    </p>
+
+                                </div>
+
+
+                                <table class="col-auto" style="width: 100%">
+                                    <tr>
+                                        <td> Diagnosis Proposed Surgery Anesthesia CC:</td> 
+                                        <td><span style="font-weight:bold;min-width: 370px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patienttxt1}">test</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Significant past medical history:</td>
+                                        <td><span style="font-weight:bold;min-width: 370px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patienttxt2}">test</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>List of previous operations:</td>
+                                        <td><span style="font-weight:bold;min-width: 370px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patienttxt3}">test</span></td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>Current medication with dosages: Drug and Food Allergies:</td>
+                                        <td><span style="font-weight:bold;min-width: 370px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patienttxt4}">test</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>B/P: Pulse:</td>
+                                        <td><span style="font-weight:bold;min-width: 370px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patienttxt5}">test</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>HEENT LUNGS CARD/VASC ABD EXT:</td>
+                                        <td><span style="font-weight:bold;min-width: 370px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;"  th:text="${preoperativeInstruction.patienttxt6}">test</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>NEURO/PSYCH </td>
+                                        <td><span style="font-weight:bold;min-width: 370px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patienttxt7}">test</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>DIAGNOSIS</td>
+                                        <td>    <span style="font-weight:bold;min-width: 370px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patienttxt8}">test</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> Perioperative Recommendations: Is this patient cleared to have surgery?</td>
+                                        <td><span style="font-weight:bold;min-width: 370px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.patienttxt9}">test</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Date</td>
+                                        <td><span style="font-weight:bold;min-width: 90px;text-align:center;border-bottom: 1px solid #000000;display: inline-block ;" th:text="${preoperativeInstruction.signdate1}">test</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Print name: </td>
+                                        <td><span style="font-weight:bold;min-width: 370px;text-align:center;border-bottom: 1px solid #000000;display: inline-block;" th:text="${preoperativeInstruction.patientprintname}">test</span></td>
+                                    </tr> 
+                                    <tr>
+                                        <td>Signature:</td> 
+                                        <td><img th:src="@{data:image/png;base64,{image}(image=${preoperativeInstruction.patientsignature})}" height="50" width="360" style="border-bottom:1px solid #000000;min-width: 150px;"/></td>
+                                    </tr>
+                                </table>
+                            </div>  
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
